@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>test</title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="username" id="">
+			<input type="password" name="password" id="">
+			<input type="submit" name="" id="">
+		</form>
+		<ul class="menu">
+			<li data-url="http://localhost:8000/threads/">threads</li>
+			<li data-url="http://localhost:8000/bands/">bands</li>
+		</ul>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var token;
+				$('form').on('submit', function(e) {
+					e.preventDefault();
+					var data = $(this).serialize();
+					var form = this;
+					$.post(
+						"http://localhost:8000/rest-auth/login/",
+						data,
+						function(data) {
+							$(form).hide();
+							token = data.key;
+						}
+					);
+				});
+				$('.menu li').on('click', function () {
+					$('.result').html(get_data($(this).data('url')));
+				});
+
+				function get_data(url) {
+					$.ajax({
+						url: url,
+						headers: {
+							'Authorization': 'Token ' + token
+						},
+						success: function (data) {
+							console.log(data);
+							return data;
+						}
+					})
+				}
+			});
+		</script>
+	</body>
+</html>
