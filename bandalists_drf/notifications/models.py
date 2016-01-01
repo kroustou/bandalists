@@ -7,6 +7,9 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .utils import push_notification
 
+# import signal receivers
+from notifications import receivers
+
 
 class Notification(models.Model):
     for_user = models.ForeignKey(User)

@@ -25,6 +25,9 @@ class Thread(models.Model):
     def __unicode__(self):
         return self.text
 
+    def get_absolute_url(self):
+        return reverse('api:thread-detail', kwargs={'pk': self.pk})
+
     @property
     def channel(self):
         return 'dashboard-%s' % self.dashboard.slug

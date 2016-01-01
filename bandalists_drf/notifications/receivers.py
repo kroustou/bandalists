@@ -4,18 +4,19 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from discussion.models import Thread
-from .models import Notification
+from discussion.serializers import ThreadSerializer
 
 
 @receiver(post_save, sender=Thread)
 def create_notification(sender, instance, signal, created, **kwargs):
+    # avoid circular imports
+    from .models import Notification
     if created:
-        # avoid circular imports
-        from discussion.serializers import ThreadSerializer
-        for user in instance.dashboard.band.members.exclude(pk=instance.author.pk):
+        for user in instance.dashboard.members.exclude(pk=instance.author.pk):
+            print user
             message = ThreadSerializer(instance).data
             Notification(
                 for_user=user,
-                url=instance.url,
+                url=instance.get_absolute_url(),
                 message=json.dumps(message),
             ).save()

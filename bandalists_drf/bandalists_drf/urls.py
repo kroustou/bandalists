@@ -9,9 +9,9 @@ from rest_framework import routers
 admin.autodiscover()
 
 router = routers.DefaultRouter()
-router.register(r'threads', ThreadViewSet, base_name='thread')
-router.register(r'bands', BandViewSet, base_name='band')
-router.register(r'notifications', NotificationsViewSet, base_name='notifications')
+router.register(r'threads', ThreadViewSet, 'thread')
+router.register(r'bands', BandViewSet, 'band')
+router.register(r'notifications', NotificationsViewSet, 'notifications')
 
 urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
