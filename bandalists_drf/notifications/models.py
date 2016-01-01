@@ -5,7 +5,7 @@ User = settings.AUTH_USER_MODEL
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from discussion.models import Thread
+from .utils import push_notification
 
 
 class Notification(models.Model):

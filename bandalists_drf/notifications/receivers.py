@@ -4,8 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from discussion.models import Thread
-from notifications.models import Notification
-from notifications.utils import push_notification
+from .models import Notification
 
 
 @receiver(post_save, sender=Thread)
@@ -20,9 +19,3 @@ def create_notification(sender, instance, signal, created, **kwargs):
                 url=instance.url,
                 message=json.dumps(message),
             ).save()
-        # we have to push the notification in order for it to be shown
-        # in every dashboard
-        push_notification(
-            instance.channel,
-            json.dumps({'type': 'thread', 'message': message})
-        )
