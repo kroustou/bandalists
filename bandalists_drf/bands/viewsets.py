@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from bands.serializers import BandSerializer
+from .serializers import BandSerializer, InstrumentSerializer
 from .filters import BandFilter
 
 
@@ -9,3 +9,13 @@ class BandViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return self.request.user.band_set.all()
+
+
+
+
+
+class InstrumentViewSet(viewsets.ModelViewSet):
+    serializer_class = InstrumentSerializer
+
+    def get_queryset(self):
+        return self.request.user.instrument_set.all()

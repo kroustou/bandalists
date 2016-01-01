@@ -17,3 +17,20 @@ class Band(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class Instrument(models.Model):
+    name = models.CharField(max_length=255)
+    user = models.ForeignKey(User)
+    band = models.ForeignKey(Band)
+
+    def save(self, **kwargs):
+        '''
+        Make sure that the band is the users
+        '''
+        if self.band not in self.user.band_set.all():
+            raise ValueError('User not in the band he claims to be.')
+        super(Band, self).save(**kwargs)
+
+    def __unicode__(self):
+        return self.name

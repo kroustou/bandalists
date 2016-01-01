@@ -7,7 +7,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .utils import push_notification
 
-# import signal receivers
+# import signal receivers in order to be activated
 from notifications import receivers
 
 
