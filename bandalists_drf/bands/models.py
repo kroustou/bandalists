@@ -10,7 +10,7 @@ class Band(models.Model):
 
     def save(self, **kwargs):
         '''
-        Automatically set slug value and make sure it is unique
+        Automatically set slug value and make sure it is unique.
         '''
         unique_slugify(self, self.name)
         super(Band, self).save(**kwargs)
