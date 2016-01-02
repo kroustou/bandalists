@@ -28,7 +28,9 @@ class ThreadViewSet(viewsets.ModelViewSet):
     def create(self, request):
         user = request.user
         # try to see if user allowed to post to dashboard
-        if request.data.get('dashboard') in [str(band.pk) for band in user.band_set.all()]:
+        if request.data.get('dashboard') in [
+            str(band.pk) for band in user.band_set.all()
+        ]:
             request.data.update(
                 {
                     'seen_by': user.pk,

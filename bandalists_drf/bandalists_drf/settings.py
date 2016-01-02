@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'discussion',
     'notifications',
     'rest_auth',
+    'profiles',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,11 +99,16 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media/')
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'public/static/')
 
 
 REST_FRAMEWORK = {
@@ -123,3 +129,6 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = (
     'localhost:8080',
 )
+
+
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'

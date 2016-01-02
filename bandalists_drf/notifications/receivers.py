@@ -13,7 +13,6 @@ def create_notification(sender, instance, signal, created, **kwargs):
     from .models import Notification
     if created:
         for user in instance.dashboard.members.exclude(pk=instance.author.pk):
-            print user
             message = ThreadSerializer(instance).data
             Notification(
                 for_user=user,
