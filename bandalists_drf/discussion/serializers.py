@@ -1,8 +1,7 @@
 from rest_framework import serializers
 from discussion.models import Thread
-from django.contrib.auth.models import User
-
 import calendar
+from rest_framework_recursive.fields import RecursiveField
 
 
 class TimestampField(serializers.ReadOnlyField):
@@ -10,28 +9,18 @@ class TimestampField(serializers.ReadOnlyField):
         return calendar.timegm(value.timetuple())
 
 
-class ChildSerializer(serializers.ModelSerializer):
-    author = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
+class ThreadSerializer(serializers.HyperlinkedModelSerializer):
     date = TimestampField()
     last_edit = TimestampField()
-
-    class Meta:
-        model = Thread
-        fields = (
-            'pk',
-            'text',
-            'date',
-            'last_edit',
-            'parent',
-            'author',
-            'dashboard',
-        )
-
-
-class ThreadSerializer(serializers.ModelSerializer):
-    children = ChildSerializer(many=True, read_only=True)
-    date = TimestampField()
-    last_edit = TimestampField()
+    seen_by = serializers.HyperlinkedRelatedField(
+        many=True,
+        read_only=True,
+        view_name='api:user-detail'
+    )
+    author = serializers.HyperlinkedIdentityField(view_name='api:user-detail')
+    dashboard = serializers.HyperlinkedIdentityField(view_name='api:band-detail')
+    children = serializers.ListField(child=RecursiveField())
+    parent = serializers.HyperlinkedIdentityField(view_name='api:thread-detail')
 
     class Meta:
         model = Thread
