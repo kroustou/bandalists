@@ -18,9 +18,12 @@ url: `/rest-auth/` post: username/password -> token
 ### Apps/Features
 
 #### Bands
-url: `/bands/`
+##### url: `/bands/`
 
 Lists the bands of the current user.
+
+##### url: `/instrument/`
+Lists the instruments a user plays for each band.
 
 ### Threads
 url: `/threads/`

@@ -14,8 +14,7 @@ class ThreadViewSet(viewsets.ModelViewSet):
         threads = Thread.objects.filter(
             dashboard__in=[
                 band for band in self.request.user.band_set.all()
-            ],
-            parent__isnull=True
+            ]
         )
         for thread in threads.exclude(
             author=self.request.user

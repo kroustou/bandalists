@@ -17,10 +17,19 @@ class ThreadSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True,
         view_name='api:user-detail'
     )
-    author = serializers.HyperlinkedIdentityField(view_name='api:user-detail')
-    dashboard = serializers.HyperlinkedIdentityField(view_name='api:band-detail')
+    author = serializers.HyperlinkedRelatedField(
+        read_only=True,
+        view_name='api:user-detail'
+    )
+    dashboard = serializers.HyperlinkedRelatedField(
+        read_only=True,
+        view_name='api:band-detail'
+    )
     children = serializers.ListField(child=RecursiveField())
-    parent = serializers.HyperlinkedIdentityField(view_name='api:thread-detail')
+    parent = serializers.HyperlinkedRelatedField(
+        read_only=True,
+        view_name='api:thread-detail'
+    )
 
     class Meta:
         model = Thread
