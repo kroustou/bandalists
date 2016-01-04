@@ -30,32 +30,3 @@ class InstrumentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Instrument
 
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    # user profile serializer
-    # PERMISSIONS
-    # Post: anonymous -> registration
-    # Put: user edit profile
-    # Get: only their profile
-    # Delete: user unsubscribe
-    band_set = serializers.HyperlinkedRelatedField(
-        many=True,
-        read_only=True,
-        view_name='api:band-detail'
-    )
-    avatar = serializers.SerializerMethodField()
-
-    def get_avatar(self, obj):
-        if obj.profile.avatar:
-            return obj.profile.avatar.url
-        else:
-            return False
-
-    class Meta:
-        model = User
-        fields = (
-            'id',
-            'username',
-            'band_set',
-            'avatar'
-        )

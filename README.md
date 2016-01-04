@@ -46,3 +46,17 @@ it's being pushed to the redis/websocket.
 #### Hooks for other apps
 Into `receivers.py` you can bind hooks for each model that you would like to create
 notifications for.
+
+
+### Profiles
+
+url: `/user`
+
+##### get:
+Shows logged users details
+
+##### post:
+Creates user if not authenticated
+
+##### put:
+changes users values
