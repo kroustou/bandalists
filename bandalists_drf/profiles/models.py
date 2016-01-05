@@ -13,10 +13,11 @@ class Profile(models.Model):
     user = models.OneToOneField(User)
     avatar = models.ImageField(upload_to='avatars', null=True, blank=True)
 
-    def to_dict(self):
+    def to_dict(self, uri):
         return ({
             'username': self.user.username,
             'name': self.user.first_name,
+            'email': self.user.email,
             'surname': self.user.last_name,
             'avatar': self.avatar.url if self.avatar else None,
             'instruments': [
@@ -24,11 +25,11 @@ class Profile(models.Model):
                 for instrument in self.user.instrument_set.all()
             ],
             'bands': [
-                reverse(
-                    'api:band', kwargs={'pk': band.pk}
-                ) for band in self.user.band_set.all()
+                uri(reverse(
+                    'api:band-detail', kwargs={'pk': band.pk}
+                )) for band in self.user.band_set.all()
             ],
-            'token': self.user.auth_token.key,
+            'key': self.user.auth_token.key,
         })
 
     def __unicode__(self):

@@ -5,11 +5,11 @@ User = get_user_model()
 
 
 class BandSerializer(serializers.HyperlinkedModelSerializer):
-    members = serializers.HyperlinkedRelatedField(
-        many=True,
-        read_only=True,
-        view_name='api:user-detail'
-    )
+
+    def create(self, data):
+        obj = super(BandSerializer, self).create(data)
+        obj.members.add(self.context['request'].user.pk)
+        return obj
 
     class Meta:
         model = Band
@@ -29,4 +29,3 @@ class InstrumentSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Instrument
-

@@ -50,13 +50,22 @@ notifications for.
 
 ### Profiles
 
-url: `/user`
+url: `/me/`
 
 ##### get:
 Shows logged users details
 
 ##### post:
 Creates user if not authenticated
+(username, password, email)
 
 ##### put:
-changes users values
+changes users values:
+(username, name, surname, avatar (file), password, email)
+
+##### delete:
+removes my account
+
+##### get
+url: `/user/<id>/`
+gets user's with id=id details
