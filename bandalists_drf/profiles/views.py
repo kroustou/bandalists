@@ -21,7 +21,7 @@ class Profile(APIView):
         Return user's profile.
         """
         if request.user.is_authenticated():
-            return Response(request.user.profile.to_dict(request.build_absolute_uri))
+            return Response(request.user.profile.to_dict())
         else:
             raise PermissionDenied
 
@@ -41,7 +41,7 @@ class Profile(APIView):
             if serialized.is_valid():
                 user = serialized.save()
                 return Response(
-                    user.profile.to_dict(request.build_absolute_uri),
+                    user.profile.to_dict(),
                     status=status.HTTP_201_CREATED
                 )
             else:
@@ -84,6 +84,6 @@ class UserProfile(APIView):
     def get_object(self, pk):
         obj = get_object_or_404(User, pk=pk)
         return Response(
-            obj.profile.to_dict(self.request.build_absolute_uri),
+            obj.profile.to_dict(),
             status=status.HTTP_202_ACCEPTED
         )

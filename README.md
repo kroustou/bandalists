@@ -22,12 +22,7 @@ url: `/rest-auth/` post: username/password -> token
 
 Lists the bands of the current user.
 
-##### Filters
-`?dashboard=<dashboard_id>`
-
-##### Filters
-`?slug=<slug>`
-
+##### `/bands/<slug>`
 gets the band with the given slug
 
 ##### url: `/instrument/`

@@ -6,14 +6,14 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User)
     avatar = models.ImageField(upload_to='avatars', null=True, blank=True)
 
-    def to_dict(self, uri=''):
+    def to_dict(self):
+        from bands.serializers import BandSerializer
         return ({
             'username': self.user.username,
             'name': self.user.first_name,
@@ -25,9 +25,7 @@ class Profile(models.Model):
                 for instrument in self.user.instrument_set.all()
             ],
             'bands': [
-                uri(reverse(
-                    'api:band-detail', kwargs={'slug': band.slug}
-                )) for band in self.user.band_set.all()
+                BandSerializer(band).data for band in self.user.band_set.all()
             ],
             'key': self.user.auth_token.key,
         })

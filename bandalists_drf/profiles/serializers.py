@@ -30,10 +30,7 @@ class ProfileSerializer(serializers.BaseSerializer):
     '''
 
     def to_representation(self, obj):
-        if self.context.get('request'):
-            return obj.profile.to_dict(self.context.get('request').build_absolute_uri)
-        else:
-            return obj.profile.to_dict()
+        return obj.profile.to_dict()
 
     def to_internal_value(self, data):
         '''
@@ -65,7 +62,4 @@ class ProfileSerializer(serializers.BaseSerializer):
             self.user.set_password(data.get('password'))
         self.user.save()
         self.user.profile.save()
-        if self.context.get('request'):
-            return self.user.profile.to_dict(self.context.get('request').build_absolute_uri)
-        else:
-            return self.user.profile.to_dict()
+        return self.user.profile.to_dict()
