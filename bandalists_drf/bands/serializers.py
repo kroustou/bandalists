@@ -19,6 +19,10 @@ class BandSerializer(serializers.ModelSerializer):
             'slug',
             'members',
         )
+        lookup_field = 'slug'
+        extra_kwargs = {
+            'url': {'lookup_field': 'slug'}
+        }
 
 
 class InstrumentSerializer(serializers.ModelSerializer):
