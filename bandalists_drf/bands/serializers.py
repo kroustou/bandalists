@@ -14,7 +14,6 @@ class BandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Band
         fields = (
-            'id',
             'name',
             'slug',
             'members',
