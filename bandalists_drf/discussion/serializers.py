@@ -2,6 +2,8 @@ from rest_framework import serializers
 from discussion.models import Thread
 import calendar
 from rest_framework_recursive.fields import RecursiveField
+from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
 
 
 class TimestampField(serializers.ReadOnlyField):
@@ -9,32 +11,30 @@ class TimestampField(serializers.ReadOnlyField):
         return calendar.timegm(value.timetuple())
 
 
-class ThreadSerializer(serializers.HyperlinkedModelSerializer):
+class ThreadSerializer(serializers.ModelSerializer):
     date = TimestampField()
     last_edit = TimestampField()
-    seen_by = serializers.HyperlinkedRelatedField(
-        many=True,
-        read_only=True,
-        view_name='api:user-detail'
-    )
-    author = serializers.HyperlinkedRelatedField(
-        read_only=True,
-        view_name='api:user-detail'
-    )
-    dashboard = serializers.HyperlinkedRelatedField(
-        read_only=True,
-        view_name='api:band-detail'
-    )
-    children = serializers.ListField(child=RecursiveField())
-    parent = serializers.HyperlinkedRelatedField(
-        read_only=True,
-        view_name='api:thread-detail'
-    )
+    children = serializers.ListField(child=RecursiveField(), read_only=True)
+    author = serializers.PrimaryKeyRelatedField(read_only=True)
+    seen_by = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+
+    def validate(self, data):
+        # a comment must belong at the same band as its parent
+        if data.get('parent'):
+            if data.get('parent').dashboard != data.get('dashboard'):
+                data['dashboard'] = data.get('parent').dashboard
+
+        # users can post only at their bands
+        if data.get('dashboard') not in self.context.get('request').user.band_set.all():
+            raise ValidationError(_('You are not a member of this band.'))
+
+        data['author'] = self.context.get('request').user
+        return data
 
     class Meta:
         model = Thread
         fields = (
-            'pk',
+            'id',
             'text',
             'date',
             'last_edit',

@@ -22,16 +22,29 @@ url: `/rest-auth/` post: username/password -> token
 
 Lists the bands of the current user.
 
+##### Filters
+`?dashboard=<dashboard_id>`
+
+##### Filters
+`?slug=<slug>`
+
+gets the band with the given slug
+
 ##### url: `/instrument/`
 Lists the instruments a user plays for each band.
 
 ### Threads
 url: `/threads/`
 
-Lists the threads that a user can see meaning they belong to a band's dashboard.
+Lists the threads that a user can see meaning they belong to one of his band's dashboard.
 A thread can have a parent (in order to act as a comment to its parent). Also if
 a user reads a thread, it's marked as 'seen' for this user. If the user is
 the author, then the thread is marked as 'seen' on creation.
+
+##### Filters
+`?dashboard=<dashboard_id>`
+
+Lists the threads for a specific dashboard.
 
 ### Notifications
 url: `/notifications/`
