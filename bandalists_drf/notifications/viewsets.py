@@ -1,8 +1,14 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 from .serializers import NotificationSerializer
 
 
-class NotificationsViewSet(viewsets.ModelViewSet):
+class NotificationsViewSet(
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet
+):
     serializer_class = NotificationSerializer
 
     def get_queryset(self):

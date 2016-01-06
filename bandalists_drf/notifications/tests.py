@@ -51,3 +51,21 @@ class DiscussionTestCase(TestCase):
 
         # should get one notification
         self.assertEqual(len(response.data.get('results')), 1)
+
+        notification = response.data.get('results')[0]
+
+        # set the notification to read
+        response = self.client.put(
+            '/notifications/%s/' % notification.get('id'),
+            {
+                'read': True,
+                'text': notification.get('text'),
+                'url': notification.get('url'),
+                'message': notification.get('message'),
+            }
+        )
+        self.assertTrue(response.data.get('read'))
+
+    def test_cannot_create_notification(self):
+        response = self.client.post('/notifications/')
+        self.assertEqual(response.status_code, 405)
