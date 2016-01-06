@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-class BandSerializer(serializers.HyperlinkedModelSerializer):
+class BandSerializer(serializers.ModelSerializer):
 
     def create(self, data):
         obj = super(BandSerializer, self).create(data)
@@ -14,18 +14,25 @@ class BandSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Band
         fields = (
+            'id',
             'name',
             'slug',
             'members',
         )
 
 
-class InstrumentSerializer(serializers.HyperlinkedModelSerializer):
+class InstrumentSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
+        data.update({'user': self.context.get('request').user})
         if data.get('band') not in data.get('user').band_set.all():
             raise serializers.ValidationError('User not in this band.')
         return data
 
     class Meta:
         model = Instrument
+        fields = (
+            'id',
+            'name',
+            'band',
+        )
