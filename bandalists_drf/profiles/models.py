@@ -13,7 +13,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User)
     avatar = models.ImageField(upload_to='avatars', null=True, blank=True)
 
-    def to_dict(self, uri):
+    def to_dict(self, uri=''):
         return ({
             'username': self.user.username,
             'name': self.user.first_name,
@@ -26,7 +26,7 @@ class Profile(models.Model):
             ],
             'bands': [
                 uri(reverse(
-                    'api:band-detail', kwargs={'pk': band.pk}
+                    'api:band-detail', kwargs={'slug': band.slug}
                 )) for band in self.user.band_set.all()
             ],
             'key': self.user.auth_token.key,

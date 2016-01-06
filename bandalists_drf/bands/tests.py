@@ -26,21 +26,24 @@ class BandTestCase(TestCase):
         response = self.client.post('/bands/', {'name': 'test_band'})
         self.assertEqual(response.data.get('name'), 'test_band')
 
-        band_pk = self.user.band_set.all()[0].pk
+        # get slug
+        band = self.user.band_set.all()[0].slug
 
         # the band belongs to us
         self.assertEqual(
-            band_pk,
-            response.data.get('id')
+            band,
+            response.data.get('slug')
         )
 
         # edit band
         response = self.client.patch(
             '/bands/%s/' % (
-                response.data.get('id')
+                band
             ),
             {
                 'name': 'edited name',
+                'members': [self.user.pk],
+
             }
         )
         self.assertEqual(
@@ -48,15 +51,19 @@ class BandTestCase(TestCase):
             'edited name'
         )
 
+        # band has now new slug
+        band = response.data.get('slug')
+
         # add a new band member
         other_user = get_user_model().objects.create_user(
             username='test_user2',
             email='test2@test.com',
             password=self.sample_password
         )
+
         response = self.client.put(
             '/bands/%s/' % (
-                band_pk
+                band
             ),
             {
                 'name': 'edited name',
@@ -70,7 +77,7 @@ class BandTestCase(TestCase):
         # delete band
         self.client.delete(
             '/bands/%s/' % (
-                band_pk
+                band
             )
         )
 

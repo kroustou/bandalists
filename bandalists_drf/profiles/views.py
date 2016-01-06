@@ -41,7 +41,7 @@ class Profile(APIView):
             if serialized.is_valid():
                 user = serialized.save()
                 return Response(
-                    user.profile.to_dict(),
+                    user.profile.to_dict(request.build_absolute_uri),
                     status=status.HTTP_201_CREATED
                 )
             else:
