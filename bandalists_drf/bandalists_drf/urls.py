@@ -13,7 +13,7 @@ router = routers.DefaultRouter()
 router.register(r'threads', ThreadViewSet, 'thread')
 router.register(r'bands', BandViewSet, 'band')
 router.register(r'notifications', NotificationsViewSet, 'notifications')
-router.register(r'instruments', InstrumentViewSet, 'notifications')
+router.register(r'instruments', InstrumentViewSet, 'instruments')
 
 urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
