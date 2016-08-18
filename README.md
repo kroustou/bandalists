@@ -8,6 +8,10 @@ Endpoints:
 
 Installation:
 
+if on Debian please make sure you have installed:
+
+	libffi-dev libssl-dev libxml2-dev libxslt1-dev libncurses5-dev
+
 	$ mkvirtualenv bandalists
 	$ pip install -r requirements.txt
 	$ cd bandalists_drf/ && ./manage.py runserver
