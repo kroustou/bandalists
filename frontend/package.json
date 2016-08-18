@@ -1,0 +1,14 @@
+{
+  "name": "bandalists",
+  "version": "0.0.0",
+  "description": "bandlists api consumer",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kroustouris Stavros",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.7.9"
+  }
+}
