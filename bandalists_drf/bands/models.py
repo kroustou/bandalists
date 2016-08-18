@@ -6,7 +6,7 @@ from bands.utils import unique_slugify
 class Band(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, blank=True)
-    members = models.ManyToManyField(User, null=True, blank=True)
+    members = models.ManyToManyField(User)
 
     def save(self, **kwargs):
         '''
