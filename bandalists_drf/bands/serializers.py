@@ -1,10 +1,22 @@
 from rest_framework import serializers
-from .models import Band, Instrument
+from .models import Band, Instrument, BandImage
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
+class BandImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BandImage
+        fields = (
+            'id',
+            'image',
+            'primary'
+        )
+
+
 class BandSerializer(serializers.ModelSerializer):
+    bandimage_set = BandImageSerializer(many=True)
 
     def create(self, data):
         obj = super(BandSerializer, self).create(data)
@@ -17,6 +29,7 @@ class BandSerializer(serializers.ModelSerializer):
             'name',
             'slug',
             'members',
+            'bandimage_set',
         )
         lookup_field = 'slug'
         extra_kwargs = {

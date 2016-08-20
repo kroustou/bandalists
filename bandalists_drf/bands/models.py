@@ -26,3 +26,12 @@ class Instrument(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class BandImage(models.Model):
+    image = models.ImageField(upload_to='bands')
+    band = models.ForeignKey(Band)
+    primary = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return self.band.name
