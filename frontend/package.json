@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --history-api-fallback"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +13,7 @@
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
@@ -22,7 +23,8 @@
     "redux": "^3.5.2",
     "redux-auth": "0.0.5-beta5",
     "redux-form": "^6.0.1",
-    "webpack": "^1.13.2"
+    "skeleton-css": "^2.0.4",
+    "webpack": "^2.1.0-beta.19"
   },
   "devDependencies": {}
 }
