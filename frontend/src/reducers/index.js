@@ -5,7 +5,6 @@ import {defaultState} from './defaultState'
 const authReducer = (state = defaultState, action) => {
     switch (action.type) {
         case 'LOGIN':
-            console.log('login')
             return Object.assign({}, state, {'authenticated': true})
         default:
             return state

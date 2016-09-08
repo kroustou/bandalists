@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
 const Login = ({login}) => (
     <form>
-        <input onClick={login} className="button-primary" value="Login" type="button"/>
+        <input onClick={login} className='button-primary' value='Login' type='button'/>
     </form>
-);
+)
 
-export default Login;
+export default Login

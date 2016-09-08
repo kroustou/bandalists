@@ -1,15 +1,18 @@
 import {connect} from 'react-redux'
 import LoginContainer from '../../containers/auth/Login'
-import {login as loginAction} from '../../actions'
+import {login} from '../../actions'
 
 const mapStateToProps = (state) => {
     return {
+    	authenticated: state.session.authenticated
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        login: loginAction()
+        login: () => {
+        	dispatch(login())
+        }
     }
 }
 

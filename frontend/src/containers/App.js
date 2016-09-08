@@ -2,11 +2,12 @@ import React from 'react';
 import Header from './header/Header';
 
 
-const App = ({children}) => (
+const App = ({children, authenticated}) => (
     <div id="main">
         <Header/>
         <div className="container">
             {children}
+        	<h6>Auth: {authenticated? 'logged in': 'not logged in'}</h6>
         </div>
     </div>
 );

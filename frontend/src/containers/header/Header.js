@@ -1,10 +1,10 @@
-import React from "react";
-import Menu from "./menu/Menu";
-import logo from "../../images/logo.png"
+import React from 'react'
+import Menu from '../../components/Menu'
+import logo from '../../images/logo.png'
 const Header = () => (
-	<header className="row">
-		<div className="container">
-            <div className="logo two columns">
+	<header className='row'>
+		<div className='container'>
+            <div className='logo two columns'>
                 <img src={logo}/>
             </div>
             <Menu/>
@@ -12,4 +12,4 @@ const Header = () => (
 	</header>
 );
 
-export default Header;
+export default Header
