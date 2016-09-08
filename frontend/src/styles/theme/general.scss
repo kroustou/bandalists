@@ -1,0 +1,27 @@
+body {
+    background: $light3;
+    color: $light0;
+}
+
+
+a {
+    color: $light1;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover, &.active {
+        color: $light4;
+    }
+}
+
+input.button-primary[type="button"] {
+    background-color: $light2;
+    border-color: $light1;
+
+    &:hover, &:active, &:focus{
+        background-color: $light1;
+        border-color: $light1;
+    }
+}
+
+@import "header"

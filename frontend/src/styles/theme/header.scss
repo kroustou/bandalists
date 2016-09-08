@@ -1,0 +1,41 @@
+header {
+    background: $light2;
+    padding: 10px 0;
+
+    a {
+        color: $light3;
+    }
+
+    .logo img {
+        height: 80px;
+        display: block;
+    }
+
+    .menu {
+        float: right;
+        margin: 0;
+
+        li {
+            margin: 0;
+            list-style: none;
+            float: left;
+            text-align: center;
+            a {
+                vertical-align: middle;
+                line-height: 80px;
+                display: block;
+                height: 80px;
+
+                &:hover {
+                    background: $light3;
+                    color: $light4;
+
+                }
+
+                &.active {
+                    border-bottom: 2px solid $light4;
+                }
+            }
+        }
+    }
+}

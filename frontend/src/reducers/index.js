@@ -1,10 +1,15 @@
-// Set up your root reducer here...
-import {combineReducers} from "redux";
-import { routerReducer } from "react-router-redux";
+import {combineReducers} from 'redux'
+import { routerReducer } from 'react-router-redux'
+import {defaultState} from './defaultState'
 
+const authReducer = (state = defaultState, action) => {
+    switch (action.type) {
+        case 'LOGIN':
+            console.log('login')
+            return Object.assign({}, state, {'authenticated': true})
+        default:
+            return state
+    }
+}
 
-const postReducer = (state = {} /*, action*/) => {
-    return state;
-};
-
-export const reducers = combineReducers({postReducer, routing: routerReducer});
+export const reducers = combineReducers({session: authReducer, routing: routerReducer})
