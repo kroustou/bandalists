@@ -1,6 +1,6 @@
 import React from 'react'
 import Menu from '../../components/Menu'
-import logo from '../../images/logo.png'
+
 const Header = () => (
 	<header className='row'>
 		<div className='container'>
@@ -12,4 +12,5 @@ const Header = () => (
 	</header>
 );
 
+import logo from '../../images/logo.png'
 export default Header

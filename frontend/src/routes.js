@@ -6,9 +6,11 @@ import Profile from "./containers/Profile";
 import Login from "./components/auth/Login";
 
 export const routes = (
-    <Route path="/" component={App}>
-        <Route path="/profile/" component={Profile}/>
-        <Route path="/dashboard/" component={Posts}/>
-        <Route path="/login/" component={Login}/>
-    </Route>
+    <div>
+    	<Route path="/" component={App}>
+    		<Route path="/login/" component={Login}/>
+    	    <Route path="/profile/" component={Profile}/>
+    	    <Route path="/dashboard/" component={Posts}/>
+    	</Route>
+    </div>
 )

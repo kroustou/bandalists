@@ -1,14 +1,13 @@
 header {
     background: $light2;
-    padding: 10px 0;
-
-    a {
-        color: $light3;
-    }
+    position: relative;
+    margin-bottom: 80px;
 
     .logo img {
-        height: 80px;
+        height: 100px;
         display: block;
+        position: absolute;
+        top: 10px;
     }
 
     .menu {
@@ -16,24 +15,30 @@ header {
         margin: 0;
 
         li {
+            float: right;
             margin: 0;
             list-style: none;
-            float: left;
             text-align: center;
+
             a {
+                color: $light3;
                 vertical-align: middle;
-                line-height: 80px;
+                line-height: 55px;
                 display: block;
-                height: 80px;
+                height: 55px;
+                border-bottom: 5px solid $light2;
+
+
 
                 &:hover {
                     background: $light3;
                     color: $light4;
+                    border-bottom: 5px solid $light3;
 
                 }
 
                 &.active {
-                    border-bottom: 2px solid $light4;
+                    border-bottom: 5px solid $light4;
                 }
             }
         }
