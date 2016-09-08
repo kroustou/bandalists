@@ -29,6 +29,7 @@
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
+    "normalize.css": "4.2.0",
     "object-assign": "4.1.0",
     "react": "15.3.1",
     "react-dom": "15.3.1",
@@ -36,7 +37,8 @@
     "react-router": "2.7.0",
     "react-router-redux": "4.0.5",
     "redux": "3.5.2",
-    "redux-thunk": "2.1.0"
+    "redux-thunk": "2.1.0",
+    "skeleton-css": "2.0.4"
   },
   "devDependencies": {
     "autoprefixer": "6.4.0",
