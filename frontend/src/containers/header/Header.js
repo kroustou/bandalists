@@ -10,7 +10,7 @@ const Header = () => (
             <Menu/>
         </div>
 	</header>
-);
+)
 
 import logo from '../../images/logo.png'
 export default Header

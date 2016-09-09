@@ -1,5 +1,5 @@
-import React from 'react';
-import Header from './header/Header';
+import React from 'react'
+import Header from './header/Header'
 
 
 const App = ({children, authenticated}) => (
@@ -7,14 +7,14 @@ const App = ({children, authenticated}) => (
         <Header/>
         <div className="container">
             {children}
-        	<h6>Auth: {authenticated? 'logged in': 'not logged in'}</h6>
+            <h6>Auth: {authenticated? 'logged in': 'not logged in'}</h6>
         </div>
     </div>
-);
+)
 
 App.propTypes = {
-     children: React.PropTypes.node
-};
+    children: React.PropTypes.node
+}
 
 
-export default App;
+export default App

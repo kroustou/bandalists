@@ -4,14 +4,14 @@ import {login} from '../../actions'
 
 const mapStateToProps = (state) => {
     return {
-    	authenticated: state.session.authenticated
+        authenticated: state.session.authenticated
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         login: () => {
-        	dispatch(login())
+            dispatch(login())
         }
     }
 }

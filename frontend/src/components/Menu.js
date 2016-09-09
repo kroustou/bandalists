@@ -5,15 +5,15 @@ import {logout} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
-    	authenticated: state.session.authenticated
+        authenticated: state.session.authenticated
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    	logout: () => {
-    		dispatch(logout())
-    	}
+        logout: () => {
+            dispatch(logout())
+        }
     }
 }
 
@@ -21,11 +21,11 @@ const mapDispatchToProps = (dispatch) => {
 // without pure: false we cant
 // update the active menu item
 const Menu = connect(
-	mapStateToProps,
-	mapDispatchToProps,
-	null,
-	{
-  		pure: false
-	}
+    mapStateToProps,
+    mapDispatchToProps,
+    null,
+    {
+        pure: false
+    }
 )(MenuContainer)
 export default Menu

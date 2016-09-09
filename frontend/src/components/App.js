@@ -4,14 +4,14 @@ import AppContainer from '../containers/App'
 
 const mapStateToProps = (state) => {
     return {
-    	authenticated: state.session.authenticated
+        authenticated: state.session.authenticated
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//     }
+// }
 
-const App = connect(mapStateToProps, mapDispatchToProps)(AppContainer)
+const App = connect(mapStateToProps, {})(AppContainer)
 export default App
