@@ -7,7 +7,7 @@ const App = ({children, authenticated}) => (
         <Header/>
         <div className="container">
             {children}
-            <h6>Auth: {authenticated? 'logged in': 'not logged in'}</h6>
+            <h6>Token: {authenticated}</h6>
         </div>
     </div>
 )

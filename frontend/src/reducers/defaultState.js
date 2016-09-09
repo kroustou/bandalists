@@ -1,5 +1,7 @@
+import browserStore from 'store'
+
 export const defaultState = {
     'session': {
-        'authenticated': false
+        'authenticated': browserStore.get('token'),
     }
 }
