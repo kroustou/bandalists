@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux'
 import { routerReducer } from 'react-router-redux'
 import {defaultState} from './defaultState'
+import { reducer as formReducer } from 'redux-form'
 import browserStore from 'store'
 
 const authReducer = (state = defaultState, action) => {
@@ -14,9 +15,24 @@ const authReducer = (state = defaultState, action) => {
         return Object.assign({}, state, {'authenticated': false})
     }
     default: {
-
         return state
     }}
 }
 
-export const reducers = combineReducers({session: authReducer, routing: routerReducer})
+const dashboardReducer = (state = {}, action) => {
+    switch (action.type) {
+    case 'THREADS': {
+        return Object.assign({}, state, {'threads': action.data})
+    }
+    default: {
+        return state
+    }}
+}
+
+
+export const reducers = combineReducers({
+    session: authReducer,
+    routing: routerReducer,
+    dashboard: dashboardReducer,
+    form: formReducer
+})

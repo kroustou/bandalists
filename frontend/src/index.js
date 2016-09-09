@@ -5,10 +5,10 @@ import { Provider } from 'react-redux'
 import {Router, browserHistory} from 'react-router'
 import {reducers} from  './reducers'
 import {routes} from './routes'
-
+import {defaultState} from './reducers/defaultState'
 import './styles/style.scss'
 
-const store = createStore(reducers)
+const store = createStore(reducers, defaultState, window.devToolsExtension && window.devToolsExtension())
 
 ReactDOM.render(
     <Provider store={store}>

@@ -15,9 +15,10 @@ a {
     }
 }
 
-input.button-primary[type="button"] {
-    background-color: $light2;
+input.button-primary[type="button"], input.button-primary[type="submit"]  {
+    background-color: $light4;
     border-color: $light1;
+    color: $light1;
 
     &:hover, &:active, &:focus{
         background-color: $light1;
