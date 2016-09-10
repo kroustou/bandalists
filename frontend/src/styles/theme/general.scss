@@ -26,4 +26,10 @@ input.button-primary[type="button"], input.button-primary[type="submit"]  {
     }
 }
 
+
+textarea {
+    resize: none;
+}
+
 @import "header"
+

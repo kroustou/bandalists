@@ -14,6 +14,7 @@ const mapDispatchToProps = (dispatch) => {
             data.parent = 'lala'
             // shoudl have dashboard
             data.dashoard = 'koko'
+            console.log(data)
             postThread(data, dispatch)
         }
     }
