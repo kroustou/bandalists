@@ -9,8 +9,6 @@ export const Dashboard = (props) => {
         <div className='dashboard'>
         	<BandSelector/>
             <PostForm />
-            <input onClick={props.getPosts} className='button-primary' value='get threads' type='button'/>
-            <Posts {...props}/>
         </div>
     )
 }
