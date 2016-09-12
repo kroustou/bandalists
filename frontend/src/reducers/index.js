@@ -3,7 +3,7 @@ import { routerReducer } from 'react-router-redux'
 import {defaultState} from './defaultState'
 import { reducer as formReducer } from 'redux-form'
 import browserStore from 'store'
-
+import {dashboardReducer} from '../dashboard'
 const authReducer = (state = defaultState, action) => {
     switch (action.type) {
     case 'LOGIN': {
@@ -20,21 +20,6 @@ const authReducer = (state = defaultState, action) => {
     }}
 }
 
-const dashboardReducer = (state = {}, action) => {
-    switch (action.type) {
-    case 'THREADS': {
-        return Object.assign({}, state, {'threads': action.data})
-    }
-    case 'BANDS': {
-        return Object.assign({}, state, {'bands': action.bands})
-    }
-    case 'SELECT_BAND': {
-        return Object.assign({}, state, {'selected_band': action.band})
-    }
-    default: {
-        return state
-    }}
-}
 
 
 export const reducers = combineReducers({

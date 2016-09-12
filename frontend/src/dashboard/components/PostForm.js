@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
-import PostFormContainer from '../../containers/dashboard/Form'
-import {postThread} from '../../actions'
+import PostFormContainer from './containers/Form'
+import {postThread} from '../actions'
 
 const mapStateToProps = (state) => {
     return {

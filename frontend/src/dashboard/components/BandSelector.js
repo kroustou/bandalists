@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import BandSelectorContainer from '../../containers/dashboard/BandSelector'
+import BandSelectorContainer from './containers/BandSelector'
 
 const mapStateToProps = (state) => {
     return {
@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        selectBand: (band) => dispatch({'type': 'SELECT_BAND', 'band': band})
+        // selectBand: (band) => dispatch({'type': 'SELECT_BAND', 'band': band})
     }
 }
 

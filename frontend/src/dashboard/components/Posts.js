@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
-import {Dashboard as DashboardContainer} from '../../containers/dashboard'
-import {getThreads} from '../../actions'
+import PostsContainer from './containers/Posts'
+import {getThreads} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
@@ -16,9 +16,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const Dashboard = connect(mapStateToProps, mapDispatchToProps)(DashboardContainer)
-export default Dashboard
-
-
-
-
+const Posts = connect(mapStateToProps, mapDispatchToProps)(PostsContainer)
+export default Posts
