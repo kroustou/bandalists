@@ -1,5 +1,5 @@
 import {api} from '../constants'
-import {init} from '../actions'
+import {init} from '../base/actions'
 
 export const login = (dispatch) => {
     let data = {username: 'admin', password: 'pass'}

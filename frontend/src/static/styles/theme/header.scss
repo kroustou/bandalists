@@ -2,6 +2,7 @@ header {
     background: $light2;
     position: relative;
     margin-bottom: 80px;
+    z-index: 100;
 
     .logo img {
         height: 100px;

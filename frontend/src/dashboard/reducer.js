@@ -1,5 +1,7 @@
+import {defaultState} from './defaultState'
+import browserStore from 'store'
 
-export default (state = {}, action) => {
+export default (state = defaultState, action) => {
     switch (action.type) {
     case 'THREADS': {
         return Object.assign({}, state, {'threads': action.data})
@@ -8,7 +10,8 @@ export default (state = {}, action) => {
         return Object.assign({}, state, {'bands': action.bands})
     }
     case 'SELECT_BAND': {
-        return Object.assign({}, state, {'selected_band': action.band})
+        browserStore.set('selectedBand', action.band)
+        return Object.assign({}, state, {'selectedBand': action.band})
     }
     default: {
         return state

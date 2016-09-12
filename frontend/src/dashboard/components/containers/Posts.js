@@ -6,7 +6,6 @@ const Posts = ({threads, getPosts}) => {
     }
     return (
         <div>
-            <input onClick={getPosts} className='button-primary' value='get threads' type='button'/>
             {threads? threads.count: 'Loading'} Posts
         </div>
     )

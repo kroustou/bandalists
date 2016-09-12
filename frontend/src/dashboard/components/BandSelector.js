@@ -3,13 +3,14 @@ import BandSelectorContainer from './containers/BandSelector'
 
 const mapStateToProps = (state) => {
     return {
-        'bands': state.dashboard.bands
+        'bands': state.dashboard.bands,
+        'selectedBand': state.dashboard.selectedBand
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // selectBand: (band) => dispatch({'type': 'SELECT_BAND', 'band': band})
+        selectBand: (band) => dispatch({'type': 'SELECT_BAND', 'band': band})
     }
 }
 

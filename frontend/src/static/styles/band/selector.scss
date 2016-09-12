@@ -1,0 +1,53 @@
+.band-selector {
+    position: absolute;
+    top: 60px;
+
+    &:hover ul {
+        display: block;
+    }
+
+    div.band-image {
+        font-weight: 800;
+        display: inline-block;
+        overflow: hidden;
+        width: 50px;
+        height: 50px;
+        position: relative;
+        border: 3px solid $light4;
+        border-radius: 50%;
+
+        img {
+            display: block;
+            position: absolute;
+            width: 50px;
+            left: -25px;
+            top: -25px;
+        }
+    }
+
+
+    ul {
+        background: $light4;
+        display: none;
+        position: absolute;
+        list-style: none;
+        padding: 10px;
+        text-align: center;
+
+
+        li {
+
+            &.active {
+                font-weight: 800;
+                background: $light0;
+                color: $light4;
+
+            }
+
+            &:hover {
+                background: $light3;
+                cursor: pointer;
+            }
+        }
+    }
+}
