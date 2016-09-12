@@ -2,9 +2,9 @@
 import React from 'react'
 import {Route} from 'react-router'
 import App from './components/App'
-import {Dashboard} from './dashboard/'
+import {Dashboard} from '../dashboard/'
 import Profile from './containers/Profile'
-import {Login} from './auth'
+import {Login} from '../auth'
 
 export const routes = (
     <div>

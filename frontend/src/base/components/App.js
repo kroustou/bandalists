@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import AppContainer from '../containers/App'
+import AppContainer from './containers/App'
 
 
 const mapStateToProps = (state) => {

@@ -1,10 +1,7 @@
-import {combineReducers} from 'redux'
-import { routerReducer } from 'react-router-redux'
 import {defaultState} from './defaultState'
-import { reducer as formReducer } from 'redux-form'
 import browserStore from 'store'
-import {dashboardReducer} from '../dashboard'
-const authReducer = (state = defaultState, action) => {
+
+export default (state = defaultState, action) => {
     switch (action.type) {
     case 'LOGIN': {
         let token = action.token
@@ -20,11 +17,3 @@ const authReducer = (state = defaultState, action) => {
     }}
 }
 
-
-
-export const reducers = combineReducers({
-    session: authReducer,
-    routing: routerReducer,
-    dashboard: dashboardReducer,
-    form: formReducer
-})

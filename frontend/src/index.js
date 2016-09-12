@@ -3,13 +3,12 @@ import React from 'react'  //eslint-disable-line no-unused-vars
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import {Router, browserHistory} from 'react-router'
-import {reducers} from  './reducers'
-import {routes} from './routes'
-import {defaultState} from './reducers/defaultState'
-import './styles/style.scss'
-import {init} from './actions'
+import {reducers} from  './base/reducers'
+import {routes} from './base/routes'
+import './static/styles/style.scss'
+import {init} from './base/actions'
 
-const store = createStore(reducers, defaultState, window.devToolsExtension && window.devToolsExtension())
+const store = createStore(reducers, {}, window.devToolsExtension && window.devToolsExtension())
 
 init(store.dispatch)
 ReactDOM.render(

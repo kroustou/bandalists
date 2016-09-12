@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import MenuContainer from '../containers/header/menu/Menu'
+import MenuContainer from './containers/header/menu/Menu'
 import {logout} from '../actions'
 
 
