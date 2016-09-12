@@ -8,7 +8,8 @@ export const getThreads = (dispatch, dashboardId) => {
 
 export const postThread = (data, dispatch) => {
     api('/threads/', 'post', data).then(resp => {
-        dispatch({type: 'THREADS', data: resp.data})
+    	getThreads(dispatch, data.dashboard)
+        dispatch({type: 'THREAD_SAVED', data: resp.data})
     })
 }
 

@@ -5,7 +5,8 @@ import {getThreads} from '../actions'
 const mapStateToProps = (state) => {
     return {
         threads: state.dashboard.threads,
-        selectedBand: state.dashboard.selectedBand
+        selectedBand: state.dashboard.selectedBand,
+        initialValues: {text: ''}
     }
 }
 

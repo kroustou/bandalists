@@ -6,6 +6,10 @@ export default (state = defaultState, action) => {
     case 'THREADS': {
         return Object.assign({}, state, {'threads': action.data})
     }
+    case 'THREAD_SAVED': {
+        // unused for now
+        return Object.assign({}, state, {'newestThread': action.data})
+    }
     case 'BANDS': {
         return Object.assign({}, state, {'bands': action.bands})
     }

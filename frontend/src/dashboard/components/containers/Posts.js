@@ -13,7 +13,7 @@ const Posts = ({threads, getPosts, selectedBand}) => {
             {threads ? (
                     threads.results.map((thread) => (
                            <div key={thread.id} className="thread">
-                              {thread.text} - {thread.children.length} replies - author {thread.author}
+                              {thread.text}
                            </div>
                         )
                     )
