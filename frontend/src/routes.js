@@ -4,7 +4,7 @@ import {Route} from 'react-router'
 import App from './components/App'
 import {Dashboard} from './dashboard/'
 import Profile from './containers/Profile'
-import Login from './components/auth/Login'
+import {Login} from './auth'
 
 export const routes = (
     <div>

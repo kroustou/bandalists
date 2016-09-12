@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
-import LoginContainer from '../../containers/auth/Login'
-import {login} from '../../actions'
+import LoginContainer from './containers'
+import {login} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
