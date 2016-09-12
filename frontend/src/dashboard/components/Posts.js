@@ -4,14 +4,15 @@ import {getThreads} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
-        threads: state.dashboard.threads
+        threads: state.dashboard.threads,
+        selectedBand: state.dashboard.selectedBand
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getPosts: () => {
-            return getThreads(dispatch)
+        getPosts: (dashboardId) => {
+            getThreads(dispatch, dashboardId)
         }
     }
 }

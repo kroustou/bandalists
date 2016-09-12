@@ -1,7 +1,7 @@
 import {api} from '../api'
 
-export const getThreads = (dispatch) => {
-    api('/threads/').then(resp => {
+export const getThreads = (dispatch, dashboardId) => {
+    api('/threads/?dashboard=' + dashboardId).then(resp => {
         dispatch({type: 'THREADS', data: resp.data})
     })
 }

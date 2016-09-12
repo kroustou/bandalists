@@ -7,7 +7,7 @@ const PostForm = (props) => {
         <form onSubmit={handleSubmit}>
             <div>
                 <div>
-                   <Field className="u-full-width" name="text" component='textarea' placeholder={'Good news everyone at' + selectedBand.name + '!'}/>
+                   <Field className="u-full-width" name="text" component='textarea' placeholder={'Good news everyone at ' + selectedBand.name + '!'}/>
                 </div>
             </div>
             <div>
