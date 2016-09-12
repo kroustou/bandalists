@@ -5,7 +5,7 @@ import {postThread} from '../actions'
 const mapStateToProps = (state) => {
     return {
         'selectedBand': state.dashboard.selectedBand,
-        'initialValues': {dashboard: state.dashboard.selectedBand.slug}
+        'initialValues': {dashboard: state.dashboard.selectedBand.pk}
     }
 }
 

@@ -16,7 +16,7 @@ class BandImageSerializer(serializers.ModelSerializer):
 
 
 class BandSerializer(serializers.ModelSerializer):
-    bandimage_set = BandImageSerializer(many=True)
+    bandimage_set = BandImageSerializer(many=True, read_only=True)
 
     def create(self, data):
         obj = super(BandSerializer, self).create(data)
@@ -26,6 +26,7 @@ class BandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Band
         fields = (
+            'pk',
             'name',
             'slug',
             'members',
