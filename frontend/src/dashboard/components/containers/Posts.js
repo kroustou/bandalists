@@ -1,4 +1,5 @@
 import React from 'react'
+import Thread from './Thread'
 
 const Posts = ({threads, getPosts, selectedBand}) => {
     // if no threads loaded or threads from another dashboard
@@ -12,9 +13,7 @@ const Posts = ({threads, getPosts, selectedBand}) => {
 
             {threads ? (
                     threads.results.map((thread) => (
-                           <div key={thread.id} className="thread">
-                              {thread.text}
-                           </div>
+                           <Thread thread={thread}/>
                         )
                     )
                 ): ''}
