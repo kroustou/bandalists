@@ -4,6 +4,8 @@ import {postThread} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
+        'selectedBand': state.dashboard.selectedBand,
+        'initialValues': {dashboard: state.dashboard.selectedBand.slug}
     }
 }
 
@@ -11,9 +13,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onSubmit: (data) => {
             // could have parent
-            data.parent = 'lala'
-            // shoudl have dashboard
-            data.dashoard = 'koko'
             postThread(data, dispatch)
         }
     }
