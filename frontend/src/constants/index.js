@@ -8,10 +8,15 @@ const backend = axios.create({
 })
 
 export const api = (url, method='get', data={}) => {
+    let token = browserStore.get('token')
+    let headers =  {Accept: 'application/json'}
+    if (token) {
+        headers.Authorization = 'token ' + token
+    }
     return backend({
         method,
         url,
         data,
-        headers: {'Authorization': 'token ' + browserStore.get('token')}
+        headers
     })
 }

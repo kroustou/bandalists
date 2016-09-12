@@ -7,9 +7,11 @@ import {reducers} from  './reducers'
 import {routes} from './routes'
 import {defaultState} from './reducers/defaultState'
 import './styles/style.scss'
+import {init} from './actions'
 
 const store = createStore(reducers, defaultState, window.devToolsExtension && window.devToolsExtension())
 
+init(store.dispatch)
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory} routes={routes}/>

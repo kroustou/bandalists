@@ -2,10 +2,16 @@ import React from 'react'
 import {Link} from 'react-router'
 
 
-export default (props) => {
+export default ({bands, selectBand}) => {
     return (
-        <ul className="bandSelector">
-        	<li><Link to='/band1'>Band1</Link></li>
-        </ul>
+        <div className="band-selector">
+            <ul className="bandSelector">
+                { bands ? bands.results.map(band => (
+                    <li><Link to={`/dashboard/${band.id}/`}>{band.name}</Link></li>
+                    ))
+                : 'Loading...'}
+                <li><a>Add New Band</a></li>
+            </ul>
+        </div>
     )
 }
