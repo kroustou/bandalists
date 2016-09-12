@@ -1,4 +1,4 @@
-import {api} from '../constants'
+import {api} from '../api'
 
 export const getThreads = (dispatch) => {
     api('/threads/').then(resp => {

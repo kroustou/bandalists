@@ -1,4 +1,4 @@
-import {api} from '../constants'
+import {api} from '../api'
 import {init} from '../base/actions'
 
 export const login = (dispatch) => {
