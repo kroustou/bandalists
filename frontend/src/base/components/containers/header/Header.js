@@ -1,6 +1,6 @@
 import React from 'react'
 import Menu from '../../../components/Menu'
-import {BandSelector} from '../../../../dashboard/'
+import {BandSelector} from '../../../../bands/'
 
 const Header = () => (
     <header className='row'>
