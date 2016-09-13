@@ -1,11 +1,11 @@
 import {connect} from 'react-redux'
 import MenuContainer from './containers/header/menu/Menu'
-import {logout} from '../actions'
-
+import {logout} from '../../auth/actions'
 
 const mapStateToProps = (state) => {
     return {
-        authenticated: state.session.authenticated
+        authenticated: state.session.authenticated,
+        selectedBand: state.bands.selectedBand
     }
 }
 

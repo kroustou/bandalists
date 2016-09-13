@@ -2,12 +2,12 @@ import React from 'react'
 import Menu from '../../../components/Menu'
 import {BandSelector} from '../../../../bands/'
 
-const Header = () => (
+const Header = ({authenticated}) => (
     <header className='row'>
         <div className='container'>
             <div className='logo two columns'>
                 <img src={logo}/>
-                <BandSelector/>
+                {authenticated ? <BandSelector/> : ''}
             </div>
             <Menu/>
         </div>

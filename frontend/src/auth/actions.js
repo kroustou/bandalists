@@ -13,3 +13,4 @@ export const login = (dispatch) => {
 export const logout = () => {
     return {type: 'LOGOUT'}
 }
+

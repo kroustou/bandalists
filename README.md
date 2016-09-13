@@ -15,7 +15,7 @@ installation:
     virtualenv ~/.virtualenvs/bandalists
     source !$
     pip install -r requirements.txt
-    ./manage.py syncdb
+    ./manage.py migrate
     ./manage.py createsuperuser
 
 superuser credentials -> admin:pass (hardcoded in the client)
@@ -38,7 +38,16 @@ To run the frontend just:
     npm install
     npm start
 
-# About
+## Usage
+go to `http://localhost:3000`
+
+- Select Login (admin:pass user must have been created on django (./manage.py createsuperuser))
+- The menu items should have been changed
+- select Bands and create a band
+- select The created band from down below
+- go to dashboard and talk with yourself
+
+# How it works
 
 ## Backend
 Django 1.9 with django rest framework.

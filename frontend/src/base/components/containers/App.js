@@ -4,8 +4,9 @@ import Header from './header/Header'
 
 const App = ({children, authenticated}) => (
     <div id="main">
-        <Header/>
+        <Header authenticated={authenticated}/>
         <div className="container">
+            {authenticated ? <div>Logged in!</div> : <div>Welcome. Please login.</div> }
             {children}
         </div>
     </div>

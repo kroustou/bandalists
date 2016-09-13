@@ -1,17 +1,21 @@
 import React from 'react'
+import {Link} from 'react-router'
 
 export default ({bands, selectBand, selectedBand}) => {
     return (
         <div className="band-selector three columns">
-            <div className='band-image'><img src={selectedBand ? 'http://placehold.it/100x100/?text=' + selectedBand.name[0] : ''}/></div>
+            <div className='band-image'><img src={selectedBand ? 'http://placehold.it/100x100/?text=' + selectedBand.name[0] : 'http://placehold.it/100x100/ff0000/?text=?'}/></div>
             <ul>
                 { bands ? bands.results.map(band => (
                     <li className={ selectedBand && band.slug === selectedBand.slug ? 'active' : ''} key={band.slug} onClick={() => selectBand(band) }>{band.name}</li>
                     ))
-                : 'Loading...'}
-                {selectedBand ? <li><a>Edit {selectedBand.name}</a></li> : ''}
-                <li><a>Add New Band</a></li>
+                : 'No band selected!!!'}
+                <li><Link activeClassName='active' to='/bands/add/'> New band</Link></li>
+                {selectedBand ? <Link activeClassName='active' to='/bands/edit/'>Edit {selectedBand.name}</Link> : ''}
             </ul>
         </div>
     )
 }
+
+
+
