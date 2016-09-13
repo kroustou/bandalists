@@ -5,7 +5,7 @@ import EditBand from '../EditBand'
 export default ({bands, selectBand, selectedBand, children}) => {
     return (
         <div className="band">
-            <Link activeClassName='active' to='/bands/add/'> New band</Link>
+            <Link activeClassName='active' to='/bands/add/'>+ New band</Link>
             {children}
             <div>
                 {bands ? <h4> Edit your {bands.count} bands</h4>: ''}
