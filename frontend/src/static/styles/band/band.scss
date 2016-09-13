@@ -5,14 +5,14 @@
         list-style: none;
         cursor: pointer;
         padding: 5px;
+        position: relative;
 
-        &:hover {
+        &:hover, &.active {
             background: $light4;
             color: $light3;
         }
 
         form {
-            display: none;
             margin: 0;
             padding: 0;
 
@@ -21,19 +21,28 @@
             }
         }
 
-        .name {
-            display: block;
+        .active-show {
+            display: none;
         }
 
         &.active {
             font-weight: 800;
+            padding: 20px;
 
-            form {
+            .delete {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                color: $light0;
+                weight: 300;
+            }
+
+            .active-show {
                 display: block;
             }
 
-            .name {
-                display: none
+            .active-hide {
+                display: none;
             }
         }
     }

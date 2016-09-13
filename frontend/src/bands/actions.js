@@ -17,8 +17,15 @@ export const addBand = (dispatch, data) => {
 
 
 export const editBand = (dispatch, data) => {
-	let url = '/bands/' + data.slug + '/'
-	api(url, 'put', data).then(() => {
+    let url = '/bands/' + data.slug + '/'
+    api(url, 'put', data).then(() => {
+        getBands(dispatch)
+    })
+}
+
+export const deleteBand = (dispatch, band) => {
+    let url = '/bands/' + band.slug + '/'
+    api(url, 'delete').then(() => {
         getBands(dispatch)
     })
 }

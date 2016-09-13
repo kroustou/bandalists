@@ -7,9 +7,9 @@ const Header = ({authenticated}) => (
         <div className='container'>
             <div className='logo two columns'>
                 <img src={logo}/>
-                {authenticated ? <BandSelector/> : ''}
             </div>
             <Menu/>
+            {authenticated ? <BandSelector/> : ''}
         </div>
 	</header>
 )

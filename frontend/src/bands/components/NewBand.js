@@ -3,9 +3,9 @@ import {connect} from 'react-redux'
 import {reset} from 'redux-form'
 import {addBand} from '../actions'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
     return {
-    	form: 'newBand'
+        form: 'newBand'
     }
 }
 

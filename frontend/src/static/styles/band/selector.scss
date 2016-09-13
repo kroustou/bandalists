@@ -1,6 +1,5 @@
 header .band-selector {
     position: absolute;
-    top: 60px;
 
     &:hover ul {
         display: block;
@@ -29,7 +28,6 @@ header .band-selector {
     ul {
         background: $light4;
         display: none;
-        position: absolute;
         list-style: none;
         padding: 10px;
         text-align: center;
