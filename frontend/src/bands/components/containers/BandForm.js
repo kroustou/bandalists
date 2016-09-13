@@ -1,18 +1,15 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-const EditBandForm = () => {
+const EditBandForm = (props) => {
+    const {handleSubmit, submitting} = props
     return (
-        <form className="new-band-form" >
-            <div>
-                <label htmlFor="name">Name</label>
-                <Field name="name" component='input' placeholder='The best band in the world'/>
+        <form className="new-band-form row" onSubmit={handleSubmit} >
+            <div className="eight columns">
+                <Field className="u-full-width" name="name" component='input' placeholder='The best band in the world'/>
             </div>
-            <div>
-                <label htmlFor="name">Members</label>
-                <Field name="members" component='select' multiple placeholder='Serch by username or email'>
-                    <option value="1">lala</option>
-                </Field>
+            <div className="four columns">
+                <input className="u-full-width" type="submit" value="Save" id="" />
             </div>
         </form>
     )
@@ -20,5 +17,5 @@ const EditBandForm = () => {
 
 export default reduxForm({
     form: 'editBand',
-    fields: ['name', 'members'],
+    fields: ['name'],
 })(EditBandForm)
