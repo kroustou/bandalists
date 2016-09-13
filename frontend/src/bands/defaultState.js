@@ -1,5 +1,8 @@
 import browserStore from 'store'
 
 export const defaultState = {
-    'selectedBand': browserStore.get('selectedBand'),
+    selectedBand: browserStore.get('selectedBand'),
+    bands: {
+    	results: []
+    }
 }

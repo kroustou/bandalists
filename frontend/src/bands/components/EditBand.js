@@ -3,24 +3,21 @@ import {connect} from 'react-redux'
 import {reset} from 'redux-form'
 import {editBand} from '../actions'
 
-const mapStateToProps = (state) => {
-    if (state.bands.bands) {
-        return {
-            bands: state.bands.bands.results
-        }
-    } else {
-        return {}
+const mapStateToProps = (state, {params: {bandSlug}}) => {
+    let band = state.bands.bands.results.find(band => band.slug === bandSlug)
+    return {
+        form: 'editBand_' + bandSlug,
+        initialValues: band
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onSubmit: (data) => {
+            dispatch(reset('editBand_' + data.slug))
             editBand(dispatch, data)
-            dispatch(reset('editBand'))
         }
     }
 }
 
-const EditBand = connect(mapStateToProps, mapDispatchToProps)(BandForm)
-export default EditBand
+export default connect(mapStateToProps, mapDispatchToProps)(BandForm)

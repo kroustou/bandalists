@@ -5,6 +5,7 @@ import {addBand} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
+    	form: 'newBand'
     }
 }
 
@@ -12,10 +13,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onSubmit: (data) => {
             addBand(dispatch, data)
-            dispatch(reset('editBand'))
+            dispatch(reset('newBand'))
         }
     }
 }
 
-const NewBand = connect(mapStateToProps, mapDispatchToProps)(BandForm)
-export default NewBand
+
+export default connect(mapStateToProps, mapDispatchToProps)(BandForm)
