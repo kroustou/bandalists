@@ -1,8 +1,8 @@
 import React from 'react'
 
 const Thread = ({thread}) => {
-	return (
-		<div key={thread.id} className="thread">
+    return (
+		<div className="thread">
           {thread.text}
        </div>
 	)
