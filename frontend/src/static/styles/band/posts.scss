@@ -14,6 +14,17 @@ form.post-form {
         font-weight: 800;
     }
 
+    .date {
+        font-weight: 300;
+        color: $light1;
+    }
+
+    .comment {
+        margin-top: 1px;
+        background: lighten($light4, 10%);
+        padding: 10px;
+    }
+
     .post-form, input {
         margin: 0;
     }
