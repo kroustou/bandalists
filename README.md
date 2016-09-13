@@ -16,11 +16,20 @@ installation:
     source !$
     pip install -r requirements.txt
     ./manage.py syncdb
+    ./manage.py createsuperuser
+
+superuser credentials -> admin:pass (hardcoded in the client)
 
 running:
 
     source ~/.virtualenvs/bandalists
     ./manage.py runserver
+
+admin interface:
+
+    http://localhost:8000/admin
+
+it would be a good idea to create a band for your user from the admin interface in order to see what is happening. (Dashboard and Bands are the only menu items which are currently under development)
 
 ## Frontend
 To run the frontend just:
