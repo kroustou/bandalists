@@ -1,1 +1,18 @@
 @import "selector";
+
+.band {
+    li {
+        list-style: none;
+        cursor: pointer;
+        padding: 5px;
+
+        &:hover {
+            background: $light4;
+            color: $light3;
+        }
+
+        &.active {
+            font-weight: 800;
+        }
+    }
+}

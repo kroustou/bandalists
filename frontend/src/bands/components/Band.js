@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import BandSelectorContainer from './containers/BandSelector'
+import BandContainer from './containers/Band'
 
 const mapStateToProps = (state) => {
     return {
@@ -14,5 +14,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const BandSelector = connect(mapStateToProps, mapDispatchToProps)(BandSelectorContainer)
-export default BandSelector
+const Band = connect(mapStateToProps, mapDispatchToProps)(BandContainer)
+export default Band
+

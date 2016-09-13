@@ -1,4 +1,4 @@
-import {getBands} from '../../dashboard/actions'
+import {getBands} from '../../bands/actions'
 
 export const init = (dispatch) => {
     getBands(dispatch)

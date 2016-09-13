@@ -5,7 +5,7 @@ import {reset} from 'redux-form'
 
 const mapStateToProps = (state) => {
     return {
-        selectedBand: state.dashboard.selectedBand
+        selectedBand: state.bands.selectedBand
     }
 }
 

@@ -6,13 +6,15 @@ export const Dashboard = ({selectedBand}) => {
     const initialValues = {dashboard: selectedBand.pk}
     return (
         <div className='dashboard'>
-            <PostForm form="postForm" initialValues={initialValues}/>
-            <Posts/>
-            <div className="members">
-                <h6>Members</h6>
-                {selectedBand.members.map((member) => {
-                    return <div className="member">{member}</div>
-                })}
+            <div className="eight columns">
+                <PostForm form="postForm" initialValues={initialValues}/>
+                <Posts/>
+            </div>
+            <div className="four columns members">
+                <h5>{selectedBand.name}</h5>
+                <ul>
+                    {selectedBand.members.map((member) => <li key={member.id} className="member">{member.username}</li>)}
+                </ul>
             </div>
         </div>
     )

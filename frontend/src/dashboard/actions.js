@@ -23,8 +23,3 @@ export const postThread = (data, dispatch) => {
 }
 
 
-export const getBands = (dispatch) => {
-    api('/bands/').then(resp => {
-        dispatch({type: 'BANDS', bands: resp.data})
-    })
-}

@@ -7,8 +7,8 @@ const PostForm = (props) => {
     return (
         <form className="post-form" onSubmit={handleSubmit}>
             <div>
-                <div disabled={submitting}>
-                   <Field className="u-full-width" name="text" component='input'  placeholder={'Good news everyone at ' + selectedBand.name + '!'}/>
+                <div >
+                   <Field disabled={submitting} className="u-full-width" name="text" component='input'  placeholder={'Good news everyone at ' + selectedBand.name + '!'}/>
                 </div>
             </div>
         </form>
