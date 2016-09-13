@@ -12,3 +12,8 @@ export const addBand = (dispatch, data) => {
         getBands(dispatch)
     })
 }
+
+
+export const editBand = (dispatch, data) => {
+    console.log(data)
+}

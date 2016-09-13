@@ -8,6 +8,6 @@ import EditBand from './components/EditBand'
 export default (
     <Route path='/bands/' component={Band}>
         <Route path='add/' component={NewBand}/>
-        <Route path='edit/' component={EditBand}/>
+        <Route path='edit/:bandSlug/' component={EditBand}/>
     </Route>
 )

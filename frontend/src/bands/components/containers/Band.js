@@ -4,7 +4,7 @@ import {Link} from 'react-router'
 export default ({bands, selectBand, selectedBand, children}) => {
     return (
         <div className="band">
-            <Link activeClassName='active' to='/bands/add/'> New band</Link> {selectedBand ? <span> | <Link activeClassName='active' to='/bands/edit/'>Edit {selectedBand.name}</Link></span> : ''}
+            <Link activeClassName='active' to='/bands/add/'> New band</Link> {selectedBand ? <span> | <Link activeClassName='active' to={`/bands/edit/${selectedBand.slug}`}>Edit {selectedBand.name}</Link></span> : ''}
             {children}
             <div>
                 <h2>Your bands</h2>

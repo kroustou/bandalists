@@ -3,6 +3,15 @@ import { Field, reduxForm } from 'redux-form'
 
 const EditBandForm = (props) => {
     const {handleSubmit, submitting} = props
+    if (props.params && props.bands) {
+        let editBand = props.bands.filter(band => band.slug === props.params.bandSlug)
+        if (editBand.length) {
+            editBand = editBand[0]
+        } else {
+            editBand = false
+        }
+        console.log(editBand)
+    }
     return (
         <form className="new-band-form row" onSubmit={handleSubmit} >
             <div className="eight columns">
