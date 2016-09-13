@@ -1,6 +1,35 @@
 # Bandalists
-
 This is a web app for band management.
+
+
+# Run for development
+
+## Backend
+You have to install pip and virtualenv in order to run the server.
+
+
+installation:
+
+    mkdir ~/.virtualenvs
+    cd bandalists_drf
+    virtualenv ~/.virtualenvs/bandalists
+    source !$
+    pip install -r requirements.txt
+    ./manage.py syncdb
+
+running:
+
+    source ~/.virtualenvs/bandalists
+    ./manage.py runserver
+
+## Frontend
+To run the frontend just:
+
+    cd frontend
+    npm install
+    npm start
+
+# About
 
 ## Backend
 Django 1.9 with django rest framework.
