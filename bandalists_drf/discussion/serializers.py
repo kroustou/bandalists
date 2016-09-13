@@ -15,8 +15,8 @@ class ThreadSerializer(serializers.ModelSerializer):
     date = TimestampField()
     last_edit = TimestampField()
     children = serializers.ListField(child=RecursiveField(), read_only=True)
-    author = serializers.PrimaryKeyRelatedField(read_only=True)
-    seen_by = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    author = serializers.StringRelatedField(read_only=True)
+    seen_by = serializers.StringRelatedField(many=True, read_only=True)
 
     def validate(self, data):
         # a comment must belong at the same band as its parent

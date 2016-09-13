@@ -5,17 +5,18 @@ import {reset} from 'redux-form'
 
 const mapStateToProps = (state) => {
     return {
-        selectedBand: state.dashboard.selectedBand,
-        initialValues: {dashboard: state.dashboard.selectedBand.pk}
+        selectedBand: state.dashboard.selectedBand
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onSubmit: (data) => {
+            let formName = 'postForm'
+            data.parent ? formName += '_' + data.parent : ''
             // could have parent
             postThread(data, dispatch)
-            dispatch(reset('postForm'))
+            dispatch(reset(formName))
         }
     }
 }

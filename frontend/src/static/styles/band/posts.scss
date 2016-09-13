@@ -1,0 +1,20 @@
+form.post-form {
+    input {
+        height: 50px;
+    }
+}
+
+
+.thread {
+    background: $light4;
+    padding: 10px;
+    margin-bottom: 10px;
+
+    .author {
+        font-weight: 800;
+    }
+
+    .post-form, input {
+        margin: 0;
+    }
+}

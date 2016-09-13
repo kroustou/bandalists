@@ -2,7 +2,7 @@ import React from 'react'
 import Thread from './Thread'
 
 const Posts = ({threads, getPosts, selectedBand}) => {
-    getPosts(selectedBand.pk)
+    getPosts(selectedBand.pk, threads)
     return (
         <div>
             {threads? threads.count: 'No'} Posts.
