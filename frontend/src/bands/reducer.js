@@ -29,9 +29,9 @@ export default (state = defaultState, action) => {
         browserStore.set('selectedBand', action.band)
         return Object.assign({}, state, {'selectedBand': action.band})
     }
-    case 'LOGOUT': {
-        browserStore.remove('selectedBand')
-        return Object.assign({}, state, {'selectedBand': undefined})
+    case 'LOGIN': {
+        const selectedBand = browserStore.get('selectedBand')
+        return Object.assign({}, state, {'selectedBand': selectedBand})
     }
     default: {
         return state
