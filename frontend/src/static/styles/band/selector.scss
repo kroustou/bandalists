@@ -42,6 +42,10 @@ header .band-selector {
 
             }
 
+            a {
+                color: $light0;
+            }
+
             &:hover {
                 background: $light3;
                 cursor: pointer;

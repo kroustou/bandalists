@@ -10,8 +10,7 @@ export default ({bands, selectBand, selectedBand}) => {
                     <li className={ selectedBand && band.slug === selectedBand.slug ? 'active' : ''} key={band.slug} onClick={() => selectBand(band) }>{band.name}</li>
                     ))
                 : 'No band selected!!!'}
-                <li><Link activeClassName='active' to='/bands/add/'> New band</Link></li>
-                {selectedBand ? <Link activeClassName='active' to='/bands/edit/'>Edit {selectedBand.name}</Link> : ''}
+                <li><Link activeClassName='active' to='/bands/'>Manage</Link></li>
             </ul>
         </div>
     )
