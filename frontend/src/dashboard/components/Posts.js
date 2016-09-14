@@ -12,9 +12,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getPosts: (dashboardId, threads) => {
-            getThreads(dispatch, dashboardId, threads)
-        }
+        getPosts: (dashboardId) => {
+            getThreads(dispatch, dashboardId)
+        },
+
     }
 }
 

@@ -1,19 +1,11 @@
 import {api} from '../api'
 
-export const getThreads = (dispatch, dashboardId, currentThreads) => {
+export const getThreads = (dispatch, dashboardId) => {
     // if no threads loaded or threads from another dashboard
     // load threads.
-    if (currentThreads) {
-        if (currentThreads.count > 0) {
-            if (currentThreads.results[0].dashboard === dashboardId) {
-                return
-            }
-        }
-    }
     api('/threads/?dashboard=' + dashboardId).then(resp => {
-        if (resp.data.count) {
-            dispatch({type: 'THREADS', data: resp.data})
-        }
+        resp.data.dashboard = dashboardId
+        dispatch({type: 'THREADS', data: resp.data})
     })
 }
 
