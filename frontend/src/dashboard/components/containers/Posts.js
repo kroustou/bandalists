@@ -1,7 +1,7 @@
 import React from 'react'
 import Thread from './Thread'
 
-export default ({threads, getPosts, selectedBand, threadsLoading}) => {
+export default ({threads, getPosts, selectedBand, deletePost}) => {
     let msg = ''
     if (threads) {
         if (selectedBand.id !== threads.dashboard) {
@@ -15,7 +15,7 @@ export default ({threads, getPosts, selectedBand, threadsLoading}) => {
             {threads? threads.count: 'Loading'} Posts.
             {threads ? (
                 threads.results.map((thread) => (
-                       <Thread key={thread.id} thread={thread}/>
+                       <Thread key={thread.id} thread={thread} deletePost={deletePost}/>
                     )
                 )
             ): ''}

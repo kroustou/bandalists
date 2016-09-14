@@ -7,7 +7,11 @@ export default (state = defaultState, action) => {
     }
     case 'THREAD_SAVED': {
         // unused for now
-        return Object.assign({}, state, {'newestThread': action.data})
+        return state
+    }
+    case 'THREAD_DELETED': {
+        // unused for now
+        return state
     }
     default: {
         return state

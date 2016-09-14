@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import PostsContainer from './containers/Posts'
-import {getThreads} from '../actions'
+import {getThreads, deleteThread} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
@@ -15,7 +15,9 @@ const mapDispatchToProps = (dispatch) => {
         getPosts: (dashboardId) => {
             getThreads(dispatch, dashboardId)
         },
-
+        deletePost: (postId) => {
+            deleteThread(dispatch, postId)
+        }
     }
 }
 

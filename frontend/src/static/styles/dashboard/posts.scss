@@ -9,6 +9,7 @@ form.post-form {
     background: $light4;
     padding: 10px;
     margin-bottom: 10px;
+    position: relative;
 
     .author {
         font-weight: 800;
@@ -23,9 +24,16 @@ form.post-form {
         margin-top: 1px;
         background: lighten($light4, 10%);
         padding: 10px;
+        position: relative;
     }
 
     .post-form, input {
         margin: 0;
+    }
+
+    .delete {
+        position: absolute;
+        top: 5px;
+        right: 5px;
     }
 }

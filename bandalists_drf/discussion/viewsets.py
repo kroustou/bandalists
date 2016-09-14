@@ -1,4 +1,5 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
 
 from .models import Thread
 from .serializers import ThreadSerializer
@@ -10,6 +11,21 @@ from notifications.models import Notification
 class ThreadViewSet(viewsets.ModelViewSet):
     serializer_class = ThreadSerializer
     filter_class = DashboardFilter
+
+
+    def destroy(self, request, pk=None):
+        queryset = Thread.objects.filter(dashboard__in=[
+                band for band in self.request.user.band_set.all()
+            ],
+            pk=pk,
+            author=request.user
+        )
+        if len(queryset):
+            queryset.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
 
     def get_queryset(self):
         # get all root threads for a users band
