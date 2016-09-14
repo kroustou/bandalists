@@ -9,9 +9,7 @@ export default ({band, searchUser, leaveBand}) => {
             </ul>
             <div className="edit-show">
                 <input className="u-full-width" type="text" onChange={searchUser} name="user" id="" placeholder="Search for username or email to add to band"/>
-                {band.members.length > 1 ? <input type="button" name="leave" value={`Leave ${band.name}`} onClick={
-                    () => {leaveBand(band.id)}
-                }/> : ''}
+                <input type="button" name="leave" value={`Leave ${band.name}`} onClick={() => {leaveBand(band.id)}}/>
             </div>
         </div>
     )

@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router'
 import BandBlock from './BandBlock'
 
-export default ({bands, selectBand, selectedBand, children, deleteBand}) => {
+export default ({bands, selectBand, selectedBand, children}) => {
     return (
         <div className="bands">
             <Link activeClassName='active' to='/bands/add/'>+ New band</Link>
@@ -12,7 +12,7 @@ export default ({bands, selectBand, selectedBand, children, deleteBand}) => {
                 <ul>
                 { bands ? bands.results.map(band => (
                     <li key={band.id}>
-                        <BandBlock band={band} selectedBand={selectedBand} selectBand={selectBand} deleteBand={deleteBand}/>
+                        <BandBlock band={band} selectedBand={selectedBand} selectBand={selectBand}/>
                     </li>
                     ))
                 : 'Loading...'}

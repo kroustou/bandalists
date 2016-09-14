@@ -23,14 +23,6 @@ export const editBand = (dispatch, data) => {
     })
 }
 
-export const deleteBand = (dispatch, band) => {
-    let url = '/bands/' + band.slug + '/'
-    api(url, 'delete').then(() => {
-        getBands(dispatch)
-    })
-}
-
-
 export const selectBand = (band) => {
     return {'type': 'SELECT_BAND', 'band': band}
 }
