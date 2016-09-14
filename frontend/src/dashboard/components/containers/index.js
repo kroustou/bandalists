@@ -1,6 +1,7 @@
 import PostForm from '../PostForm'
 import Posts from '../Posts'
 import React from 'react'
+import BandBlock from '../../../bands/components/BandBlock'
 
 export const Dashboard = ({selectedBand}) => {
     const initialValues = {dashboard: selectedBand.pk}
@@ -11,10 +12,7 @@ export const Dashboard = ({selectedBand}) => {
                 <Posts/>
             </div>
             <div className="four columns members">
-                <h5>{selectedBand.name}</h5>
-                <ul>
-                    {selectedBand.members.map((member) => <li key={member.id} className="member">{member.username}</li>)}
-                </ul>
+                <BandBlock/>
             </div>
         </div>
     )

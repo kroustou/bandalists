@@ -1,50 +1,78 @@
 @import "selector";
 
-.band {
+.bands {
     li {
         list-style: none;
-        cursor: pointer;
-        padding: 5px;
-        position: relative;
 
-        &:hover, &.active {
-            background: $light4;
-            color: $light3;
-        }
+        .band-edit {
+            list-style: none;
+            cursor: pointer;
+            padding: 5px;
+            position: relative;
 
-        form {
-            margin: 0;
-            padding: 0;
+            &:hover, &.active {
+                background: $light4;
+                color: $light3;
+            }
 
-            input {
+            form {
                 margin: 0;
-            }
-        }
+                padding: 0;
 
-        .active-show {
-            display: none;
-        }
-
-        &.active {
-            font-weight: 800;
-            padding: 20px;
-
-            .delete {
-                position: absolute;
-                top: 5px;
-                right: 5px;
-                color: $light0;
-                weight: 300;
+                input {
+                    margin: 0;
+                }
             }
 
-            .active-show {
-                display: block;
-            }
-
-            .active-hide {
+            .edit-show {
                 display: none;
+            }
+
+            &.active {
+                font-weight: 800;
+                padding: 20px;
+
+                .delete {
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    color: $light0;
+                    weight: 300;
+                    cursor: pointer;
+                }
+
+                .edit-show {
+                    display: block;
+                }
+
+                .edit-hide {
+                    display: none;
+                }
             }
         }
     }
+}
 
+.band-members {
+    border-top: 2px solid $light1;
+    margin-top: 20px;
+
+    h6 {
+        color: $light0;
+        margin: 0;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        color: $light2;
+    }
+}
+
+
+
+.band-edit {
+    .edit-show {
+        display: none;
+    }
 }

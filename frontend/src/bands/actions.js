@@ -34,3 +34,8 @@ export const deleteBand = (dispatch, band) => {
 export const selectBand = (band) => {
     return {'type': 'SELECT_BAND', 'band': band}
 }
+
+
+export const searchForUser = (dispatch, username) => {
+    console.log(username)
+}

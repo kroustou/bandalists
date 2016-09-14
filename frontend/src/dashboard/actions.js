@@ -11,7 +11,9 @@ export const getThreads = (dispatch, dashboardId, currentThreads) => {
         }
     }
     api('/threads/?dashboard=' + dashboardId).then(resp => {
-        dispatch({type: 'THREADS', data: resp.data})
+        if (resp.data.count) {
+            dispatch({type: 'THREADS', data: resp.data})
+        }
     })
 }
 
