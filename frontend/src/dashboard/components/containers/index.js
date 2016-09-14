@@ -12,7 +12,7 @@ export const Dashboard = ({selectedBand}) => {
                 <Posts/>
             </div>
             <div className="four columns members">
-                <BandBlock/>
+                <BandBlock editing={false}/>
             </div>
         </div>
     )

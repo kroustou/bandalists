@@ -27,19 +27,6 @@
             .edit-show {
                 display: none;
             }
-
-            &.active {
-                font-weight: 800;
-                padding: 20px;
-
-                .edit-show {
-                    display: block;
-                }
-
-                .edit-hide {
-                    display: none;
-                }
-            }
         }
     }
 }
@@ -65,5 +52,18 @@
 .band-edit {
     .edit-show {
         display: none;
+    }
+
+    &.editing {
+        font-weight: 800;
+        padding: 20px;
+
+        .edit-show {
+            display: block;
+        }
+
+        .edit-hide {
+            display: none;
+        }
     }
 }
