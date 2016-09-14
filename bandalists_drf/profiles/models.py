@@ -26,8 +26,7 @@ class Profile(models.Model):
             ],
             'bands': [
                 BandSerializer(band).data for band in self.user.band_set.all()
-            ],
-            'key': self.user.auth_token.key,
+            ]
         })
 
     def __unicode__(self):

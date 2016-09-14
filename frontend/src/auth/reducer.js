@@ -8,9 +8,14 @@ export default (state = defaultState, action) => {
         browserStore.set('token', token)
         return Object.assign({}, state, {'authenticated': token})
     }
+    case 'UPDATE_USER_INFO': {
+        browserStore.set('info', action.info)
+        return Object.assign({}, state, {'info': action.info})
+    }
     case 'LOGOUT': {
         browserStore.remove('token')
-        return Object.assign({}, state, {'authenticated': false})
+        browserStore.remove('info')
+        return Object.assign({}, state, {authenticated: null, info: null})
     }
     default: {
         return state

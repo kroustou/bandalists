@@ -3,8 +3,11 @@ import browserStore from 'store'
 
 export default (state = defaultState, action) => {
     switch (action.type) {
+    case 'UPDATE_USER_INFO': {
+        return Object.assign({}, state, {bands: {results: action.info.bands}})
+    }
     case 'BANDS': {
-        return Object.assign({}, state, {'bands': action.bands})
+        return Object.assign({}, state, {bands: action.bands})
     }
     case 'REFRESH_SELECTED_BAND': {
         if (state.selectedBand && state.bands) {

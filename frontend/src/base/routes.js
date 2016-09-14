@@ -3,7 +3,7 @@ import React from 'react'
 import {Route} from 'react-router'
 import App from './components/App'
 import {Dashboard} from '../dashboard/'
-import Profile from './components/containers/Profile'
+import {Profile} from '../profile/'
 import {Login} from '../auth'
 import bandRoutes from '../bands/routes'
 

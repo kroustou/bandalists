@@ -8,12 +8,10 @@ import {reducers} from  './base/reducers'
 import {routes} from './base/routes'
 
 import './static/styles/style.scss'
-import {init} from './base/actions'
 
 const middleware = routerMiddleware(browserHistory)
 const store = createStore(reducers, applyMiddleware(middleware))
 
-init(store)
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory} routes={routes}/>
