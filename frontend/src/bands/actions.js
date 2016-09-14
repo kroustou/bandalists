@@ -31,3 +31,11 @@ export const selectBand = (band) => {
 export const searchForUser = (dispatch, username) => {
     console.log(username)
 }
+
+
+export const leaveBand = (dispatch, bandSlug) => {
+    let url = '/bands/' + bandSlug + '/leave/'
+    api(url, 'delete').then(() => {
+        getBands(dispatch)
+    })
+}
