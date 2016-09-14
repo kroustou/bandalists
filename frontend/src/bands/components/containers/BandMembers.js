@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({band, searchUser}) => {
+export default ({band, searchUser, leaveBand}) => {
     return (
         <div className="band-members">
             <h6>Members</h6>
@@ -9,7 +9,9 @@ export default ({band, searchUser}) => {
             </ul>
             <div className="edit-show">
                 <input className="u-full-width" type="text" onChange={searchUser} name="user" id="" placeholder="Search for username or email to add to band"/>
-                {band.members.length > 1 ? <input type="button" name="leave" value={`Leave ${band.name}`}/> : ''}
+                {band.members.length > 1 ? <input type="button" name="leave" value={`Leave ${band.name}`} onClick={
+                    () => {leaveBand(band.id)}
+                }/> : ''}
             </div>
         </div>
     )

@@ -1,14 +1,17 @@
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
 import React from 'react'  //eslint-disable-line no-unused-vars
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import {Router, browserHistory} from 'react-router'
+import {routerMiddleware} from 'react-router-redux'
 import {reducers} from  './base/reducers'
 import {routes} from './base/routes'
+
 import './static/styles/style.scss'
 import {init} from './base/actions'
 
-const store = createStore(reducers, {}, window.devToolsExtension && window.devToolsExtension())
+const middleware = routerMiddleware(browserHistory)
+const store = createStore(reducers, applyMiddleware(middleware))
 
 init(store.dispatch)
 ReactDOM.render(

@@ -12,6 +12,10 @@ const mapDispatchToProps = (dispatch) => {
         searchUser: (e) => {
             console.log(e.target.value)
             searchForUser(dispatch, e.target.value)
+        },
+        leaveBand: (bandId) => {
+            // we need to know our user id first
+            console.log(bandId)
         }
     }
 }
