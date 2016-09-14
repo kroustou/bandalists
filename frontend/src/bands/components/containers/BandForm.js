@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 
 const EditBandForm = (props) => {
     const {handleSubmit} = props
+    console.log(props)
     return (
         <form className="new-band-form row " onSubmit={handleSubmit} >
             <Field className="u-full-width" name="name" {...props.fields.name} component='input' placeholder='Name'/>

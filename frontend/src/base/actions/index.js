@@ -1,6 +1,8 @@
 import {getBands} from '../../bands/actions'
 
-export const init = (dispatch) => {
-    getBands(dispatch)
+export const init = (store) => {
+    if (store.getState().session.authenticated) {
+        getBands(store.dispatch)
+    }
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 const PostForm = (props) => {
-    const { handleSubmit, submitting, selectedBand} = props
+    const {handleSubmit, submitting, selectedBand} = props
 
     return (
         <form className="post-form" onSubmit={handleSubmit}>

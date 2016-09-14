@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {reset} from 'redux-form'
 import {editBand} from '../actions'
 
-const mapStateToProps = (state, {params: {bandSlug}}) => {
+const mapStateToProps = (state, {bandSlug}) => {
     let band = state.bands.bands.results.find(band => band.slug === bandSlug)
     return {
         form: 'editBand_' + bandSlug,

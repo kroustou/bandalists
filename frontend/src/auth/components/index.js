@@ -10,11 +10,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        login: () => {
-            login(dispatch)
+        onSubmit: (data) => {
+            login(dispatch, data)
         }
     }
 }
 
-const Login = connect(mapStateToProps, mapDispatchToProps)(LoginContainer)
-export default Login
+export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)

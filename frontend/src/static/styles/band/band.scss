@@ -5,53 +5,24 @@
         list-style: none;
 
         .band-edit {
-            list-style: none;
-            cursor: pointer;
-            padding: 5px;
-            position: relative;
 
-            &:hover, &.active {
-                background: $light4;
-                color: $light3;
-            }
-
-            form {
-                margin: 0;
-                padding: 0;
-
-                input {
-                    margin: 0;
-                }
-            }
-
-            .edit-show {
-                display: none;
-            }
         }
     }
 }
 
-.band-members {
-    border-top: 2px solid $light1;
-    margin-top: 20px;
-
-    h6 {
-        color: $light0;
-        margin: 0;
-    }
-
-    ul {
-        margin: 0;
-        padding: 0;
-        color: $light2;
-    }
-}
 
 
 
 .band-edit {
+    cursor: pointer;
+    padding: 5px;
+    position: relative;
+
     .edit-show {
         display: none;
+    }
+    .edit-hide {
+        display: block;
     }
 
     &.editing {
@@ -66,4 +37,36 @@
             display: none;
         }
     }
+
+
+    &:hover, &.editing {
+        background: $light4;
+        color: $light3;
+    }
+
+    form {
+        margin: 0;
+        padding: 0;
+
+        input {
+            margin: 0;
+        }
+    }
+
+    .band-members {
+        border-top: 2px solid $light1;
+        margin-top: 20px;
+
+        h6 {
+            color: $light0;
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            color: $light2;
+        }
+    }
+
 }

@@ -13,7 +13,7 @@ import {init} from './base/actions'
 const middleware = routerMiddleware(browserHistory)
 const store = createStore(reducers, applyMiddleware(middleware))
 
-init(store.dispatch)
+init(store)
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory} routes={routes}/>
