@@ -4,6 +4,7 @@ import {getThreads, deleteThread} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
+        user: state.session.info,
         threads: state.dashboard.threads,
         selectedBand: state.bands.selectedBand,
         initialValues: {text: ''}
