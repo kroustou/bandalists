@@ -1,5 +1,4 @@
 import {api} from '../api'
-import {init} from '../base/actions'
 import {push} from 'react-router-redux'
 
 export const login = (dispatch, data) => {

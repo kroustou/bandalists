@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import BandBlockContainer from './containers/BandBlock'
-import {selectBand, deleteBand} from '../../bands/actions'
+import {selectBand} from '../../bands/actions'
 
 const mapStateToProps = (state) => {
     return {
