@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^', include(router.urls, namespace='api')),
     url(r'me/', Profile.as_view(), name='user'),
-    url(r'user/(?P<pk>[0-9]+)/', UserProfile.as_view(), name='user-detail')
+    url(r'user/(?P<username>\w+)/', UserProfile.as_view(), name='user-detail')
 ]

@@ -78,12 +78,19 @@ class Profile(APIView):
 class UserProfile(APIView):
     permission_classes = (permissions.AllowAny,)
 
-    def get(self, request, pk, format=None):
-        return self.get_object(pk)
+    def get(self, request, username, format=None):
+        return self.get_object(username)
 
-    def get_object(self, pk):
-        obj = get_object_or_404(User, pk=pk)
-        return Response(
-            obj.profile.to_dict(),
-            status=status.HTTP_202_ACCEPTED
-        )
+    def get_object(self, username):
+        obj = User.objects.filter(username__startswith=username)
+        if len(obj) < 5:
+            return Response(
+                [{'username': o.username, 'id': o.id} for o in obj],
+                status=status.HTTP_202_ACCEPTED
+            )
+        else:
+            return Response(
+                [],
+                status=status.HTTP_202_ACCEPTED
+            )
+
