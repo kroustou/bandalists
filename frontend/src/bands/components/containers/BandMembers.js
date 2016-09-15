@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({band, searchUser, leaveBand, memberSearch}) => {
+export default ({band, searchUser, leaveBand, memberSearch, addMember}) => {
     return (
         <div className="band-members">
             <h6>Members</h6>
@@ -8,14 +8,17 @@ export default ({band, searchUser, leaveBand, memberSearch}) => {
                 {band.members.map(member => <li key={member.id}>{member.username}</li>)}
             </ul>
             <div className="edit-show">
-                <input className="u-full-width" type="text" onChange={searchUser} name="user" id="" placeholder="Search for username or email to add to band"/>
-                <input type="button" name="leave" value={`Leave ${band.name}`} onClick={() => {leaveBand(band.slug)}}/>
+                <form id='member_search'>
+                    <input className="u-full-width" type="text" onChange={searchUser} name="user" id="" placeholder="Search for username or email to add to band"/>
+                </form>
                 <ul>
                     {memberSearch.map(user => (
-                        <li key={user.id}>{user.username}</li>
+                        <li onClick={() => {
+                            addMember(band.slug, user.id)
+                        }} key={user.id}>Add {user.username}</li>
                     ))}
                 </ul>
-
+                <input type="button" name="leave" value={`Leave ${band.name}`} onClick={() => {leaveBand(band.slug)}}/>
             </div>
         </div>
     )

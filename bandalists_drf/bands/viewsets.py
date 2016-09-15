@@ -1,9 +1,10 @@
-from rest_framework import viewsets, status
-from .serializers import BandSerializer, InstrumentSerializer
 from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
+from rest_framework import viewsets, status
 from rest_framework.decorators import detail_route
 from rest_framework.response import Response
-
+from .serializers import BandSerializer, InstrumentSerializer
+from .models import Band
 User = get_user_model()
 
 
@@ -20,6 +21,16 @@ class BandViewSet(viewsets.ModelViewSet):
         else:
             band.members.remove(request.user)
             return Response(status=status.HTTP_204_NO_CONTENT)
+
+    @detail_route(methods=['post'])
+    def add(self, request, slug=None):
+        user = request.data.get('id')
+        if user:
+            user = get_object_or_404(User, id=user)
+            band = get_object_or_404(Band, slug=slug)
+            band.members.add(user)
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
     def get_queryset(self):

@@ -46,3 +46,12 @@ export const leaveBand = (dispatch, bandSlug) => {
         getBands(dispatch)
     })
 }
+
+
+export const addMember = (dispatch, bandSlug, userId) => {
+    let url = '/bands/' + bandSlug + '/add/'
+    dispatch({type: 'BAND_MEMEBER_SEARCH', users: []})
+    api(url, 'post', {id: userId}).then(() => {
+        getBands(dispatch)
+    })
+}
