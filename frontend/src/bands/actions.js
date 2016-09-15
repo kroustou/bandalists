@@ -28,12 +28,13 @@ export const selectBand = (band) => {
 }
 
 
-export const searchForUser = (dispatch, username) => {
-    dispatch({type: 'BAND_MEMEBER_SEARCH', users: []})
+export const searchForUser = (dispatch, username, bandSlug) => {
+    dispatch({type: 'BAND_MEMBER_SEARCH', users: []})
+    let url = '/user/' + username + '/?slug=' + bandSlug
     if (username.length > 3) {
-        api('/user/' + username + '/').then(resp => {
+        api(url, 'get').then(resp => {
             if (resp.data.length) {
-                dispatch({type: 'BAND_MEMEBER_SEARCH', users: resp.data})
+                dispatch({type: 'BAND_MEMBER_SEARCH', users: resp.data})
             }
         })
     }
@@ -50,7 +51,7 @@ export const leaveBand = (dispatch, bandSlug) => {
 
 export const addMember = (dispatch, bandSlug, userId) => {
     let url = '/bands/' + bandSlug + '/add/'
-    dispatch({type: 'BAND_MEMEBER_SEARCH', users: []})
+    dispatch({type: 'BAND_MEMBER_SEARCH', users: []})
     api(url, 'post', {id: userId}).then(() => {
         getBands(dispatch)
     })

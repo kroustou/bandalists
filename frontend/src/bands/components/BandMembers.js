@@ -10,8 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        searchUser: (e) => {
-            searchForUser(dispatch, e.target.value)
+        searchUser: (e, bandSlug) => {
+            searchForUser(dispatch, e.target.value, bandSlug)
         },
         leaveBand: (bandId) => {
             leaveBand(dispatch, bandId)

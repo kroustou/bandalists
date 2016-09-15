@@ -79,24 +79,22 @@ class UserProfile(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def get(self, request, username, format=None):
-        return self.get_object(username)
-
-    def get_object(self, username):
-        obj = User.objects.filter(
-            Q(username__contains=username) | Q(email__contains=username)
+        slug = request.GET.get('slug')
+        if slug:
+            obj = User.objects.filter(
+                (Q(username__contains=username) | Q(email__contains=username)) & ~Q(band__slug=slug)
+            )
+            if len(obj) < 5:
+                return Response(
+                    [{
+                        'username': o.username,
+                        'id': o.id,
+                        'email': o.email
+                    } for o in obj],
+                    status=status.HTTP_202_ACCEPTED
+                )
+        return Response(
+            [],
+            status=status.HTTP_404_NOT_FOUND
         )
-        if len(obj) < 5:
-            return Response(
-                [{
-                    'username': o.username,
-                    'id': o.id,
-                    'email': o.email
-                } for o in obj],
-                status=status.HTTP_202_ACCEPTED
-            )
-        else:
-            return Response(
-                [],
-                status=status.HTTP_404_NOT_FOUND
-            )
 

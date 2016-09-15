@@ -9,7 +9,7 @@ export default (state = defaultState, action) => {
     case 'BANDS': {
         return Object.assign({}, state, {bands: action.bands})
     }
-    case 'BAND_MEMEBER_SEARCH': {
+    case 'BAND_MEMBER_SEARCH': {
         return Object.assign({}, state, {memberSearch: action.users})
     }
     case 'REFRESH_SELECTED_BAND': {

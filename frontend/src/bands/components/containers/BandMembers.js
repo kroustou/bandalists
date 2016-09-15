@@ -9,7 +9,7 @@ export default ({band, searchUser, leaveBand, memberSearch, addMember}) => {
             </ul>
             <div className="edit-show">
                 <form id='member_search'>
-                    <input className="u-full-width" type="text" onChange={searchUser} name="user" id="" placeholder="Search for username or email to add to band"/>
+                    <input className="u-full-width" type="text" onChange={(e) => searchUser(e, band.slug)} name="user" id="" placeholder="Search for username or email to add to band"/>
                 </form>
                 <ul>
                     {memberSearch.map(user => (
