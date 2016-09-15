@@ -1,5 +1,5 @@
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import get_object_or_404
+from django.db.models import Q
 from rest_framework.views import APIView
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -82,15 +82,21 @@ class UserProfile(APIView):
         return self.get_object(username)
 
     def get_object(self, username):
-        obj = User.objects.filter(username__startswith=username)
+        obj = User.objects.filter(
+            Q(username__contains=username) | Q(email__contains=username)
+        )
         if len(obj) < 5:
             return Response(
-                [{'username': o.username, 'id': o.id} for o in obj],
+                [{
+                    'username': o.username,
+                    'id': o.id,
+                    'email': o.email
+                } for o in obj],
                 status=status.HTTP_202_ACCEPTED
             )
         else:
             return Response(
                 [],
-                status=status.HTTP_202_ACCEPTED
+                status=status.HTTP_404_NOT_FOUND
             )
 
