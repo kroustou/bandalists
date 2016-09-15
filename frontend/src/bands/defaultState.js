@@ -12,5 +12,6 @@ export const defaultState = {
     bands: {
         results: bands,
         count: bands.length
-    }
+    },
+    memberSearch: []
 }

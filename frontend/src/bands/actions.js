@@ -29,7 +29,14 @@ export const selectBand = (band) => {
 
 
 export const searchForUser = (dispatch, username) => {
-    console.log(username)
+    dispatch({type: 'BAND_MEMEBER_SEARCH', users: []})
+    if (username.length > 3) {
+        api('/user/' + username + '/').then(resp => {
+            if (resp.data.length) {
+                dispatch({type: 'BAND_MEMEBER_SEARCH', users: resp.data})
+            }
+        })
+    }
 }
 
 

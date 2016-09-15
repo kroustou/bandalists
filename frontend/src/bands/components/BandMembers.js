@@ -2,15 +2,15 @@ import {connect} from 'react-redux'
 import BandMembersContainer from './containers/BandMembers'
 import {searchForUser, leaveBand} from '../actions'
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
     return {
+        memberSearch: state.bands.memberSearch
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         searchUser: (e) => {
-            console.log(e.target.value)
             searchForUser(dispatch, e.target.value)
         },
         leaveBand: (bandId) => {
