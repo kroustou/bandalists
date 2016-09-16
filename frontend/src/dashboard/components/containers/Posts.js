@@ -12,7 +12,7 @@ export default ({threads, getPosts, selectedBand, deletePost, user}) => {
     }
     return (
         <div>
-            {threads? threads.count: 'Loading'} Posts.
+            {threads? threads.count: 'Loading'} Posts {user.username}.
             {threads ? (
                 threads.results.map((thread) => (
                        <Thread key={thread.id} thread={thread} deletePost={deletePost} user={user}/>

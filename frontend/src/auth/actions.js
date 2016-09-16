@@ -3,8 +3,8 @@ import {push} from 'react-router-redux'
 
 export const login = (dispatch, data) => {
     api('/rest-auth/login/', 'post', data).then(resp => {
-        dispatch({type: 'LOGIN', token: resp.data.key})
         dispatch(push('/'))
+        dispatch({type: 'LOGIN', token: resp.data.key})
         api('/me/').then(resp => {
             dispatch({type: 'UPDATE_USER_INFO', info: resp.data})
         })
@@ -13,7 +13,7 @@ export const login = (dispatch, data) => {
 
 
 export const logout = (dispatch) => {
-    dispatch({type: 'LOGOUT'})
     dispatch(push('/'))
+    dispatch({type: 'LOGOUT'})
 }
 

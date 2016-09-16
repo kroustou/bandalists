@@ -1,4 +1,4 @@
-import {createStore, applyMiddleware} from 'redux'
+import {createStore, applyMiddleware, compose} from 'redux'
 import React from 'react'  //eslint-disable-line no-unused-vars
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
@@ -10,7 +10,14 @@ import {routes} from './base/routes'
 import './static/styles/style.scss'
 
 const middleware = routerMiddleware(browserHistory)
-const store = createStore(reducers, applyMiddleware(middleware))
+const store = createStore(
+    reducers,
+    compose(
+        applyMiddleware(middleware),
+        window.devToolsExtension ? window.devToolsExtension() : f => f
+    )
+)
+
 
 ReactDOM.render(
     <Provider store={store}>

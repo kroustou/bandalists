@@ -19,7 +19,7 @@ export const postThread = (data, dispatch) => {
 
 export const deleteThread = (dispatch, thread) => {
     let dashboard = thread.dashboard
-    api('/threads/' + thread.id + '/', 'delete').then(resp => {
+    api('/threads/' + thread.id + '/', 'delete').then(() => {
         getThreads(dispatch, dashboard)
         dispatch({type: 'THREAD_DELETED'})
     })
