@@ -1,7 +1,10 @@
 import React from 'react'
 
-export default () => (
-    <div>
-        <h3>Notifications</h3>
-    </div>
-)
+export default ({notifications, getNotifications}) => {
+    getNotifications()
+    return (
+        <div>
+            <h3>Notifications</h3>
+        </div>
+    )
+}
