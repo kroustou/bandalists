@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({band, searchUser, leaveBand, memberSearch, addMember}) => {
+export default ({band, searchUser, leaveBand, memberSearch, addMember, inviteUser, invite}) => {
     return (
         <div className="band-members">
             <h6>Members</h6>
@@ -18,6 +18,7 @@ export default ({band, searchUser, leaveBand, memberSearch, addMember}) => {
                         }} key={user.id}>Add {user.username}</li>
                     ))}
                 </ul>
+                {inviteUser ? <input type="button" name="invite" onClick={() => {invite(inviteUser, band.slug)}} value={`Invite ${inviteUser}`}/> : ''}
                 <input type="button" name="leave" value={`Leave ${band.name}`} onClick={() => {leaveBand(band.slug)}}/>
             </div>
         </div>

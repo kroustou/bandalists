@@ -10,7 +10,19 @@ export default (state = defaultState, action) => {
         return Object.assign({}, state, {bands: action.bands})
     }
     case 'BAND_MEMBER_SEARCH': {
-        return Object.assign({}, state, {memberSearch: action.users})
+        return Object.assign({}, state, {memberSearch: action.users, inviteUser: undefined})
+    }
+    case 'PROMPT_INVITE': {
+        const validateEmail = (email) => {
+          let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          return re.test(email)
+        }
+
+        if (validateEmail(action.user)) {
+            return Object.assign({}, state, {inviteUser: action.user})
+        } else {
+            return state
+        }
     }
     case 'REFRESH_SELECTED_BAND': {
         if (state.selectedBand && state.bands) {

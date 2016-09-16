@@ -31,5 +31,14 @@ textarea {
     resize: none;
 }
 
-@import "header"
+.message {
+    background: $light1;
+    color: $light2;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    left: 10px;
+    bottom: 30px;
+}
 
+@import "header"

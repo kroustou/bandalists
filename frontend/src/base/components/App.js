@@ -4,7 +4,8 @@ import AppContainer from './containers/App'
 
 const mapStateToProps = (state) => {
     return {
-        authenticated: state.session.authenticated
+        authenticated: state.session.authenticated,
+        message: state.base.message
     }
 }
 

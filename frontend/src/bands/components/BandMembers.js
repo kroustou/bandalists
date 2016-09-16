@@ -1,10 +1,11 @@
 import {connect} from 'react-redux'
 import BandMembersContainer from './containers/BandMembers'
-import {searchForUser, leaveBand, addMember} from '../actions'
+import {invite, searchForUser, leaveBand, addMember} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
-        memberSearch: state.bands.memberSearch
+        memberSearch: state.bands.memberSearch,
+        inviteUser: state.bands.inviteUser
     }
 }
 
@@ -19,6 +20,9 @@ const mapDispatchToProps = (dispatch) => {
         addMember: (bandSlug, memberId) => {
             addMember(dispatch, bandSlug, memberId)
             document.getElementById('member_search').reset()
+        },
+        invite: (userEmail, bandSlug) => {
+            invite(dispatch, userEmail, bandSlug)
         }
     }
 }
