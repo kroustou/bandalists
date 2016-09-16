@@ -88,6 +88,14 @@ class UserProfile(APIView):
                 (Q(username__contains=username) | Q(email__contains=username)) & ~Q(band__slug=slug)
             )
             if len(obj) < 5:
+                print obj
+                if len(obj) == 0:
+                    return Response(
+                        {
+                            'found': False
+                        },
+                        status=status.HTTP_204_NO_CONTENT
+                    )
                 return Response(
                     [{
                         'username': o.username,
@@ -98,14 +106,14 @@ class UserProfile(APIView):
                 )
         return Response(
             [],
-            status=status.HTTP_404_NOT_FOUND
+            status=status.HTTP_207_MULTI_STATUS
         )
 
 
 
 class InviteUser(APIView):
 
-    def get(self, request, email, band_slug):
+    def post(self, request, email, band_slug):
         # check if email already exists in the database
         # and add it to the band.
         band = get_object_or_404(Band, slug=band_slug)
@@ -125,5 +133,5 @@ class InviteUser(APIView):
                 )
         return Response(
             [],
-            status=status.HTTP_404_NOT_FOUND
+            status=status.HTTP_201_CREATED
         )
