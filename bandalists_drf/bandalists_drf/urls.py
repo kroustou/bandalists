@@ -3,7 +3,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from discussion.viewsets import ThreadViewSet
 from bands.viewsets import BandViewSet, InstrumentViewSet
-from profiles.views import Profile, UserProfile
+from profiles.views import Profile, UserProfile, InviteUser
 from notifications.viewsets import NotificationsViewSet
 from rest_framework import routers
 
@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^', include(router.urls, namespace='api')),
     url(r'me/', Profile.as_view(), name='user'),
+    url(r'user/(?P<email>[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})/invite/(?P<band_slug>\w+)/', InviteUser.as_view(), name='user-invite'),
     url(r'user/(?P<username>([\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}|\w+))/', UserProfile.as_view(), name='user-detail')
 ]

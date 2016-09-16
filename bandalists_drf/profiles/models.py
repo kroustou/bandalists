@@ -1,11 +1,13 @@
 from __future__ import unicode_literals
-
+import uuid
 from rest_framework.authtoken.models import Token
 
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
+from bands.models import Band
+from .emails import send_invitation_email
 
 
 class Profile(models.Model):
@@ -39,3 +41,16 @@ def create_profile(sender, instance, signal, created, **kwargs):
         # create profile and Token
         Profile(user=instance).save()
         Token.objects.create(user=instance)
+
+
+class Invitation(models.Model):
+    invited_by = models.ForeignKey(User)
+    email = models.EmailField(max_length=255)
+    band = models.ForeignKey(Band)
+    token = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+
+@receiver(post_save, sender=Invitation)
+def invite_user(sender, instance, signal, created, **kwargs):
+    if created:
+        send_invitation_email(instance)

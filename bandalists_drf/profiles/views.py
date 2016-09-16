@@ -1,15 +1,19 @@
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
+from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
+
 from rest_framework.views import APIView
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser
 from rest_framework import status
 
-from django.contrib.auth import get_user_model
 User = get_user_model()
 
 from .serializers import UserSerializer, ProfileSerializer
+from bands.models import Band
+from .models import Invitation
 
 
 class Profile(APIView):
@@ -76,7 +80,6 @@ class Profile(APIView):
 
 
 class UserProfile(APIView):
-    permission_classes = (permissions.AllowAny,)
 
     def get(self, request, username, format=None):
         slug = request.GET.get('slug')
@@ -98,3 +101,29 @@ class UserProfile(APIView):
             status=status.HTTP_404_NOT_FOUND
         )
 
+
+
+class InviteUser(APIView):
+
+    def get(self, request, email, band_slug):
+        # check if email already exists in the database
+        # and add it to the band.
+        band = get_object_or_404(Band, slug=band_slug)
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            # we have to create a new invitation for this email
+            Invitation(band=band, email=email, invited_by=request.user).save()
+        else:
+            # if request user is in the band,
+            # they can add a new member
+            if band.members.get(id=request.user.id):
+                band.members.add(user)
+                return Response(
+                    [],
+                    status=status.HTTP_202_ACCEPTED
+                )
+        return Response(
+            [],
+            status=status.HTTP_404_NOT_FOUND
+        )

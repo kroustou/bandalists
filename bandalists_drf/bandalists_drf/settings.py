@@ -132,3 +132,8 @@ CORS_ORIGIN_WHITELIST = (
 
 
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+FROM_EMAIL = 'info@bandalists.com'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = '/tmp/app-messages' # change this to a proper location
