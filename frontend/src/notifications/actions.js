@@ -11,3 +11,9 @@ export const markRead = (dispatch, notificationId) => {
         getNotifications(dispatch)
     })
 }
+
+
+export const goToNotification = (dispatch, notification) => {
+    console.log('should redirect to notification: ', notification)
+    markRead(dispatch, notification.id)
+}

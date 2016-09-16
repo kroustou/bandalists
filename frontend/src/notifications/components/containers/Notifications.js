@@ -1,17 +1,17 @@
 import React from 'react'
 
-export default ({notifications, getNotifications, markRead}) => {
+export default ({notifications, getNotifications, goToNotification}) => {
     return (
-        <div className='notifications'>
-            <h3>{notifications.results.filter(notification => !notification.read).length} Notifications</h3>
+        <li className='two columns'>
+            <span>{notifications.results.filter(notification => !notification.read).length} Notifications</span>
             <ul>
             {
-                notifications.results.map(notification => {
+                notifications.results.filter(notification=>!notification.read).map(notification => {
                     let message = JSON.parse(notification.message)
-                    return <li className={notification.read ? 'read': ''} key={notification.id} onClick={() => markRead(notification.id)}>{message.text}</li>
+                    return <li className={notification.read ? 'read': ''} key={notification.id} onClick={() => goToNotification(notification)}>{message.text}</li>
                 })
             }
             </ul>
-        </div>
+        </li>
     )
 }

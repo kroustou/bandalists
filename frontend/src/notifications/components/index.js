@@ -1,6 +1,6 @@
 import NotificationsContainer from './containers/Notifications'
 import {connect} from 'react-redux'
-import {getNotifications, markRead} from '../actions'
+import {getNotifications, goToNotification} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
@@ -13,8 +13,8 @@ const mapDispatchToProps = (dispatch) => {
         getNotifications: () => {
             getNotifications(dispatch)
         },
-        markRead: (notificationId) => {
-            markRead(dispatch, notificationId)
+        goToNotification: (notification) => {
+            goToNotification(dispatch, notification)
         }
     }
 }

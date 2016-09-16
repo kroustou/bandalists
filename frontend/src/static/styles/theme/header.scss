@@ -20,8 +20,34 @@ header {
             margin: 0;
             list-style: none;
             text-align: center;
+            position: relative;
 
-            a {
+
+            ul {
+                position: absolute;
+                display: none;
+                background: $light2;
+                margin: 0;
+                padding: 0;
+                width: 200px;
+
+                li {
+                    padding: 0;
+                    margin: 0;
+                    float: none;
+                }
+            }
+
+            &:hover {
+
+                ul {
+                    display: block;
+                }
+
+            }
+
+            a, span {
+                text-transform: uppercase;
                 margin-top: 5px;
                 color: $light3;
                 vertical-align: middle;
@@ -31,12 +57,10 @@ header {
                 border-bottom: 5px solid $light2;
 
 
-
                 &:hover {
                     background: $light3;
                     color: $light4;
                     border-bottom: 5px solid $light3;
-
                 }
 
                 &.active {
