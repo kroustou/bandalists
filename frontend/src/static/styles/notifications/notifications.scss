@@ -1,0 +1,9 @@
+.notifications {
+	li {
+		list-style: none;
+
+		&.read {
+			opacity: 0.3;
+		}
+	}
+}

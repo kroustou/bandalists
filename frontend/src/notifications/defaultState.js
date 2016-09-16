@@ -1,3 +1,8 @@
 export const defaultState = {
-    notifications: []
+    notifications: {
+        results: [],
+        count: 0,
+    }
 }
+
+

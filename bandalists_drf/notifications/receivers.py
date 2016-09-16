@@ -16,6 +16,6 @@ def create_notification(sender, instance, signal, created, **kwargs):
             message = ThreadSerializer(instance).data
             Notification(
                 for_user=user,
-                url=instance.get_absolute_url(),
+                type='thread',
                 message=json.dumps(message),
             ).save()

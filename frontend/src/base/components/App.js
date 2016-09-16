@@ -9,10 +9,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//     }
-// }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch
+    }
+}
 
-const App = connect(mapStateToProps, {})(AppContainer)
+const App = connect(mapStateToProps, mapDispatchToProps)(AppContainer)
 export default App

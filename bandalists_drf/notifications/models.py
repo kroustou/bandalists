@@ -13,7 +13,7 @@ from notifications import receivers
 
 class Notification(models.Model):
     for_user = models.ForeignKey(User)
-    url = models.CharField(max_length=255)
+    notification_type = models.CharField(max_length=255)
     message = models.TextField()
     read = models.BooleanField(default=False)
 
