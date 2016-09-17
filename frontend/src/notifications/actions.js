@@ -16,7 +16,6 @@ export const markRead = (dispatch, notificationId) => {
 
 
 export const goToNotification = (dispatch, notification) => {
-    console.log(notification)
     if (notification.notification_type === 'Thread') {
         const message = JSON.parse(notification.message)
         let id
@@ -25,7 +24,6 @@ export const goToNotification = (dispatch, notification) => {
         } else {
             id = message.id
         }
-        console.log(id)
         dispatch(selectBand(notification.dashboard))
         dispatch(push('/dashboard/thread/' + id + '/'))
     }
