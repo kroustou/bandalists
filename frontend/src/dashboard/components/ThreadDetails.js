@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import {deleteThread, updateDone} from '../actions'
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
     return {
         user: state.session.info,
         threadUpdated: state.dashboard.threadChanged,

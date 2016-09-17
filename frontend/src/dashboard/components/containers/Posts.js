@@ -4,7 +4,6 @@ import PostForm from '../PostForm'
 
 export default ({threads, getPosts, selectedBand, deletePost, user}) => {
     const initialValues = {dashboard: selectedBand.pk}
-    let msg = ''
     if (threads) {
         if (selectedBand.id !== threads.dashboard) {
             getPosts(selectedBand.id)

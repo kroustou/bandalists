@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({notifications, getNotifications, goToNotification}) => {
+export default ({notifications, goToNotification}) => {
     return (
         <li className='two columns'>
             <span>{notifications.results.filter(notification => !notification.read).length} Notifications</span>
