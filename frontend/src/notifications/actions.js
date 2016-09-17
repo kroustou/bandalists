@@ -1,4 +1,6 @@
 import {api} from '../api'
+import { push } from 'react-router-redux'
+import {selectBand} from '../bands/actions'
 
 export const getNotifications = (dispatch) => {
     api('notifications/').then(resp => {
@@ -14,6 +16,17 @@ export const markRead = (dispatch, notificationId) => {
 
 
 export const goToNotification = (dispatch, notification) => {
-    console.log('should redirect to notification: ', notification)
-    markRead(dispatch, notification.id)
+    if (notification.notification_type === 'Thread') {
+        const message = JSON.parse(notification.message)
+        let id
+        if (message.parent) {
+            id = message.parent
+        } else {
+            id = message.id
+        }
+        dispatch(selectBand(notification.dashboard))
+        console.log('selected band', notification.dashboard)
+        dispatch(push('/dashboard/thread/' + id + '/'))
+    }
+    // markRead(dispatch, notification.id)
 }

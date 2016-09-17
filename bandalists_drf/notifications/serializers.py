@@ -6,6 +6,8 @@ class NotificationSerializer(serializers.ModelSerializer):
     for_user = serializers.PrimaryKeyRelatedField(read_only=True)
     notification_type = serializers.PrimaryKeyRelatedField(read_only=True)
     message = serializers.PrimaryKeyRelatedField(read_only=True)
+    url = serializers.PrimaryKeyRelatedField(read_only=True)
+    dashboard = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Notification

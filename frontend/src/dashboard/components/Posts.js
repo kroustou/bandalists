@@ -2,12 +2,13 @@ import {connect} from 'react-redux'
 import PostsContainer from './containers/Posts'
 import {getThreads, deleteThread} from '../actions'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
     return {
         user: state.session.info,
         threads: state.dashboard.threads,
         selectedBand: state.bands.selectedBand,
-        initialValues: {text: ''}
+        initialValues: {text: ''},
+        selectedThread: props.selectedThread
     }
 }
 

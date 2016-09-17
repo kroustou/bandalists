@@ -44,8 +44,16 @@ export default (state = defaultState, action) => {
         }
     }
     case 'SELECT_BAND': {
-        browserStore.set('selectedBand', action.band)
-        return Object.assign({}, state, {selectedBand: action.band})
+        let band
+        // we can select a band by given id, or object
+        if (!action.band.id) {
+            band = state.bands.results.find(band => band.id === action.band)
+        } else {
+            band = action.band
+        }
+        console.log(band)
+        browserStore.set('selectedBand', band)
+        return Object.assign({}, state, {selectedBand: band})
     }
     case 'LOGIN': {
         const selectedBand = browserStore.get('selectedBand')

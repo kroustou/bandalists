@@ -7,13 +7,14 @@ import {Dashboard} from '../dashboard/'
 import {Profile} from '../profile/'
 import {Login} from '../auth'
 import bandRoutes from '../bands/routes'
+import dashboardRoutes from '../dashboard/routes'
 
 export const routes = (
     <Route path='/' component={App}>
         <IndexRoute component={Home} />
         <Route path='login/' component={Login}/>
         <Route path='profile/' component={Profile}/>
-        <Route path='dashboard/' component={Dashboard}/>
+        {dashboardRoutes}
         {bandRoutes}
     </Route>
 )

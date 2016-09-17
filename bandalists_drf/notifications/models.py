@@ -6,7 +6,7 @@ User = settings.AUTH_USER_MODEL
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .utils import push_notification
-
+from bands.models import Band
 # import signal receivers in order to be activated
 from notifications import receivers
 
@@ -14,8 +14,10 @@ from notifications import receivers
 class Notification(models.Model):
     for_user = models.ForeignKey(User)
     notification_type = models.CharField(max_length=255)
+    url = models.CharField(max_length=255)
     message = models.TextField()
     read = models.BooleanField(default=False)
+    dashboard = models.ForeignKey(Band, null=True, blank=True)
 
     def to_json(self):
         return json.dumps(
