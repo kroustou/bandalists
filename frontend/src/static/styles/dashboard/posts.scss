@@ -35,5 +35,10 @@ form.post-form {
         position: absolute;
         top: 5px;
         right: 5px;
+        cursor: pointer;
+
+        &:hover {
+            color: $light3;
+        }
     }
 }

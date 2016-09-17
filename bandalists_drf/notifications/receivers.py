@@ -5,6 +5,7 @@ from django.dispatch import receiver
 
 from discussion.models import Thread
 from discussion.serializers import ThreadSerializer
+from bands.models import Band
 
 
 @receiver(post_save, sender=Thread)
@@ -14,10 +15,11 @@ def create_notification(sender, instance, signal, created, **kwargs):
     if created:
         for user in instance.dashboard.members.exclude(pk=instance.author.pk):
             message = ThreadSerializer(instance).data
+            # import ipdb; ipdb.set_trace()
             Notification(
                 for_user=user,
                 url=instance.get_absolute_url(),
-                type='thread',
+                notification_type='thread',
                 message=json.dumps(message),
-                dashboard=message.dashboard,
+                dashboard=instance.dashboard,
             ).save()

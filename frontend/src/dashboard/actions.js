@@ -12,8 +12,12 @@ export const getThreads = (dispatch, dashboardId) => {
 export const postThread = (data, dispatch) => {
     api('/threads/', 'post', data).then(resp => {
         getThreads(dispatch, data.dashboard)
-        dispatch({type: 'THREAD_SAVED', data: resp.data})
+        dispatch({type: 'THREAD_CHANGED', data: resp.data})
     })
+}
+
+export const updateDone = () => {
+    return {type: 'UPDATE_DONE'}
 }
 
 
@@ -21,7 +25,7 @@ export const deleteThread = (dispatch, thread) => {
     let dashboard = thread.dashboard
     api('/threads/' + thread.id + '/', 'delete').then(() => {
         getThreads(dispatch, dashboard)
-        dispatch({type: 'THREAD_DELETED'})
+        dispatch({type: 'THREAD_CHANGED'})
     })
 }
 

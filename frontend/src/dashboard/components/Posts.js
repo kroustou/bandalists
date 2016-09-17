@@ -7,8 +7,7 @@ const mapStateToProps = (state, props) => {
         user: state.session.info,
         threads: state.dashboard.threads,
         selectedBand: state.bands.selectedBand,
-        initialValues: {text: ''},
-        selectedThread: props.selectedThread
+        initialValues: {text: ''}
     }
 }
 
