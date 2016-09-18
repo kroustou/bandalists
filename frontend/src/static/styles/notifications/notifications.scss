@@ -1,6 +1,28 @@
 .notifications {
+	overflow: auto;
+	max-height: 500px;
+	border: 1px solid $light4;
+
 	li {
 		list-style: none;
+		background: $light3;
+		cursor: pointer;
+		text-align: left;
+		padding: 5px;
+
+		& + li {
+			border-top: 1px solid $light2;
+		}
+
+		&:hover {
+			background: darken($light3, 10%);
+		}
+
+		.date {
+			display: block;
+			font-size: 10px;
+		}
+
 
 		&.read {
 			opacity: 0.3;

@@ -15,12 +15,20 @@ header {
         float: right;
         margin: 0;
 
-        li {
+        & > li {
             float: right;
             margin: 0;
             list-style: none;
             text-align: center;
             position: relative;
+
+            &:hover {
+                & > a, & > span {
+                    background: $light3;
+                    color: $light4;
+                    border-bottom: 5px solid $light3;
+                }
+            }
 
 
             ul {
@@ -32,7 +40,6 @@ header {
                 width: 200px;
 
                 li {
-                    padding: 0;
                     margin: 0;
                     float: none;
                 }
@@ -46,7 +53,7 @@ header {
 
             }
 
-            a, span {
+            & > a, & > span {
                 text-transform: uppercase;
                 margin-top: 5px;
                 color: $light3;
@@ -55,13 +62,14 @@ header {
                 display: block;
                 height: 55px;
                 border-bottom: 5px solid $light2;
+                position: relative;
 
-
-                &:hover {
-                    background: $light3;
-                    color: $light4;
-                    border-bottom: 5px solid $light3;
+                &.on {
+                    box-shadow: 0px -14px 15px -15px red;
                 }
+
+
+
 
                 &.active {
                     border-bottom: 5px solid $light4;

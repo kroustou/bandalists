@@ -34,6 +34,9 @@ class Notification(models.Model):
     def __unicode__(self):
         return '%s: %s' % (self.for_user, self.message)
 
+    class Meta:
+        ordering = ['-id']
+
 
 @receiver(post_save, sender=Notification)
 def send_notification(sender, instance, signal, created, **kwargs):
