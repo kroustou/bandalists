@@ -2,9 +2,10 @@ import React from 'react'
 import {Link} from 'react-router'
 import BandBlock from './BandBlock'
 
-export default ({bands, selectBand, selectedBand, children}) => {
+export default ({bands, selectBand, selectedBand, children, deselectBand}) => {
     return (
         <div className="bands">
+            <input type="button" value="deselect" name="" id="" onClick={deselectBand}/>
             <Link activeClassName='active' to='/bands/add/'>+ New band</Link>
             {children}
             <div>

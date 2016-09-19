@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import BandContainer from './containers/Band'
-import {selectBand} from '../actions'
+import {selectBand, deselectBand} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         selectBand: (band) => dispatch(selectBand(band)),
+        deselectBand: () => dispatch(deselectBand()),
     }
 }
 
