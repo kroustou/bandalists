@@ -1,10 +1,14 @@
 import {connect} from 'react-redux'
 import LoginContainer from './containers'
 import {login} from '../actions'
+import { withRouter } from 'react-router'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
     return {
-        authenticated: state.session.authenticated
+        authenticated: state.session.authenticated,
+        initialValues: {
+            next: props.location.state ? props.location.state.nextPathname : '/',
+        }
     }
 }
 
@@ -16,4 +20,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginContainer))

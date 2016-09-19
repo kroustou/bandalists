@@ -15,7 +15,7 @@ export default ({threads, getPosts, selectedBand, deletePost, user}) => {
         <div>
             <PostForm form="postForm" initialValues={initialValues}/>
             <div>
-                {threads? threads.count: 'Loading'} Posts {user.username}.
+                {threads? '' : 'Loading...'}
                 {threads ? (
                     threads.results.map((thread) => (
                            <Thread key={thread.id} thread={thread} deletePost={deletePost} user={user}/>

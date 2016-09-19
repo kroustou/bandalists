@@ -2,10 +2,11 @@ import {api} from '../api'
 import {push} from 'react-router-redux'
 
 export const login = (dispatch, data) => {
+    let next = data.next
     api('/rest-auth/login/', 'post', data).then(resp => {
-        dispatch(push('/'))
         dispatch({type: 'LOGIN', token: resp.data.key})
         api('/me/').then(resp => {
+            dispatch(push(next))
             dispatch({type: 'UPDATE_USER_INFO', info: resp.data})
         })
     })

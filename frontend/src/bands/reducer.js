@@ -51,7 +51,6 @@ export default (state = defaultState, action) => {
         } else {
             band = action.band
         }
-        console.log(band)
         browserStore.set('selectedBand', band)
         return Object.assign({}, state, {selectedBand: band})
     }

@@ -1,9 +1,10 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-const LoginForm = ({handleSubmit, submitting}) => (
+const LoginForm = ({handleSubmit, next}) => (
     <form onSubmit={handleSubmit}>
-        <Field disabled={submitting} className="u-full-width" name="username" component='input' type='text'  placeholder='Username'/>
+        <Field name="next" component='input' type='hidden'/>
+        <Field className="u-full-width" name="username" component='input' type='text'  placeholder='Username'/>
         <Field className="u-full-width" name="password" component='input' type="password" placeholder='Password'/>
         <input className='button-primary' value='Login' type='submit'/>
     </form>
@@ -11,5 +12,5 @@ const LoginForm = ({handleSubmit, submitting}) => (
 
 export default reduxForm({
     form: 'loginForm',
-    fields: ['username', 'password',],
+    fields: ['username', 'password', 'next']
 })(LoginForm)

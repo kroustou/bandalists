@@ -8,12 +8,14 @@ import {Profile} from '../profile/'
 import {Login} from '../auth'
 import bandRoutes from '../bands/routes'
 import dashboardRoutes from '../dashboard/routes'
+import {requireAuth} from '../auth/'
+
 
 export const routes = (
     <Route path='/' component={App}>
         <IndexRoute component={Home} />
         <Route path='login/' component={Login}/>
-        <Route path='profile/' component={Profile}/>
+        <Route path='profile/' component={Profile} onEnter={requireAuth}/>
         {dashboardRoutes}
         {bandRoutes}
     </Route>
