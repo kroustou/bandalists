@@ -8,7 +8,6 @@ if (userInfo) {
 }
 
 export const defaultState = {
-    selectedBand: browserStore.get('selectedBand'),
     bands: {
         results: bands,
         count: bands.length

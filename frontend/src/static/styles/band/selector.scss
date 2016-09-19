@@ -24,14 +24,22 @@ header .band-selector {
         }
     }
 
+    ul {
+        display: none;
+    }
+}
+
+.band-selector {
+
+    a:hover {
+        color: $light0;
+    }
 
     ul {
         background: $light4;
-        display: none;
         list-style: none;
         padding: 10px;
         text-align: center;
-
 
         li {
 
@@ -42,14 +50,15 @@ header .band-selector {
 
             }
 
-            a {
-                color: $light0;
-            }
-
             &:hover {
-                background: $light3;
+                background: darken($light4, 5%);
                 cursor: pointer;
             }
         }
     }
+
+    .band-image{
+        display: none;
+    }
+
 }

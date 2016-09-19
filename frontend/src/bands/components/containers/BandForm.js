@@ -2,11 +2,14 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 const EditBandForm = (props) => {
-    const {handleSubmit} = props
+    const {handleSubmit, initialValues} = props
     return (
-        <form className="new-band-form row " onSubmit={handleSubmit} >
-            <Field className="u-full-width" name="name" {...props.fields.name} component='input' placeholder='Name'/>
-        </form>
+        <div>
+            {initialValues ? '' : <h5>Add a new band</h5>}
+            <form className="new-band-form row " onSubmit={handleSubmit} >
+                <Field className="u-full-width" name="name" {...props.fields.name} component='input' placeholder='Name'/>
+            </form>
+        </div>
     )
 }
 

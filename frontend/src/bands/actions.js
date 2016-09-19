@@ -1,5 +1,8 @@
 import {api} from '../api'
 import {createMessage} from '../base/actions'
+
+export const SELECT_BAND = 'SELECT_BAND'
+
 export const getBands = (dispatch) => {
     api('/bands/').then(resp => {
         dispatch({type: 'BANDS', bands: resp.data})
@@ -24,13 +27,8 @@ export const editBand = (dispatch, data) => {
 }
 
 export const selectBand = (band) => {
-    return {'type': 'SELECT_BAND', 'band': band}
+    return {'type': SELECT_BAND, 'band': band}
 }
-
-export const deselectBand = () => {
-    return {'type': 'DESELECT_BAND'}
-}
-
 
 export const searchForUser = (dispatch, username, bandSlug) => {
     dispatch({type: 'BAND_MEMBER_SEARCH', users: []})

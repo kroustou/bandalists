@@ -1,5 +1,6 @@
 import {defaultState} from './defaultState'
 import browserStore from 'store'
+import {SELECT_BAND} from './actions'
 
 export default (state = defaultState, action) => {
     switch (action.type) {
@@ -37,7 +38,7 @@ export default (state = defaultState, action) => {
                     return state
                 }
             }
-            browserStore.set('selectedBand', selected)
+            browserStore.set('lastSelectedBand', selected)
             return Object.assign({}, state, {selectedBand: selected})
         } else {
             return Object.assign({}, state)
@@ -46,7 +47,7 @@ export default (state = defaultState, action) => {
     case 'DESELECT_BAND': {
         return Object.assign({}, state, {selectedBand: null})
     }
-    case 'SELECT_BAND': {
+    case SELECT_BAND: {
         let band
         // we can select a band by given id, or object
         if (!action.band.id) {
@@ -54,12 +55,8 @@ export default (state = defaultState, action) => {
         } else {
             band = action.band
         }
-        browserStore.set('selectedBand', band)
+        browserStore.set('lastSelectedBand', band)
         return Object.assign({}, state, {selectedBand: band})
-    }
-    case 'LOGIN': {
-        const selectedBand = browserStore.get('selectedBand')
-        return Object.assign({}, state, {selectedBand: selectedBand})
     }
     default: {
         return state

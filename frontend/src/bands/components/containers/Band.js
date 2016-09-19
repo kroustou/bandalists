@@ -1,13 +1,18 @@
 import React from 'react'
 import {Link} from 'react-router'
 import BandBlock from './BandBlock'
+import NewBand from '../NewBand'
+import BandSelector from '../BandSelector'
 
-export default ({bands, selectBand, selectedBand, children, deselectBand}) => {
+export default ({bands, selectBand, selectedBand, children}) => {
     return (
         <div className="bands">
-            <input type="button" value="deselect" name="" id="" onClick={deselectBand}/>
-            <Link activeClassName='active' to='/bands/add/'>+ New band</Link>
-            {children}
+
+            <div>
+                <h5>Select Band</h5>
+                <BandSelector/>
+            </div>
+            <NewBand/>
             <div>
                 {bands ? <h4> Edit your {bands.count} bands</h4>: ''}
                 <ul>

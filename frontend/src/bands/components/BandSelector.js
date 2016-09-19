@@ -3,8 +3,8 @@ import BandSelectorContainer from './containers/BandSelector'
 
 const mapStateToProps = (state) => {
     return {
-        'bands': state.bands.bands,
-        'selectedBand': state.bands.selectedBand
+        bands: state.bands.bands,
+        selectedBand: state.bands.selectedBand
     }
 }
 
