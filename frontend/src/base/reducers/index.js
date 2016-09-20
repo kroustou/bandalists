@@ -6,11 +6,19 @@ import {dashboardReducer} from '../../dashboard'
 import {authReducer} from '../../auth'
 import notificationsReducer from '../../notifications/reducer'
 import bandReducer from '../../bands/reducer'
+import {ADD_MESSAGE, DELETE_MESSAGE} from '../actions'
 
-const baseReducer = (state = {}, action) => {
+const baseReducer = (state = {messages: []}, action) => {
     switch (action.type) {
-    case 'MESSAGE': {
-        return Object.assign({}, state, {message: action.message})
+    case ADD_MESSAGE: {
+        let newMessages = state.messages.slice()
+        newMessages.push(JSON.parse(action.message))
+        return Object.assign({}, state, {messages: newMessages})
+    }
+    case DELETE_MESSAGE: {
+        let newMessages = state.messages.slice()
+        newMessages.splice(newMessages.indexOf(JSON.parse(action.message)), 1)
+        return Object.assign({}, state, {messages: newMessages})
     }
     default: {
         return state

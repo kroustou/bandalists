@@ -8,7 +8,8 @@ from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser
 from rest_framework import status
-
+import logging
+logging.basicConfig()
 User = get_user_model()
 
 from .serializers import UserSerializer, ProfileSerializer

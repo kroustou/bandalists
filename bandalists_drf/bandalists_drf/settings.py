@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -42,6 +43,7 @@ INSTALLED_APPS = (
     'notifications',
     'rest_auth',
     'profiles',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -137,3 +139,14 @@ FROM_EMAIL = 'info@bandalists.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = '/tmp/app-messages' # change this to a proper location
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        },
+        "ROUTING": "notifications.routing.channel_routing",
+    },
+}

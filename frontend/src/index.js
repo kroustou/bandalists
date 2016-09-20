@@ -7,8 +7,8 @@ import {routerMiddleware} from 'react-router-redux'
 import {reducers} from  './base/reducers'
 import {routes} from './base/routes'
 import {logger} from './bands/middleware'
-
 import './static/styles/style.scss'
+
 
 const middleware = routerMiddleware(browserHistory)
 const store = createStore(
@@ -18,7 +18,6 @@ const store = createStore(
         window.devToolsExtension ? window.devToolsExtension() : f => f
     )
 )
-
 
 ReactDOM.render(
     <Provider store={store}>

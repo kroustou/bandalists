@@ -20,16 +20,15 @@ class Notification(models.Model):
     dashboard = models.ForeignKey(Band, null=True, blank=True)
 
     def to_json(self):
+        from .serializers import NotificationSerializer
+        serializer = NotificationSerializer(self)
         return json.dumps(
-            {
-                'type': 'notification',
-                'message': json.loads(self.message)
-            }
+            serializer.data
         )
 
     @property
     def channel(self):
-        return 'notifications-%s' % self.for_user.pk
+        return self.for_user.auth_token.key
 
     def __unicode__(self):
         return '%s: %s' % (self.for_user, self.message)
@@ -40,5 +39,5 @@ class Notification(models.Model):
 
 @receiver(post_save, sender=Notification)
 def send_notification(sender, instance, signal, created, **kwargs):
-    if created:
-        push_notification(instance.channel, instance.to_json())
+    # if created:
+    push_notification(instance.channel, instance.to_json())
