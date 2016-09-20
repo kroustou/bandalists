@@ -11,35 +11,36 @@
 }
 
 
-
-
-.band-edit {
-    cursor: pointer;
-    padding: 5px;
-    position: relative;
-
-    .edit-show {
-        display: none;
-    }
-    .edit-hide {
-        display: block;
-    }
-
-    &.editing {
-        font-weight: 800;
-        padding: 20px;
-
+.dashboard {
+    .band-edit {
         .edit-show {
+            display: none;
+        }
+        .edit-hide {
             display: block;
         }
 
-        .edit-hide {
-            display: none;
-        }
+    }
+
+}
+
+.band-edit {
+    cursor: pointer;
+    position: relative;
+    font-weight: 800;
+    padding: 20px;
+
+
+    .edit-show {
+        display: block;
+    }
+
+    .edit-hide {
+        display: none;
     }
 
 
-    &:hover, &.editing {
+    &:hover {
         background: $light4;
         color: $light3;
     }

@@ -18,7 +18,7 @@ export default ({bands, selectBand, selectedBand, children}) => {
                 <ul>
                 { bands ? bands.results.map(band => (
                     <li key={band.id}>
-                        <BandBlock band={band} selectedBand={selectedBand} selectBand={selectBand} editing={selectedBand && band.slug === selectedBand.slug}/>
+                        <BandBlock band={band} selectedBand={selectedBand} editing={selectedBand && band.slug === selectedBand.slug}/>
                     </li>
                     ))
                 : 'Loading...'}

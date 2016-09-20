@@ -11,7 +11,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        selectBand: (band) => dispatch(selectBand(band)),
     }
 }
 
