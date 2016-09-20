@@ -10,12 +10,12 @@ class App extends React.Component{
     render() {
         const {children, authenticated, messages} = this.props
         return (
-            <div id="main">
+            <div id='main'>
                 <Header authenticated={authenticated}/>
-                <div className="message">
-                    {messages.map(notification => <Notification key={notification.id} notification={notification} goToNotification={(message)=>{console.log(message)}}/>)}
-                </div>
-                <div className="container">
+                <ul className='messages'>
+                    {messages.map(notification => <Notification key={notification.id} notification={notification} goToNotification={()=>{}}/>)}
+                </ul>
+                <div className='container'>
                     {children}
                 </div>
             </div>

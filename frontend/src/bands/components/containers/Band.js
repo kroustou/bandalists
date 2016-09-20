@@ -1,10 +1,9 @@
 import React from 'react'
-import {Link} from 'react-router'
 import BandBlock from './BandBlock'
 import NewBand from '../NewBand'
 import BandSelector from '../BandSelector'
 
-export default ({bands, selectBand, selectedBand, children}) => {
+export default ({bands, selectedBand}) => {
     return (
         <div className="bands">
 

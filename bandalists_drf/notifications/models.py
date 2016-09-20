@@ -7,8 +7,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .utils import push_notification
 from bands.models import Band
-# import signal receivers in order to be activated
-from notifications import receivers
 
 
 class Notification(models.Model):

@@ -31,14 +31,22 @@ textarea {
     resize: none;
 }
 
-.message {
-    background: $light1;
-    color: $light2;
-    padding: 10px;
-    text-align: center;
+.messages {
     position: fixed;
     left: 10px;
     bottom: 30px;
+
+    li {
+        list-style: none;
+        border: 1px solid $light2;
+        color: $light2;
+        padding: 10px;
+        text-align: center;
+
+        .date {
+            display: none;
+        }
+    }
 }
 
 @import "header"

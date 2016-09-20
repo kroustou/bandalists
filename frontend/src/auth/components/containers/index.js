@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-const LoginForm = ({handleSubmit, next}) => (
+const LoginForm = ({handleSubmit}) => (
     <form onSubmit={handleSubmit}>
         <Field name="next" component='input' type='hidden'/>
         <Field className="u-full-width" name="username" component='input' type='text'  placeholder='Username'/>

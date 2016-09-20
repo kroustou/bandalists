@@ -2,7 +2,7 @@ import React from 'react'
 import EditBand from '../EditBand'
 import BandMembers from '../BandMembers'
 
-export default ({band, selectBand, editing}) => (
+export default ({band}) => (
       <div className='editing band-edit' key={band.slug} >
         <span className="edit-hide">{band.name}</span>
         <div className="edit-show">

@@ -1,6 +1,5 @@
 import {connect} from 'react-redux'
 import BandBlockContainer from './containers/BandBlock'
-import {selectBand} from '../../bands/actions'
 
 const mapStateToProps = (state) => {
     return {
@@ -9,9 +8,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(BandBlockContainer)
+export default connect(mapStateToProps, {})(BandBlockContainer)
