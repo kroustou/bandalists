@@ -12,12 +12,12 @@ const baseReducer = (state = {messages: []}, action) => {
     switch (action.type) {
     case ADD_MESSAGE: {
         let newMessages = state.messages.slice()
-        newMessages.push(JSON.parse(action.message))
+        newMessages.push(action.message)
         return Object.assign({}, state, {messages: newMessages})
     }
     case DELETE_MESSAGE: {
         let newMessages = state.messages.slice()
-        newMessages.splice(newMessages.indexOf(JSON.parse(action.message)), 1)
+        newMessages.splice(newMessages.indexOf(action.message), 1)
         return Object.assign({}, state, {messages: newMessages})
     }
     default: {

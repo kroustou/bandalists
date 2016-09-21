@@ -5,15 +5,21 @@ import {getThreads} from '../../dashboard/actions'
 export const ADD_MESSAGE = 'ADD_MESSAGE'
 export const DELETE_MESSAGE = 'DELETE_MESSAGE'
 
+export const handleMessage = (dispatch, msg) => {
+    let message = JSON.parse(msg)
+    if (message.notification_type === 'thread') {
+
+        getThreads(dispatch, message.dashboard)
+        if (message.message) {
+            createMessage(dispatch, message)
+        }
+    } else if (false) {
+
+    }
+}
 
 export const createMessage = (dispatch, msg) => {
     dispatch({type: ADD_MESSAGE, message: msg})
-    let message = JSON.parse(msg)
-
-    if (message.notification_type === 'thread') {
-        getThreads(dispatch, message.dashboard)
-    }
-
     setTimeout(() => {
         dispatch({type: DELETE_MESSAGE, message: msg})
     }, 5000)
@@ -26,8 +32,7 @@ export const init = (dispatch) => {
     getNotifications(dispatch)
 
     socket.onmessage = (e) => {
-        getNotifications(dispatch)
-        createMessage(dispatch, e.data)
+        handleMessage(dispatch, e.data)
     }
 }
 

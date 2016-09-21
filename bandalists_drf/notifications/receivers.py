@@ -1,6 +1,7 @@
+from channels import Group
 import json
 
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
 from discussion.models import Thread
@@ -22,3 +23,9 @@ def create_notification(sender, instance, signal, created, **kwargs):
                 message=json.dumps(message),
                 dashboard=instance.dashboard,
             ).save()
+
+
+@receiver(post_delete, sender=Thread)
+def notify(sender, instance, signal, **kwargs):
+    print instance.dashboard.slug
+    Group(instance.dashboard.slug).send({"text": json.dumps({'notification_type': 'thread'})})
