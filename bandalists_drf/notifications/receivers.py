@@ -27,5 +27,4 @@ def create_notification(sender, instance, signal, created, **kwargs):
 
 @receiver(post_delete, sender=Thread)
 def notify(sender, instance, signal, **kwargs):
-    print instance.dashboard.slug
-    Group(instance.dashboard.slug).send({"text": json.dumps({'notification_type': 'thread'})})
+    Group(instance.dashboard.slug).send({"text": json.dumps({'notification_type': 'thread', 'dashboard': instance.dashboard.id})})

@@ -8,7 +8,7 @@ export const DELETE_MESSAGE = 'DELETE_MESSAGE'
 export const handleMessage = (dispatch, msg) => {
     let message = JSON.parse(msg)
     if (message.notification_type === 'thread') {
-
+        console.log('getting ', message)
         getThreads(dispatch, message.dashboard)
         if (message.message) {
             createMessage(dispatch, message)
