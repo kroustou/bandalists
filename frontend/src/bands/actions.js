@@ -1,5 +1,6 @@
 import {api} from '../api'
 import {createMessage} from '../base/actions'
+import browserStore from 'store'
 
 export const SELECT_BAND = 'SELECT_BAND'
 
@@ -48,6 +49,7 @@ export const searchForUser = (dispatch, username, bandSlug) => {
 
 export const leaveBand = (dispatch, bandSlug) => {
     let url = '/bands/' + bandSlug + '/leave/'
+    browserStore.remove('lastSelectedBand')
     api(url, 'delete').then(() => {
         getBands(dispatch)
     })

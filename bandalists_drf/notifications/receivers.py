@@ -15,7 +15,6 @@ def create_notification(sender, instance, signal, created, **kwargs):
     if created:
         for user in instance.dashboard.members.exclude(pk=instance.author.pk):
             message = ThreadSerializer(instance).data
-            # import ipdb; ipdb.set_trace()
             Notification(
                 for_user=user,
                 url=instance.get_absolute_url(),

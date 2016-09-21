@@ -1,8 +1,8 @@
 import {api} from '../api'
+import {socket} from '../base/actions/index'
+import browserStore from 'store'
 
 export const getThreads = (dispatch, dashboardId) => {
-    // if no threads loaded or threads from another dashboard
-    // load threads.
     api('/threads/?dashboard=' + dashboardId).then(resp => {
         resp.data.dashboard = dashboardId
         dispatch({type: 'THREADS', data: resp.data})

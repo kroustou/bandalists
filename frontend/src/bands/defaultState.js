@@ -12,5 +12,6 @@ export const defaultState = {
         results: bands,
         count: bands.length
     },
+    selectedBand: browserStore.get('lastSelectedBand'),
     memberSearch: []
 }

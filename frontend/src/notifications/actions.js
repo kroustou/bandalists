@@ -16,7 +16,7 @@ export const markRead = (dispatch, notificationId) => {
 
 
 export const goToNotification = (dispatch, notification) => {
-    if (notification.notification_type === 'Thread') {
+    if (notification.notification_type === 'thread') {
         const message = JSON.parse(notification.message)
         let id
         if (message.parent) {

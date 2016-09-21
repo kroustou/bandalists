@@ -22,10 +22,16 @@ form.post-form {
 
     .comment {
         margin-top: 1px;
-        background: lighten($light4, 10%);
+        background: lighten($light4, 5%);
         padding: 10px;
         position: relative;
+
+        &:nth-child(2n) {
+            background: lighten($light4, 10%);
+        }
     }
+
+
 
     .post-form, input {
         margin: 0;

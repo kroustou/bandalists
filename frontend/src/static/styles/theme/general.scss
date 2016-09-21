@@ -35,6 +35,7 @@ textarea {
     position: fixed;
     left: 10px;
     bottom: 30px;
+    z-index: 1000;
 
     li {
         list-style: none;
@@ -42,6 +43,7 @@ textarea {
         color: $light2;
         padding: 10px;
         text-align: center;
+        background: $light3;
 
         .date {
             display: none;

@@ -44,9 +44,6 @@ export default (state = defaultState, action) => {
             return Object.assign({}, state)
         }
     }
-    case 'DESELECT_BAND': {
-        return Object.assign({}, state, {selectedBand: null})
-    }
     case SELECT_BAND: {
         let band
         // we can select a band by given id, or object

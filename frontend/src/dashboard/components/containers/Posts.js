@@ -3,7 +3,7 @@ import Thread from './Thread'
 import PostForm from '../PostForm'
 
 export default ({threads, getPosts, selectedBand, deletePost, user}) => {
-    const initialValues = {dashboard: selectedBand.pk}
+    const initialValues = {dashboard: selectedBand.id}
     if (threads) {
         if (selectedBand.id !== threads.dashboard) {
             getPosts(selectedBand.id)

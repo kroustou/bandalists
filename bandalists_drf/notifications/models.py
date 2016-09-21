@@ -7,7 +7,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .utils import push_notification
 from bands.models import Band
-
+import receivers
 
 class Notification(models.Model):
     for_user = models.ForeignKey(User)
@@ -26,7 +26,12 @@ class Notification(models.Model):
 
     @property
     def channel(self):
-        return self.for_user.auth_token.key
+        try:
+            return self.for_user.auth_token.key
+        except:
+            # the user has no key, thus has not ever logged in
+            return False
+
 
     def __unicode__(self):
         return '%s: %s' % (self.for_user, self.message)
@@ -37,5 +42,5 @@ class Notification(models.Model):
 
 @receiver(post_save, sender=Notification)
 def send_notification(sender, instance, signal, created, **kwargs):
-    # if created:
-    push_notification(instance.channel, instance.to_json())
+    if created:
+        push_notification(instance.channel, instance.to_json())
