@@ -13,6 +13,8 @@ const RenderNotification = ({notification}) => {
         )
     } else if (notification.notification_type === 'update_bands') {
         return <div>One of your bands settings have been changed!</div>
+    } else {
+        return <div>{notification}</div>
     }
 
 }

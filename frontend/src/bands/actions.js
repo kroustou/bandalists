@@ -6,16 +6,24 @@ export const SELECT_BAND = 'SELECT_BAND'
 
 export const getBands = (dispatch) => {
     api('/bands/').then(resp => {
-        dispatch({type: 'BANDS', bands: resp.data})
-        dispatch({type: 'REFRESH_SELECTED_BAND'})
+        if (resp) {
+            dispatch({type: 'BANDS', bands: resp.data})
+            dispatch({type: 'REFRESH_SELECTED_BAND'})
+        } else {
+            createMessage(dispatch, 'Something went wrong...')
+        }
     })
 }
 
 
 export const addBand = (dispatch, data) => {
     api('/bands/', 'post', data).then((response) => {
-        getBands(dispatch)
-        dispatch(selectBand(response.data))
+        if (response) {
+            getBands(dispatch)
+            dispatch(selectBand(response.data))
+        } else {
+            createMessage(dispatch, 'Something went wrong...')
+        }
     })
 }
 

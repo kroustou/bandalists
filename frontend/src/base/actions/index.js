@@ -2,6 +2,7 @@ import {getNotifications} from '../../notifications/actions'
 import browserStore from 'store'
 import {getThreads} from '../../dashboard/actions'
 import {getBands} from '../../bands/actions'
+import {getUserInfo} from '../../auth/actions'
 
 export const ADD_MESSAGE = 'ADD_MESSAGE'
 export const DELETE_MESSAGE = 'DELETE_MESSAGE'
@@ -26,15 +27,24 @@ export const createMessage = (dispatch, msg) => {
     }, 5000)
 }
 
+
 export const socket = new WebSocket('ws://localhost:8000/?token=' + browserStore.get('token'))
 
 
 export const init = (dispatch) => {
-    getBands(dispatch)
-    getNotifications(dispatch)
+    if (socket) {
+        getBands(dispatch)
+        getNotifications(dispatch)
+        getUserInfo(dispatch)
 
-    socket.onmessage = (e) => {
-        handleMessage(dispatch, e.data)
+        socket.onerror = (e) => {
+            console.log(e)
+            createMessage(dispatch, 'Could not connect to websocket')
+        }
+
+        socket.onmessage = (e) => {
+            handleMessage(dispatch, e.data)
+        }
     }
 }
 
