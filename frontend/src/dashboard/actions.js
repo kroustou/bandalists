@@ -5,7 +5,6 @@ import browserStore from 'store'
 export const getThreads = (dispatch, dashboardId) => {
     api('/threads/?dashboard=' + dashboardId).then(resp => {
         resp.data.dashboard = dashboardId
-        console.log('done')
         dispatch({type: 'THREADS', data: resp.data})
     })
 }

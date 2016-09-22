@@ -5,7 +5,7 @@ const PostForm = (props) => {
     const {handleSubmit, submitting, selectedBand} = props
 
     return (
-        <form className="post-form" onSubmit={handleSubmit} autocomplete="off">
+        <form className="post-form" onSubmit={handleSubmit}>
             <div>
                 <div >
                    <Field disabled={submitting} className="u-full-width" name="text" component='input'  placeholder={'Good news everyone at ' + selectedBand.name + '!'}/>

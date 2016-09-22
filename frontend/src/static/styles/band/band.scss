@@ -4,41 +4,25 @@
     li {
         list-style: none;
 
-        .band-edit {
-
-        }
     }
 }
 
 
 .dashboard {
-    .band-edit {
-        .edit-show {
+    .band-details {
+        form {
             display: none;
-        }
-        .edit-hide {
-            display: block;
         }
 
     }
 
 }
 
-.band-edit {
+.band-details {
     cursor: pointer;
     position: relative;
     font-weight: 800;
     padding: 20px;
-
-
-    .edit-show {
-        display: block;
-    }
-
-    .edit-hide {
-        display: none;
-    }
-
 
     &:hover {
         background: $light4;
@@ -67,6 +51,10 @@
             margin: 0;
             padding: 0;
             color: $light2;
+        }
+
+        .action {
+            margin-top: 20px;
         }
     }
 

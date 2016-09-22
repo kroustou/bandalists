@@ -7,13 +7,19 @@ export default ({bands, selectedBand}) => {
     return (
         <div className="bands">
 
-            <div>
-                <h5>Select Band</h5>
-                <BandSelector/>
+            <div className="twelve columns">
+                <div className='six columns'>
+                    <NewBand/>
+                </div>
+                { bands.count > 1 ?
+                    <div className='six columns'>
+                        <h5>Select Band</h5>
+                        <BandSelector/>
+                    </div> : ''
+                }
             </div>
-            <NewBand/>
-            <div>
-                {bands ? <h4> Edit your {bands.count} bands</h4>: ''}
+            <div >
+                {bands ? <h4>Your {bands.count} bands</h4>: ''}
                 <ul>
                 { bands ? bands.results.map(band => (
                     <li key={band.id}>

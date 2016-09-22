@@ -89,7 +89,6 @@ class UserProfile(APIView):
                 (Q(username__contains=username) | Q(email__contains=username)) & ~Q(band__slug=slug)
             )
             if len(obj) < 5:
-                print obj
                 if len(obj) == 0:
                     return Response(
                         {

@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, m2m_changed
 from django.dispatch import receiver
 from bands.utils import unique_slugify
 from channels import Group
@@ -42,9 +42,14 @@ class BandImage(models.Model):
         return self.band.name
 
 
+def print_band(sender, instance, action, reverse, model, pk_set, **kwargs):
+    if action == 'post_add':
+        Group(instance.slug).send({"text": json.dumps({'notification_type': 'update_bands'})})
+m2m_changed.connect(print_band, sender=Band.members.through)
+
+
 @receiver(post_save, sender=Band)
 @receiver(post_save, sender=BandImage)
 def notify(sender, instance, signal, created, **kwargs):
-    print instance.slug
     Group(instance.slug).send({"text": json.dumps({'notification_type': 'update_bands'})})
 
