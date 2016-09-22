@@ -2,12 +2,15 @@ import BandForm from './containers/BandForm'
 import {connect} from 'react-redux'
 import {reset} from 'redux-form'
 import {editBand} from '../actions'
+import {push} from 'react-router-redux'
 
-const mapStateToProps = (state, {bandSlug}) => {
-    let band = state.bands.bands.results.find(band => band.slug === bandSlug)
+const mapStateToProps = (state, {params: {bandSlug}}) => {
+    const band = state.bands.bands.results.find(band => band.slug === bandSlug)
     return {
         form: 'editBand_' + bandSlug,
-        initialValues: band
+        initialValues: {
+            ...band
+        },
     }
 }
 
@@ -16,6 +19,7 @@ const mapDispatchToProps = (dispatch) => {
         onSubmit: (data) => {
             dispatch(reset('editBand_' + data.slug))
             editBand(dispatch, data)
+            dispatch(push('/bands/'))
         }
     }
 }

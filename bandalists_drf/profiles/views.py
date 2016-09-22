@@ -107,7 +107,7 @@ class UserProfile(APIView):
                 )
         return Response(
             [],
-            status=status.HTTP_207_MULTI_STATUS
+            status=status.HTTP_204_NO_CONTENT
         )
 
 
