@@ -33,9 +33,11 @@ export const socket = new WebSocket('ws://localhost:8000/?token=' + browserStore
 
 export const init = (dispatch) => {
     if (socket) {
-        getBands(dispatch)
-        getNotifications(dispatch)
-        getUserInfo(dispatch)
+        if (browserStore.get('token')) {
+            getBands(dispatch)
+            getNotifications(dispatch)
+            getUserInfo(dispatch)
+        }
 
         socket.onerror = (e) => {
             console.log(e)

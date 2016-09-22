@@ -19,6 +19,6 @@ export const api = (url, method='get', data={}) => {
         data,
         headers
     }).catch(resp => {
-        console.log('Could not make request')
+        alert('Could not make request.')
     })
 }
