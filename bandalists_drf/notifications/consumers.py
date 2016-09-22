@@ -9,6 +9,7 @@ from .utils import reply
 def ws_add(message):
     Group(message.user.auth_token.key).add(message.reply_channel)
     for band in message.user.band_set.all():
+        print band.slug
         Group(band.slug).add(message.reply_channel)
 
 

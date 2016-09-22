@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from bands.utils import unique_slugify
-
 from channels import Group
+import json
 
 class Band(models.Model):
     name = models.CharField(max_length=255)
@@ -15,7 +15,9 @@ class Band(models.Model):
         '''
         Automatically set slug value and make sure it is unique.
         '''
-        unique_slugify(self, self.name)
+        # in case the band has not been created
+        if not self.pk:
+            unique_slugify(self, self.name)
         super(Band, self).save(**kwargs)
 
     def __unicode__(self):
@@ -43,5 +45,6 @@ class BandImage(models.Model):
 @receiver(post_save, sender=Band)
 @receiver(post_save, sender=BandImage)
 def notify(sender, instance, signal, created, **kwargs):
-    Group(instance.slug).send({"text": {'notification_type': 'update_bands'}})
+    print instance.slug
+    Group(instance.slug).send({"text": json.dumps({'notification_type': 'update_bands'})})
 

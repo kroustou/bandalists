@@ -13,7 +13,7 @@ class App extends React.Component{
             <div id='main'>
                 <Header authenticated={authenticated}/>
                 <ul className='messages'>
-                    {messages.map(notification => <Notification key={notification.id} notification={notification} goToNotification={()=>{}}/>)}
+                    {messages.map(notification => <Notification key={notification} notification={notification} goToNotification={()=>{}}/>)}
                 </ul>
                 <div className='container'>
                     {children}
