@@ -7,7 +7,7 @@ import {getSocket} from '../socket'
 
 export const ADD_MESSAGE = 'ADD_MESSAGE'
 export const DELETE_MESSAGE = 'DELETE_MESSAGE'
-export var socket = getSocket()
+export var socket = false
 
 export const handleMessage = (dispatch, msg) => {
     let message = JSON.parse(msg)
@@ -37,7 +37,7 @@ export const closeSocket = () => {
 export const init = (dispatch) => {
     if (browserStore.get('token')) {
         if (!socket) {
-            socket = getSocket(socket)
+            socket = getSocket(socket, dispatch)
         }
         getBands(dispatch)
         getNotifications(dispatch)
