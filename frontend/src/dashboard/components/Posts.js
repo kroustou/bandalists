@@ -7,13 +7,14 @@ const mapStateToProps = (state) => {
         user: state.session.info,
         threads: state.dashboard.threads,
         selectedBand: state.bands.selectedBand,
-        initialValues: {text: ''}
+        initialValues: {text: ''},
+        loading: state.base.loading,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getPosts: (dashboardId) => {
+        getPosts: (dashboardId, threads) => {
             getThreads(dispatch, dashboardId)
         },
         deletePost: (postId) => {

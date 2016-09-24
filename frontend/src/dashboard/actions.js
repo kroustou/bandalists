@@ -3,10 +3,11 @@ import {socket} from '../base/actions/index'
 import browserStore from 'store'
 
 export const getThreads = (dispatch, dashboardId) => {
+    dispatch({type: 'LOADING'})
     api('/threads/?dashboard=' + dashboardId).then(resp => {
         resp.data.dashboard = dashboardId
         dispatch({type: 'THREADS', data: resp.data})
-
+        dispatch({type: 'DONE_LOADING'})
     })
 }
 
@@ -14,10 +15,6 @@ export const postThread = (data, dispatch) => {
     api('/threads/', 'post', data).then(resp => {
         getThreads(dispatch, data.dashboard)
     })
-}
-
-export const updateDone = () => {
-    return {type: 'UPDATE_DONE'}
 }
 
 

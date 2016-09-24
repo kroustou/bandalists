@@ -2,27 +2,30 @@ import React from 'react'
 import Thread from './Thread'
 import PostForm from '../PostForm'
 
-export default ({threads, getPosts, selectedBand, deletePost, user}) => {
-    const initialValues = {dashboard: selectedBand.id}
-    if (threads) {
-        if (selectedBand.id !== threads.dashboard) {
-            getPosts(selectedBand.id)
-        }
-    } else {
-        getPosts(selectedBand.id)
+
+class Posts extends React.Component {
+    componentWillMount = () => {
+        const {threads, getPosts, selectedBand} = this.props
+        getPosts(selectedBand.id, threads)
     }
-    return (
-        <div>
-            <PostForm form="postForm" initialValues={initialValues}/>
+
+    render = () => {
+        const {threads, getPosts, selectedBand, deletePost, user, loading} = this.props
+        const initialValues = {dashboard: selectedBand.id}
+        return (
             <div>
-                {threads? '' : 'Loading...'}
-                {threads ? (
-                    threads.results.map((thread) => (
-                           <Thread key={thread.id} thread={thread} deletePost={deletePost} user={user}/>
+                <PostForm form="postForm" initialValues={initialValues}/>
+                <div>
+                    {threads ? (
+                        threads.results.map((thread) => (
+                               <Thread key={thread.id} thread={thread} deletePost={deletePost} user={user}/>
+                            )
                         )
-                    )
-                ): ''}
+                    ): ''}
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
+
+export default Posts
