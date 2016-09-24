@@ -6,9 +6,9 @@ import {dashboardReducer} from '../../dashboard'
 import {authReducer} from '../../auth'
 import notificationsReducer from '../../notifications/reducer'
 import bandReducer from '../../bands/reducer'
-import {ADD_MESSAGE, DELETE_MESSAGE} from '../actions'
+import {LOADING, DONE_LOADING, ADD_MESSAGE, DELETE_MESSAGE} from '../actions'
 
-const baseReducer = (state = {messages: []}, action) => {
+const baseReducer = (state = {messages: [], loading: false}, action) => {
     switch (action.type) {
     case ADD_MESSAGE: {
         let newMessages = state.messages.slice()
@@ -19,6 +19,12 @@ const baseReducer = (state = {messages: []}, action) => {
         let newMessages = state.messages.slice()
         newMessages.splice(newMessages.indexOf(action.message), 1)
         return Object.assign({}, state, {messages: newMessages})
+    }
+    case LOADING: {
+        return Object.assign({}, state, {loading: true})
+    }
+    case DONE_LOADING: {
+        return Object.assign({}, state, {loading: false})
     }
     default: {
         return state

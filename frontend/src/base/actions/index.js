@@ -7,6 +7,10 @@ import {getSocket} from '../socket'
 
 export const ADD_MESSAGE = 'ADD_MESSAGE'
 export const DELETE_MESSAGE = 'DELETE_MESSAGE'
+export const LOADING = 'LOADING'
+export const DONE_LOADING = 'DONE_LOADING'
+
+
 export var socket = false
 
 export const handleMessage = (dispatch, msg) => {

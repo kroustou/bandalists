@@ -6,6 +6,7 @@ export const getThreads = (dispatch, dashboardId) => {
     api('/threads/?dashboard=' + dashboardId).then(resp => {
         resp.data.dashboard = dashboardId
         dispatch({type: 'THREADS', data: resp.data})
+
     })
 }
 
