@@ -12,10 +12,10 @@ const Thread = ({thread, child, deletePost, user}) => {
             <div className="text">{thread.text}</div>
             <span className="author">{thread.author}</span> <span className="date">{moment.unix(thread.last_edit).fromNow()}</span>
             {thread.seen_by.length ? <div className="seen">{`Seen by: ${thread.seen_by.map(user => user)}`}</div>: ''}
-            {!child ? <PostForm form={`postForm_${thread.id}`} initialValues={initialValues}/> : '' }
             {thread.children.map((thread) => {
                 return <Comment key={thread.id} thread={thread} deletePost={deletePost} user={user}/>
             })}
+            {!child ? <PostForm form={`postForm_${thread.id}`} initialValues={initialValues} placeholder='Say something...' /> : '' }
        </div>
 	)
 }
