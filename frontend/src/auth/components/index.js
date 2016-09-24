@@ -11,7 +11,7 @@ const mapStateToProps = (state, props) => {
     return {
         authenticated: state.session.authenticated,
         initialValues: {
-            next: props.location.state ? props.location.state.nextPathname : '/',
+            next: props.location.state ? props.location.state.nextPathname : '/dashboard/',
         }
     }
 }
@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
                     dispatch(push(nextRoute))
                     getUserInfo(dispatch)
                     init(dispatch)
-                    dispatch({type: 'DONE_LOADING'})
+                dispatch({type: 'DONE_LOADING'})
                 })
                 .catch(e => {
                     dispatch({type: 'DONE_LOADING'})
