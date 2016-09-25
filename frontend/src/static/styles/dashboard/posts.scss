@@ -20,6 +20,18 @@ form.post-form {
         color: $light1;
     }
 
+    .text {
+
+        a {
+            text-transform: none;
+            color: $light2;
+        }
+
+        a:hover {
+            color: $light1;
+        }
+    }
+
     .comment {
         margin-top: 1px;
         background: lighten($light4, 5%);
