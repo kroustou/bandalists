@@ -24,11 +24,11 @@ const mapDispatchToProps = (dispatch) => {
             return api('/rest-auth/login/', 'post', data)
                 .then(resp => {
                     // in case the login was valid
+                    dispatch({type: 'DONE_LOADING'})
                     dispatch({type: 'LOGIN', token: resp.data.key, next: nextRoute})
                     dispatch(push(nextRoute))
                     getUserInfo(dispatch)
                     init(dispatch)
-                dispatch({type: 'DONE_LOADING'})
                 })
                 .catch(e => {
                     dispatch({type: 'DONE_LOADING'})
