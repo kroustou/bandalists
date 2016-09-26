@@ -1,7 +1,5 @@
 import {api} from '../api'
-import {socket} from '../base/actions/index'
-import browserStore from 'store'
-
+import {getNotifications} from '../notifications/actions'
 export const getThreads = (dispatch, dashboardId) => {
     dispatch({type: 'LOADING'})
     api('/threads/?dashboard=' + dashboardId).then(resp => {
@@ -12,14 +10,14 @@ export const getThreads = (dispatch, dashboardId) => {
 }
 
 export const postThread = (data, dispatch) => {
-    api('/threads/', 'post', data).then(resp => {
+    api('/threads/', 'post', data).then(() => {
         getThreads(dispatch, data.dashboard)
+        getNotifications(dispatch)
     })
 }
 
 
 export const deleteThread = (dispatch, thread) => {
-    let dashboard = thread.dashboard
     api('/threads/' + thread.id + '/', 'delete')
 }
 

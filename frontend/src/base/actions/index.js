@@ -17,6 +17,7 @@ export const handleMessage = (dispatch, msg) => {
     let message = JSON.parse(msg)
     if (message.notification_type === 'thread') {
         getThreads(dispatch, message.dashboard)
+        getNotifications(dispatch)
         if (message.message) {
             createMessage(dispatch, message)
         }

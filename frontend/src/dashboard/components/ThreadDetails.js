@@ -1,7 +1,7 @@
 import ThreadDetailsContainer from './containers/ThreadDetails'
 import {connect} from 'react-redux'
 
-import {deleteThread, updateDone} from '../actions'
+import {deleteThread} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
@@ -14,9 +14,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         deletePost: (postId) => {
             deleteThread(dispatch, postId)
-        },
-        updateDone: () => {
-            dispatch(updateDone())
         }
     }
 }

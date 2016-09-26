@@ -19,7 +19,6 @@ class ThreadDetails extends React.Component {
         // load threads.
         api('/threads/' + threadId + '/').then(resp => {
             this.setState({currentThread: resp.data})
-            this.props.updateDone()
         })
     }
 
