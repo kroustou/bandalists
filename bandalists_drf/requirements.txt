@@ -17,3 +17,6 @@ django-cors-headers==1.1.0
 djangorestframework-recursive==0.1.1
 Pillow==3.0.0
 django-rest-auth==0.6.0
+channels==0.17.2
+asgi-redis==0.14.1
+redis==2.10.5
