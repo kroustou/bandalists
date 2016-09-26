@@ -12,7 +12,6 @@ class ThreadViewSet(viewsets.ModelViewSet):
     serializer_class = ThreadSerializer
     filter_class = DashboardFilter
 
-
     def destroy(self, request, pk=None):
         queryset = Thread.objects.filter(dashboard__in=[
                 band for band in self.request.user.band_set.all()
@@ -26,14 +25,13 @@ class ThreadViewSet(viewsets.ModelViewSet):
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-
     def get_queryset(self):
         # get all root threads for a users band
         threads = Thread.objects.filter(
             dashboard__in=[
                 band for band in self.request.user.band_set.all()
             ], parent__isnull=True
-        )
+        ).order_by('-date')
         for thread in threads.exclude(
             author=self.request.user
         ).exclude(

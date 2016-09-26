@@ -19,7 +19,7 @@ class Thread(models.Model):
     )
 
     class Meta:
-        ordering = ['-date']
+        ordering = ['last_edit']
 
     def __unicode__(self):
         return self.text
