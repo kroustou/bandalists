@@ -1,9 +1,8 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.conf import settings
-User = settings.AUTH_USER_MODEL
-
 from bands.models import Band
+User = settings.AUTH_USER_MODEL
 
 
 class Thread(models.Model):

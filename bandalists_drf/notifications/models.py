@@ -9,6 +9,7 @@ from .utils import push_notification
 from bands.models import Band
 import receivers
 
+
 class Notification(models.Model):
     for_user = models.ForeignKey(User)
     notification_type = models.CharField(max_length=255)

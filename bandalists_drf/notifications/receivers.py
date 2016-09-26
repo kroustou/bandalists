@@ -25,6 +25,18 @@ def create_notification(sender, instance, signal, created, **kwargs):
             ).save()
 
 
+@receiver(post_save, sender=Thread)
+def mark_notification_read(sender, instance, signal, created, **kwargs):
+    # if there are pending notifications for the user
+    # about this thread, we have to mark them as read.
+    from .models import Notification
+    for notification in Notification.objects.filter(for_user=instance.author, notification_type='thread'):
+        message = json.loads(notification.message)
+        if message.get('parent') == instance.parent.pk if instance.parent else instance.pk:
+            notification.read = True
+            notification.save()
+
+
 @receiver(post_delete, sender=Thread)
 def notify(sender, instance, signal, **kwargs):
     Group(instance.dashboard.slug).send({"text": json.dumps({'notification_type': 'thread', 'dashboard': instance.dashboard.id})})
