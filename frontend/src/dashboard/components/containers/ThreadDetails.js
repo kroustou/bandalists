@@ -10,7 +10,7 @@ class ThreadDetails extends React.Component {
     componentDidUpdate() {
         // if we get a signal that a post was updated
         // then we have to reload posts
-        if (this.props.threadUpdated) {
+        if (this.props.submitted) {
             this.getThread(this.props.params.id)
         }
     }

@@ -1,5 +1,6 @@
 import {api} from '../api'
-import {getNotifications} from '../notifications/actions'
+import {reset} from 'redux-form'
+
 export const getThreads = (dispatch, dashboardId) => {
     dispatch({type: 'LOADING'})
     api('/threads/?dashboard=' + dashboardId).then(resp => {
@@ -9,10 +10,9 @@ export const getThreads = (dispatch, dashboardId) => {
     })
 }
 
-export const postThread = (data, dispatch) => {
+export const postThread = (dispatch, data, formName) => {
     api('/threads/', 'post', data).then(() => {
-        getThreads(dispatch, data.dashboard)
-        getNotifications(dispatch)
+        dispatch(reset(formName))
     })
 }
 

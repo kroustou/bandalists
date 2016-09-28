@@ -3,11 +3,14 @@ import {connect} from 'react-redux'
 
 import {deleteThread} from '../actions'
 
-const mapStateToProps = (state) => {
-    return {
+const mapStateToProps = (state, props) => {
+    let response = {
         user: state.session.info,
-        threadUpdated: state.dashboard.threadChanged,
     }
+    if (state.form['postForm_' + props.params.id]) {
+        response.submitted = state.form['postForm_' + props.params.id].submitSucceeded
+    }
+    return response
 }
 
 const mapDispatchToProps = (dispatch) => {
