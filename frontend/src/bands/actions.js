@@ -30,8 +30,8 @@ export const editBand = (dispatch, data) => {
 }
 
 export const selectBand = (dispatch, band) => {
+    getThreads(dispatch, band.id)
     dispatch({'type': SELECT_BAND, 'band': band})
-    getThreads(dispatch, band)
 }
 
 export const searchForUser = (dispatch, username, bandSlug) => {
