@@ -1,5 +1,4 @@
 import React from 'react'
-import EditBand from '../EditBand'
 import BandMembers from '../BandMembers'
 import {Link} from 'react-router'
 

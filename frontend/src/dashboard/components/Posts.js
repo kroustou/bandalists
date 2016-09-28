@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getPosts: (dashboardId, threads) => {
+        getPosts: (dashboardId) => {
             getThreads(dispatch, dashboardId)
         },
         deletePost: (postId) => {

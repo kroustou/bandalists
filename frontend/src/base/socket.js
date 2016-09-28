@@ -7,7 +7,7 @@ export const getSocket = (socket, dispatch) => {
         if (!socket) {
             socket = new WebSocket('ws://localhost:8000/?token=' + browserStore.get('token'))
             socket.onerror = (e) => {
-                createMessage(dispatch, 'Could not connect to websocket')
+                createMessage(dispatch, 'Could not connect to websocket: ' + e)
             }
 
             socket.onmessage = (e) => {

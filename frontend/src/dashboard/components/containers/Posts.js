@@ -5,12 +5,12 @@ import PostForm from '../PostForm'
 
 class Posts extends React.Component {
     componentWillMount = () => {
-        const {threads, getPosts, selectedBand} = this.props
-        getPosts(selectedBand.id, threads)
+        const {getPosts, selectedBand} = this.props
+        getPosts(selectedBand.id)
     }
 
     render = () => {
-        const {threads, getPosts, selectedBand, deletePost, user, loading} = this.props
+        const {threads, selectedBand, deletePost, user} = this.props
         const initialValues = {dashboard: selectedBand.id}
         return (
             <div>

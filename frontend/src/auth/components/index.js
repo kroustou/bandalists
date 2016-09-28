@@ -18,7 +18,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-         onSubmit: (data) => {
+        onSubmit: (data) => {
             dispatch({type: 'LOADING'})
             let nextRoute = data.next
             return api('/rest-auth/login/', 'post', data)

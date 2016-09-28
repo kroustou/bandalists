@@ -10,8 +10,8 @@ class Thread extends React.Component {
     rawMarkup = () => {
         let md = new Remarkable()
         md.renderer.rules.link_open = function (tokens, idx /*, options, env */) {
-            var title = tokens[idx].title ? (' title="' + escapeHtml(replaceEntities(tokens[idx].title)) + '"') : '';
-            return '<a target="_blank" href="' + escapeHtml(tokens[idx].href) + '"' + title + '>';
+            var title = tokens[idx].title ? (' title="' + escapeHtml(replaceEntities(tokens[idx].title)) + '"') : ''
+            return '<a target="_blank" href="' + escapeHtml(tokens[idx].href) + '"' + title + '>'
         }
         let rawMarkup = md.render(this.props.thread.text)
         return { __html: rawMarkup }
@@ -31,7 +31,7 @@ class Thread extends React.Component {
                 })}
                 {!child ? <PostForm form={`postForm_${thread.id}`} initialValues={initialValues} placeholder='Say something...' /> : '' }
            </div>
-    	)
+        )
     }
 }
 
