@@ -3,12 +3,14 @@ from channels.handler import AsgiRequest
 from rest_framework.authtoken.models import Token
 import json
 
+
 def authenticate(token):
     try:
         obj = Token.objects.get(key=token)
     except Token.ObjectDoesNotExist:
         return False
     return obj.user
+
 
 def jwt_request_parameter(func):
     """

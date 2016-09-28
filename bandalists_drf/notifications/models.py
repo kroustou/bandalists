@@ -1,13 +1,13 @@
 import json
 from django.db import models
 from django.conf import settings
-User = settings.AUTH_USER_MODEL
-
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .utils import push_notification
 from bands.models import Band
 import receivers
+
+User = settings.AUTH_USER_MODEL
 
 
 class Notification(models.Model):
@@ -32,7 +32,6 @@ class Notification(models.Model):
         except:
             # the user has no key, thus has not ever logged in
             return False
-
 
     def __unicode__(self):
         return '%s: %s' % (self.for_user, self.message)
