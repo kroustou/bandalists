@@ -5,7 +5,7 @@ import {Link} from 'react-router'
 
 class ThreadDetails extends React.Component {
     componentDidMount() {
-        this.getThread(this.props.params.id)
+        this.props.getPosts(this.props.dashboard.id)
     }
     componentDidUpdate() {
         // if we get a signal that a post was updated
@@ -14,21 +14,9 @@ class ThreadDetails extends React.Component {
             this.getThread(this.props.params.id)
         }
     }
-    getThread = (threadId) => {
-        // if no threads loaded or threads from another dashboard
-        // load threads.
-        api('/threads/' + threadId + '/').then(resp => {
-            this.setState({currentThread: resp.data})
-        })
-    }
 
     render() {
-        let thread
-        if (this.state) {
-            thread = this.state.currentThread
-        } else {
-            thread = false
-        }
+        let thread = this.props.currentThread
         const {deletePost, user} = this.props
         if (thread) {
             return (
@@ -40,7 +28,7 @@ class ThreadDetails extends React.Component {
                 </div>
             )
         } else {
-            return <div>loading...</div>
+            return <div></div>
         }
     }
 }
