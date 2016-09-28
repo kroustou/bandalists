@@ -24,7 +24,7 @@ export const goToNotification = (dispatch, notification) => {
         } else {
             id = message.id
         }
-        dispatch(selectBand(notification.dashboard))
+        selectBand(dispatch, notification.dashboard)
         dispatch(push('/dashboard/thread/' + id + '/'))
     }
     markRead(dispatch, notification.id)

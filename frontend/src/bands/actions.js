@@ -1,5 +1,7 @@
 import {api} from '../api'
 import {createMessage} from '../base/actions'
+import {getThreads} from '../dashboard/actions'
+
 import browserStore from 'store'
 
 export const SELECT_BAND = 'SELECT_BAND'
@@ -27,8 +29,9 @@ export const editBand = (dispatch, data) => {
     })
 }
 
-export const selectBand = (band) => {
-    return {'type': SELECT_BAND, 'band': band}
+export const selectBand = (dispatch, band) => {
+    dispatch({'type': SELECT_BAND, 'band': band})
+    getThreads(dispatch, band)
 }
 
 export const searchForUser = (dispatch, username, bandSlug) => {

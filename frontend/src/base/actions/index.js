@@ -23,6 +23,8 @@ export const handleMessage = (dispatch, msg) => {
         }
     } else if (message.notification_type === 'update_bands') {
         getBands(dispatch)
+        getThreads(dispatch, message.dashboard)
+        getNotifications(dispatch)
         createMessage(dispatch, message)
     }
 }

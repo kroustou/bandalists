@@ -48,7 +48,11 @@ export default (state = defaultState, action) => {
         let band
         // we can select a band by given id, or object
         if (!action.band.id) {
-            band = state.bands.results.find(band => band.id === action.band)
+            let newSelectedBand = state.bands.results.find(band => band.id === action.band)
+            if (newSelectedBand) {
+                band = newSelectedBand
+            }
+
         } else {
             band = action.band
         }
