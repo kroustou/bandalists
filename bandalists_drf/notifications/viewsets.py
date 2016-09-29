@@ -12,4 +12,6 @@ class NotificationsViewSet(
     serializer_class = NotificationSerializer
 
     def get_queryset(self):
-        return self.request.user.notification_set.filter(dashboard__in=self.request.user.band_set.all())
+        return self.request.user.notification_set.filter(
+            dashboard__in=self.request.user.band_set.all()
+        )
