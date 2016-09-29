@@ -1,5 +1,4 @@
 import React from 'react'
-import {api} from '../../../api'
 import Thread from './Thread'
 import {Link} from 'react-router'
 
@@ -7,14 +6,6 @@ class ThreadDetails extends React.Component {
     componentDidMount() {
         this.props.getPosts(this.props.dashboard.id)
     }
-    componentDidUpdate() {
-        // if we get a signal that a post was updated
-        // then we have to reload posts
-        if (this.props.submitted) {
-            this.getThread(this.props.params.id)
-        }
-    }
-
     render() {
         let thread = this.props.currentThread
         const {deletePost, user} = this.props

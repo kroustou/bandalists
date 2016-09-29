@@ -30,4 +30,10 @@ export const deleteThread = (dispatch, thread) => {
 
 }
 
-
+export const getNextPage = (dispatch, pageUrl) => {
+    dispatch({type: 'LOADING'})
+    api(pageUrl).then(resp => {
+        dispatch({type: 'UPDATE_THREADS', payload: resp.data})
+        dispatch({type: 'DONE_LOADING'})
+    })
+}

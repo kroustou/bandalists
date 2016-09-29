@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import PostsContainer from './containers/Posts'
-import {getThreads, deleteThread} from '../actions'
+import {getNextPage, getThreads, deleteThread} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
@@ -19,6 +19,11 @@ const mapDispatchToProps = (dispatch) => {
         },
         deletePost: (postId) => {
             deleteThread(dispatch, postId)
+        },
+        getNextPage: (pageUrl) => {
+            if (pageUrl) {
+                getNextPage(dispatch, pageUrl)
+            }
         }
     }
 }
