@@ -16,3 +16,11 @@ export const requireAuth = (nextState, replace) => {
         })
     }
 }
+
+export const redirectIfAuth = (nextState, replace) => {
+    if (browserStore.get('token')) {
+        replace({
+            pathname: '/dashboard/',
+        })
+    }
+}
