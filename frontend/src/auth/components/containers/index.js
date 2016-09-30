@@ -1,13 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-
-
-const RenderField = ({input, placeholder, type, meta: {touched, error}}) => (
-    <div className={ error ? 'has-error': ''}>
-        {touched && error && <span className="error">{error}</span>}
-        <input className="u-full-width" {...input} placeholder={placeholder} type={type}/>
-    </div>
-)
+import RenderField from '../../../base/components/containers/RenderField'
 
 
 const LoginForm = (props) => {
