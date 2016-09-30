@@ -1,5 +1,5 @@
 import {api} from '../api'
-import {push} from 'react-router-redux'
+import {replace} from 'react-router-redux'
 import {closeSocket} from '../base/actions'
 
 export const getUserInfo = (dispatch) => {
@@ -10,8 +10,7 @@ export const getUserInfo = (dispatch) => {
 
 
 export const logout = (dispatch) => {
-    dispatch(push('/'))
     dispatch({type: 'LOGOUT'})
+    dispatch(replace('/'))
     closeSocket()
 }
-
