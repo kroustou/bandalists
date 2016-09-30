@@ -38,17 +38,21 @@ export const createMessage = (dispatch, msg) => {
 
 export const closeSocket = () => {
     socket = getSocket(socket)
-    socket.close()
+    try {
+        socket.close()
+    } catch (e) {
+        console.log(e)
+    }
 }
 
-export const init = (dispatch) => {
+export const init = (dispatch, next) => {
     if (browserStore.get('token')) {
         if (!socket) {
             socket = getSocket(socket, dispatch)
         }
         getBands(dispatch)
         getNotifications(dispatch)
-        getUserInfo(dispatch)
+        getUserInfo(dispatch, next)
     }
 }
 

@@ -14,7 +14,7 @@ import {redirectIfAuth, requireAuth} from '../auth/'
 export const routes = (
     <Route path='/' component={App}>
         <IndexRoute component={Home} onEnter={redirectIfAuth} />
-        <Route path='login/' component={Login}/>
+        <Route path='login/' component={Login} onEnter={redirectIfAuth}/>
         <Route path='profile/' component={Profile} onEnter={requireAuth}/>
         {dashboardRoutes}
         {bandRoutes}

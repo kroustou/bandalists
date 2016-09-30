@@ -1,11 +1,9 @@
 import {connect} from 'react-redux'
 import LoginContainer from './containers'
-import {getUserInfo} from '../actions'
 import {withRouter} from 'react-router'
-import {push} from 'react-router-redux'
 import {api} from '../../api'
 import {SubmissionError} from 'redux-form'
-import {init} from '../../base/actions'
+import {login} from '../actions'
 
 const mapStateToProps = (state, props) => {
     return {
@@ -25,10 +23,8 @@ const mapDispatchToProps = (dispatch) => {
                 .then(resp => {
                     // in case the login was valid
                     dispatch({type: 'DONE_LOADING'})
-                    dispatch({type: 'LOGIN', token: resp.data.key, next: nextRoute})
-                    dispatch(push(nextRoute))
-                    getUserInfo(dispatch)
-                    init(dispatch)
+                    login(dispatch, resp.data.key, nextRoute)
+
                 })
                 .catch(e => {
                     dispatch({type: 'DONE_LOADING'})

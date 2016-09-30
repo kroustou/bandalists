@@ -26,23 +26,22 @@ export default (state = defaultState, action) => {
         }
     }
     case 'REFRESH_SELECTED_BAND': {
-        if (state.selectedBand && state.bands) {
-            let selected = state.bands.results.find((band) => band.id === state.selectedBand.id)
-            // if previously selected band does not exist,
-            // select the first available
-            if (!selected) {
-                if (state.bands.count) {
-                    selected = state.bands.results[0]
-                } else {
-                    // do nothing.
-                    return state
-                }
-            }
-            browserStore.set('lastSelectedBand', selected)
-            return Object.assign({}, state, {selectedBand: selected})
-        } else {
-            return Object.assign({}, state)
+        let selected = browserStore.get('lastSelectedBand')
+        if (selected && state.selectedBand) {
+            // we need to see if the state is synced
+            selected = state.selectedBand
         }
+        if (state.bands && selected) {
+            selected = state.bands.results.find((band) => band.id === selected.id)
+        } else {
+            if (state.bands.count) {
+                selected = state.bands.results[0]
+            } else {
+                return state
+            }
+        }
+        browserStore.set('lastSelectedBand', selected)
+        return Object.assign({}, state, {selectedBand: selected})
     }
     case SELECT_BAND: {
         let band
