@@ -12,7 +12,6 @@ class Menu extends React.Component {
                 }}>Logout</a></li>: ''}
                 { this.props.authenticated && this.props.selectedBand ? <li className='two columns'><Link activeClassName='active' to='/dashboard/'>dashboard</Link></li>: ''}
                 { this.props.authenticated ? <li className='two columns'><Link activeClassName='active' to='/profile/'>profile</Link></li> : ''}
-                { this.props.authenticated ? <li className='two columns'><Link activeClassName='active' to='/bands/'>bands</Link></li> : '' }
                 { this.props.authenticated ? <Notifications/> : '' }
                 { this.props.authenticated ? '' : <li className='two columns'><Link activeClassName='active' to='/login/'>login</Link></li>}
             </ul>

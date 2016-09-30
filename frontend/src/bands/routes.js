@@ -10,7 +10,6 @@ import BandEdit from './components/EditBand'
 
 export default (
     <div>
-        <Route path='/bands/' component={Band} onEnter={requireAuth}/>
         <Route path='/bands/edit/:bandSlug/' component={BandEdit} onEnter={requireAuth}/>
     </div>
 )

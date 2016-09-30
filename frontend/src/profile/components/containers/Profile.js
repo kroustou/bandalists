@@ -3,7 +3,7 @@ import Band from '../../../bands/components/Band'
 
 const Profile = ({user}) => (
     <div>
-        <h3>Who are you {user.username}?</h3>
+        <h2>Who are you {user.username}?</h2>
         <ul>
             <li>{user.username}</li>
             {user.surname ? <li>{user.surname}</li> : ''}
