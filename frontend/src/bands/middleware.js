@@ -16,7 +16,7 @@ export const logger = store => next => action => {
                         store.dispatch(selectBand(state.bands.bands.results[0]))
                     } else {
                         // select manually
-                        store.dispatch(push('/bands/'))
+                        store.dispatch(push('/profile/'))
                     }
                 }
             }

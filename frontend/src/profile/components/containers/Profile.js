@@ -1,4 +1,5 @@
 import React from 'react'
+import Band from '../../../bands/components/Band'
 
 const Profile = ({user}) => (
     <div>
@@ -11,6 +12,10 @@ const Profile = ({user}) => (
             {user.avatar ? <li>{user.avatar}</li>: ''}
             <li>{user.email}</li>
         </ul>
+        <div>
+            <h2>Manage Your Bands</h2>
+            <Band/>
+        </div>
     </div>
 )
 
