@@ -10,6 +10,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = () => {
     return {
+        onSubmit: (data) => {
+            console.log(data)
+        }
     }
 }
 
