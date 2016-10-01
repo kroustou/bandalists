@@ -56,6 +56,7 @@ export const leaveBand = (dispatch, bandSlug) => {
     api(url, 'delete').then(() => {
         getBands(dispatch)
     })
+
 }
 
 
