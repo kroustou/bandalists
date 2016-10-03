@@ -12,16 +12,10 @@ const UserProfileForm = (props) => {
             <div className="row">
                 <div className="columns six">
                     <Field  name="username" component={RenderField} type='text'  placeholder='Username'/>
-                </div>
-                <div className="columns six">
-                    <Field  name="name" component={RenderField} type='text'  placeholder='Name'/>
-                </div>
-            </div>
-            <div className="row">
-                <div className="columns six">
                     <Field  name="email" component={RenderField} type='email'  placeholder='email'/>
                 </div>
                 <div className="columns six">
+                    <Field  name="name" component={RenderField} type='text'  placeholder='Name'/>
                     <Field  name="surname" component={RenderField} type='text'  placeholder='Surname'/>
                 </div>
             </div>
