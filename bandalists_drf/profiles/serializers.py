@@ -40,14 +40,16 @@ class ProfileSerializer(serializers.BaseSerializer):
         (second param of the data.get)
         '''
         self.user = User.objects.get(pk=data.get('user'))
-        return {
+        dict_to_return = {
             'username': data.get('username', self.user.username),
             'name': data.get('name', self.user.first_name),
             'surname': data.get('surname', self.user.last_name),
             'avatar': data.get('avatar', self.user.profile.avatar),
-            'password': data.get('password'),
             'email': data.get('email', self.user.email),
         }
+        if data.get('password'):
+            dict_to_return['password'] = data.get('password')
+        return dict_to_return
 
     def create(self, data):
         '''

@@ -9,17 +9,16 @@ from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser
 from rest_framework import status
 import logging
-logging.basicConfig()
-User = get_user_model()
-
 from .serializers import UserSerializer, ProfileSerializer
 from bands.models import Band
 from .models import Invitation
 
+logging.basicConfig()
+User = get_user_model()
+
 
 class Profile(APIView):
     permission_classes = (permissions.AllowAny,)
-    parser_classes = (MultiPartParser,)
 
     def get(self, request, format=None):
         """
@@ -38,22 +37,25 @@ class Profile(APIView):
         if request.user.is_authenticated():
             raise PermissionDenied
         else:
-            serialized = UserSerializer(data=request.data)
-            # the user has not set an email
-            # which is fine, but we have to inform django about it.
-            if not request.data.get('email'):
-                request.data.update({'email': ''})
-            if serialized.is_valid():
-                user = serialized.save()
-                return Response(
-                    user.profile.to_dict(),
-                    status=status.HTTP_201_CREATED
-                )
+            if request.data:
+                serialized = UserSerializer(data=request.data)
+                # the user has not set an email
+                # which is fine, but we have to inform django about it.
+                if not request.data.get('email'):
+                    request.data.update({'email': ''})
+                if serialized.is_valid():
+                    user = serialized.save()
+                    return Response(
+                        user.profile.to_dict(),
+                        status=status.HTTP_201_CREATED
+                    )
+                message = serialized.errors
             else:
-                return Response(
-                    serialized.errors,
-                    status=status.HTTP_400_BAD_REQUEST
-                )
+                message = ''
+        return Response(
+            message,
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
     def put(self, request, format=None):
         if request.user.is_authenticated():
