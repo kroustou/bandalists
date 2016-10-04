@@ -17,6 +17,6 @@ export const api = (url, method='get', data={}) => {
         method,
         url,
         data,
-        headers
+        headers,
     })
 }

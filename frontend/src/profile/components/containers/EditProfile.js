@@ -22,39 +22,40 @@ const UserProfileForm = (props) => {
         buttonValue = 'Updating...'
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Who are you {user.username}?</h2>
-            <div className="error">{error}</div>
-            <div className="row">
-                <div className="columns six">
-                    <Field  name="username" component={RenderField} type='text'  placeholder='Username'/>
+        <div className="">
+            <form onSubmit={handleSubmit}>
+                <div className="error">{error}</div>
+                <div className="row">
+                    <div className="columns six">
+                        <Field  name="username" component={RenderField} type='text'  placeholder='Username'/>
+                    </div>
+                    <div className="columns six">
+                        <Field  name="email" component={RenderField} type='email'  placeholder='email'/>
+                    </div>
                 </div>
-                <div className="columns six">
-                    <Field  name="email" component={RenderField} type='email'  placeholder='email'/>
+                <div className="row">
+                    <div className="columns six">
+                        <Field  name="name" component={RenderField} type='text'  placeholder='Name'/>
+                    </div>
+                    <div className="columns six">
+                        <Field  name="surname" component={RenderField} type='text'  placeholder='Surname'/>
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="columns six">
-                    <Field  name="name" component={RenderField} type='text'  placeholder='Name'/>
+                <div className="row">
+                    <div className="columns six">
+                        <Field  name="password" component={RenderField} type='password'  placeholder='New password'/>
+                    </div>
+                    <div className="columns six">
+                        <Field  name="passwordVerify" component={RenderField} type='password'  placeholder='Verify New password'/>
+                    </div>
                 </div>
-                <div className="columns six">
-                    <Field  name="surname" component={RenderField} type='text'  placeholder='Surname'/>
-                </div>
-            </div>
-            <div className="row">
-                <div className="columns six">
-                    <Field  name="password" component={RenderField} type='password'  placeholder='New password'/>
-                </div>
-                <div className="columns six">
-                    <Field  name="passwordVerify" component={RenderField} type='password'  placeholder='Verify New password'/>
-                </div>
-            </div>
-            <input className='button-primary' value={buttonValue} type='submit'/>
-            <ul>
-                {user.instruments.length ? <li>{user.instruments}</li>: ''}
-                {user.avatar ? <li>{user.avatar}</li>: ''}
-            </ul>
-        </form>
+                <input className='button-primary' value={buttonValue} type='submit'/>
+                <ul>
+                    {user.instruments.length ? <li>{user.instruments}</li>: ''}
+                    {user.avatar ? <li>{user.avatar}</li>: ''}
+                </ul>
+            </form>
+        </div>
     )
 }
 

@@ -4,6 +4,7 @@ import {routerReducer} from 'react-router-redux'
 import {reducer as formReducer} from 'redux-form'
 import {dashboardReducer} from '../../dashboard'
 import {authReducer} from '../../auth'
+import profileReducer from '../../profile/reducer'
 import notificationsReducer from '../../notifications/reducer'
 import bandReducer from '../../bands/reducer'
 import {LOADING, DONE_LOADING, ADD_MESSAGE, DELETE_MESSAGE} from '../actions'
@@ -40,5 +41,6 @@ export const reducers = combineReducers({
     bands: bandReducer,
     routing: routerReducer,
     dashboard: dashboardReducer,
-    form: formReducer
+    form: formReducer,
+    myProfile: profileReducer,
 })
