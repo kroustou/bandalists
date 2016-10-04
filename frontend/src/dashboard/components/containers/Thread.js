@@ -21,10 +21,13 @@ class Thread extends React.Component {
         const {thread, child, deletePost, user} = this.props
         const initialValues = {dashboard: thread.dashboard, parent: thread.id}
         return (
-            <div className={child ? 'comment' : 'thread'}>
-                {user.username === thread.author ? <span className="delete" onClick={() => {deletePost(thread)}}>x</span>:''}
-                <div className="text" dangerouslySetInnerHTML={this.rawMarkup()}></div>
-                <span className="author">{thread.author}</span> <span className="date">{moment.unix(thread.last_edit).fromNow()}</span>
+            <div className={`row ${child ? 'comment' : 'thread'}`}>
+                {user.username === thread.author.username ? <span className="delete" onClick={() => {deletePost(thread)}}>x</span>:''}
+                <div className="row">
+                    { thread.author.avatar ? <div className="author-avatar columns two"><img src={thread.author.avatar}/></div> : ''}
+                    <div className="text columns ten" dangerouslySetInnerHTML={this.rawMarkup()}></div>
+                </div>
+                <span className="author">{thread.author.username}</span> <span className="date">{moment.unix(thread.last_edit).fromNow()}</span>
                 {thread.seen_by.length ? <div className="seen">{`Seen by: ${thread.seen_by.map(user => user)}`}</div>: ''}
                 {thread.children.map((thread) => {
                     return <Comment key={thread.id} thread={thread} deletePost={deletePost} user={user}/>

@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from discussion.models import Thread
+from profiles.serializers import ProfileSerializer
+
 import calendar
 from rest_framework_recursive.fields import RecursiveField
 from django.core.exceptions import ValidationError
@@ -15,7 +17,7 @@ class ThreadSerializer(serializers.ModelSerializer):
     date = TimestampField()
     last_edit = TimestampField()
     children = serializers.ListField(child=RecursiveField(), read_only=True)
-    author = serializers.StringRelatedField(read_only=True)
+    author = ProfileSerializer(read_only=True)
     seen_by = serializers.StringRelatedField(many=True, read_only=True)
 
     def validate(self, data):
