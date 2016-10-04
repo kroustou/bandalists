@@ -3,6 +3,9 @@ import {connect} from 'react-redux'
 import {api} from '../../api'
 import {getUserInfo} from '../../auth/actions'
 import {SubmissionError} from 'redux-form'
+import {createMessage} from '../../base/actions'
+import {logout} from '../../auth/actions'
+import {replace} from 'react-router-redux'
 
 const mapStateToProps = (state) => {
     return {
@@ -20,7 +23,10 @@ const mapDispatchToProps = (dispatch) => {
                     // in case the request was valid
                     dispatch({type: 'DONE_LOADING'})
                     getUserInfo(dispatch)
-
+                    createMessage(dispatch, 'Data updated!')
+                    if (data.password) {
+                        logout(dispatch)
+                    }
                 })
                 .catch(e => {
                     dispatch({type: 'DONE_LOADING'})

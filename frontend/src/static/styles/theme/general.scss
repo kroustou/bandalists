@@ -6,7 +6,6 @@ body {
 
 
 
-
 a {
     color: $light1;
     text-decoration: none;
@@ -17,10 +16,29 @@ a {
     }
 }
 
+input {
+    margin: 0;
+    margin-top: 1.5em;
+}
+
+.has-error {
+    color: $red;
+
+    input {
+        border: 1px solid $red;
+    }
+}
+
+.success {
+    background: $light4;
+    color: $light1;
+    padding: 0.5em;
+}
+
 input.button-primary[type="button"], input.button-primary[type="submit"]  {
     background-color: $light4;
     border-color: $light1;
-    color: $light1;
+    color: $light2;
 
     &:hover, &:active, &:focus{
         background-color: $light1;

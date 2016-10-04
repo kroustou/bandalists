@@ -2,9 +2,25 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import RenderField from '../../../base/components/containers/RenderField'
 
+const validate = values => {
+    const errors = {}
+    if (values.password || values.passwordVerify) {
+        if (values.password !== values.passwordVerify) {
+            errors.passwordVerify = 'Passwords do not match'
+        }
+    }
+    return errors
+}
 
 const UserProfileForm = (props) => {
-    const {user, handleSubmit, error} = props
+    const {submitSucceeded, user, handleSubmit, error, pristine, reset, submitting} = props
+    let buttonValue = 'Update'
+    if (submitSucceeded) {
+        buttonValue = 'Done! Update Again.'
+    }
+    if (submitting) {
+        buttonValue = 'Updating...'
+    }
     return (
         <form onSubmit={handleSubmit}>
             <h2>Who are you {user.username}?</h2>
@@ -12,14 +28,28 @@ const UserProfileForm = (props) => {
             <div className="row">
                 <div className="columns six">
                     <Field  name="username" component={RenderField} type='text'  placeholder='Username'/>
-                    <Field  name="email" component={RenderField} type='email'  placeholder='email'/>
                 </div>
                 <div className="columns six">
+                    <Field  name="email" component={RenderField} type='email'  placeholder='email'/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="columns six">
                     <Field  name="name" component={RenderField} type='text'  placeholder='Name'/>
+                </div>
+                <div className="columns six">
                     <Field  name="surname" component={RenderField} type='text'  placeholder='Surname'/>
                 </div>
             </div>
-            <input className='button-primary' value='update' type='submit'/>
+            <div className="row">
+                <div className="columns six">
+                    <Field  name="password" component={RenderField} type='password'  placeholder='New password'/>
+                </div>
+                <div className="columns six">
+                    <Field  name="passwordVerify" component={RenderField} type='password'  placeholder='Verify New password'/>
+                </div>
+            </div>
+            <input className='button-primary' value={buttonValue} type='submit'/>
             <ul>
                 {user.instruments.length ? <li>{user.instruments}</li>: ''}
                 {user.avatar ? <li>{user.avatar}</li>: ''}
@@ -31,5 +61,7 @@ const UserProfileForm = (props) => {
 
 
 export default reduxForm({
-    form: 'editProfileForm'
+    form: 'editProfileForm',
+    validate
+
 })(UserProfileForm)
