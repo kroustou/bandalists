@@ -1,0 +1,30 @@
+.avatar {
+	#upload {
+		display: none;
+	}
+
+	.preview {
+		position: relative;
+
+		label {
+			background: $light3;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			padding: 10px;
+			cursor: pointer;
+
+			&:hover {
+				background: $light4;
+			}
+		}
+
+		img {
+			max-width: 100%;
+			display: block;
+			max-height: 100px;
+		}
+	}
+}
+
+

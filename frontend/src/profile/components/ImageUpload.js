@@ -21,12 +21,21 @@ const mapDispatchToProps = (dispatch) => {
             reader.readAsDataURL(file)
             let data = new FormData()
             data.append('avatar', file)
-            api('/me/', 'put', data)
+            let config = {
+                onUploadProgress: function(progressEvent) {
+                    console.log(progressEvent.loaded / progressEvent.total)
+                }
+            }
+            dispatch({type: 'LOADING'})
+            api('/me/', 'put', data, config)
                 .then(function (res) {
                     console.log(res)
+                    dispatch({type: 'DONE_LOADING'})
                 })
                 .catch(function (err) {
-                    console.log(err)
+                    dispatch({type: 'DONE_LOADING'})
+                    dispatch({type: 'REQUEST_ERROR', error: err})
+
                 })
         }
     }

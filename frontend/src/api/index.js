@@ -7,7 +7,7 @@ const backend = axios.create({
 
 })
 
-export const api = (url, method='get', data={}) => {
+export const api = (url, method='get', data={}, config) => {
     let token = browserStore.get('token')
     let headers =  {Accept: 'application/json'}
     if (token) {
@@ -18,5 +18,6 @@ export const api = (url, method='get', data={}) => {
         url,
         data,
         headers,
+        config
     })
 }

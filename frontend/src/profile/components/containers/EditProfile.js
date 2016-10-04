@@ -52,7 +52,6 @@ const UserProfileForm = (props) => {
                 <input className='button-primary' value={buttonValue} type='submit'/>
                 <ul>
                     {user.instruments.length ? <li>{user.instruments}</li>: ''}
-                    {user.avatar ? <li>{user.avatar}</li>: ''}
                 </ul>
             </form>
         </div>
