@@ -1,7 +1,11 @@
 .notifications {
 	overflow: auto;
 	max-height: 500px;
-	border: 1px solid $light4;
+	transition: all .3s;
+
+	&:hover {
+		border: 1px solid $light4;
+	}
 
 	li {
 		list-style: none;
