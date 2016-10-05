@@ -9,13 +9,9 @@ class Menu extends React.Component {
             <ul className='twelve columns menu' >
                 { this.props.authenticated ? <li className='two columns profile'><Link activeClassName='active' to='/profile/'>
                     <div className="avatar-circle">
-                        <Avatar img={this.props.user.avatar}/>
+                        {this.props.user ? <Avatar img={this.props.user.avatar}/> :'' }
                     </div>
                 </Link></li> : ''}
-                { this.props.authenticated ? <li className='two columns'><a href="" onClick={e=>{
-                    e.preventDefault()
-                    this.props.logout()
-                }}>Logout</a></li>: ''}
                 { this.props.authenticated ? <Notifications/> : '' }
                 { this.props.authenticated ? '' : <li className='two columns'><Link activeClassName='active' to='/login/'>login</Link></li>}
                 { this.props.authenticated && this.props.selectedBand ? <li className='two columns'><Link activeClassName='active' to='/dashboard/'>dashboard</Link></li>: ''}

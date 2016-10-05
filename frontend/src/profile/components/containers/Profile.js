@@ -4,8 +4,12 @@ import ImageUpload from '../ImageUpload'
 import EditProfile from '../EditProfile'
 
 
-const Profile = ({user}) => (
+const Profile = ({user, logout}) => (
     <div>
+        <a href="" onClick={e=>{
+            e.preventDefault();
+            logout()
+        }}>Logout</a>
         <div>
             <h2>Who are you {user.username}?</h2>
             <ImageUpload/>

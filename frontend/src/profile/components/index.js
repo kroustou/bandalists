@@ -1,5 +1,6 @@
 import ProfileContainer from './containers/Profile'
 import {connect} from 'react-redux'
+import {logout} from '../../auth/actions'
 
 const mapStateToProps = (state) => {
     return {
@@ -7,8 +8,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
     return {
+        logout: () => {
+            logout(dispatch)
+        }
     }
 }
 

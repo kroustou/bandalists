@@ -21,6 +21,6 @@ export const login = (dispatch, token, next) => {
 
 export const logout = (dispatch) => {
     dispatch({type: 'LOGOUT'})
-    closeSocket()
     dispatch(replace('/'))
+    closeSocket()
 }
