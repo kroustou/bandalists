@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'
 import BandSelectorContainer from './containers/BandSelector'
 import {selectBand} from '../actions'
+import {push} from 'react-router-redux'
 
 const mapStateToProps = (state) => {
     return {
@@ -11,7 +12,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        selectBand: (band) => selectBand(dispatch, band)
+        selectBand: (band) => {
+            selectBand(dispatch, band)
+            dispatch(push('/'))
+        }
     }
 }
 

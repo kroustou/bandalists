@@ -9,18 +9,14 @@ class ThreadDetails extends React.Component {
     render() {
         let thread = this.props.currentThread
         const {deletePost, user} = this.props
-        if (thread) {
-            return (
-                <div className="thread-detail">
-                    <Link activeClassName='active' to='/dashboard/'>
-                        <input type="button" value="Back to dashboard" />
-                    </Link>
-                    <Thread key={thread.id} thread={thread} deletePost={deletePost} user={user}/>
-                </div>
-            )
-        } else {
-            return <div></div>
-        }
+        return (
+            <div className="thread-detail">
+                <Link activeClassName='active' to='/dashboard/'>
+                    <input type="button" value="Back to dashboard" />
+                </Link>
+                {thread ? <Thread key={thread.id} thread={thread} deletePost={deletePost} user={user}/> : ''}
+            </div>
+        )
     }
 }
 

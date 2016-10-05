@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'
 import BandMembersContainer from './containers/BandMembers'
 import {invite, searchForUser, leaveBand, addMember} from '../actions'
+import {push} from 'react-router-redux'
 
 const mapStateToProps = (state) => {
     return {
@@ -16,6 +17,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         leaveBand: (bandId) => {
             leaveBand(dispatch, bandId)
+            dispatch(push('/'))
         },
         addMember: (bandSlug, memberId) => {
             addMember(dispatch, bandSlug, memberId)
