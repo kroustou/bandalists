@@ -17,9 +17,33 @@
 	}
 }
 
-.avatar-circle .avatar-container {
-	width: 50px;
-	border-radius: 50%;
-	border: 2px solid $light3;
-	margin: 0 auto;
+.profile {
+	a.active .avatar-circle .avatar-container {
+		border: 3px solid $light4;
+
+		img {
+	        opacity: 1;
+	    }
+	}
+
+	.avatar-circle .avatar-container {
+		width: 50px;
+		border-radius: 50%;
+		border: 2px solid $light3;
+		margin: 0 auto;
+		transition: all .1s;
+
+		img {
+	        opacity: 0.5;
+	    }
+
+		&:hover {
+			border: 3px solid $light4;
+			box-shadow: 0 0 10px $light4;
+
+			img {
+		        opacity: 1;
+		    }
+		}
+	}
 }
