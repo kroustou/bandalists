@@ -8,6 +8,7 @@ const mapStateToProps = (state, {params: {bandSlug}}) => {
     const band = state.bands.bands.results.find(band => band.slug === bandSlug)
     return {
         form: 'editBand_' + bandSlug,
+        band: band,
         initialValues: {
             ...band
         },
