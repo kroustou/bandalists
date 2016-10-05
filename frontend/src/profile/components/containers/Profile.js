@@ -6,10 +6,10 @@ import EditProfile from '../EditProfile'
 
 const Profile = ({user, logout}) => (
     <div>
-        <a href="" onClick={e=>{
+        <a href="" className="u-pull-right" onClick={e=>{
             e.preventDefault();
             logout()
-        }}>Logout</a>
+        }}>Logout <i className="fa fa-2x fa-sign-out" aria-hidden="true"></i></a>
         <div>
             <h2>Who are you {user.username}?</h2>
             <ImageUpload/>

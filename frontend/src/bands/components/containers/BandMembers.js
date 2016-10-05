@@ -8,14 +8,14 @@ export default ({band, searchUser, leaveBand, memberSearch, addMember, inviteUse
                 {band.members.map(member => <li key={member.id}>{member.username}</li>)}
             </ul>
             <div className="row">
-                <form id='member_search' className="row">
+                <form id='member_search' className="row" autoComplete="off">
                     <input className="columns" type="text" onChange={(e) => searchUser(e, band.slug)} name="user" id="" placeholder="Search for username or email to add to band"/>
                 </form>
                 <ul className="row">
                     {memberSearch.map(user => (
                         <li onClick={() => {
                             addMember(band.slug, user.id)
-                        }} key={user.id}>Add {user.username}</li>
+                        }} key={user.id}><i className="fa fa-user-plus" aria-hidden="true"></i> {user.username}</li>
                     ))}
                 </ul>
                 {inviteUser ? <input type="button" name="invite" onClick={() => {invite(inviteUser, band.slug)}} value={`Invite ${inviteUser}`}/> : ''}
