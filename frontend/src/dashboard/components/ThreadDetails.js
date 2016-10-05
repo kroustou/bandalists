@@ -3,9 +3,13 @@ import {connect} from 'react-redux'
 import {getThreads, deleteThread} from '../actions'
 
 const mapStateToProps = (state, props) => {
+    let currentThread = null
+    if (state.dashboard.threads) {
+        currentThread = state.dashboard.threads.results.find(thread => thread.id === parseInt(props.params.id, 10))
+    }
     return {
         user: state.session.info,
-        currentThread: state.dashboard.threads ? state.dashboard.threads.results.find(thread => thread.id === parseInt(props.params.id, 10)) : null,
+        currentThread: currentThread,
         dashboard: state.bands.selectedBand
     }
 }

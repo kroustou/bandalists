@@ -11,7 +11,7 @@ class ThreadDetails extends React.Component {
         const {deletePost, user} = this.props
         if (thread) {
             return (
-                <div>
+                <div className="thread-detail">
                     <Link activeClassName='active' to='/dashboard/'>
                         <input type="button" value="Back to dashboard" />
                     </Link>

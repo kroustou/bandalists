@@ -7,7 +7,7 @@ const RenderNotification = ({notification}) => {
         let message = JSON.parse(notification.message)
         return (
             <div>
-                New {message.parent ? 'reply' : 'post'}  from {message.author}: {message.text}
+                New {message.parent ? 'reply' : 'post'}  from {message.author.username}: {message.text}
                 <span className="date">{moment.unix(message.last_edit).fromNow()}</span>
             </div>
         )

@@ -30,7 +30,12 @@ export const editBand = (dispatch, data) => {
 }
 
 export const selectBand = (dispatch, band) => {
-    getThreads(dispatch, band.id)
+    // this is bad.
+    if (band.id) {
+        getThreads(dispatch, band.id)
+    } else {
+        getThreads(dispatch, band)
+    }
     dispatch({'type': SELECT_BAND, 'band': band})
 }
 
