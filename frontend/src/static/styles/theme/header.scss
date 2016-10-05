@@ -15,6 +15,23 @@ header {
         float: right;
         margin: 0;
 
+        .profile {
+            &:hover {
+                & > a, & > span {
+                    background: $light2;
+                    border-bottom: none;
+
+                    img {
+                        opacity: 0.5;
+                    }
+                }
+            }
+
+            a.active {
+                border-bottom: none;
+            }
+        }
+
         & > li {
             float: right;
             margin: 0;

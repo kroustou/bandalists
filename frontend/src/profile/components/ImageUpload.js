@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'
 import ImageUpload from './containers/ImageUpload'
 import {api} from '../../api'
+import {getUserInfo} from '../../auth/actions'
 
 const mapStateToProps = (state) => {
     return {
@@ -29,13 +30,13 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type: 'LOADING'})
             api('/me/', 'put', data, config)
                 .then(function (res) {
-                    console.log(res)
                     dispatch({type: 'DONE_LOADING'})
+                    getUserInfo(dispatch)
+
                 })
                 .catch(function (err) {
                     dispatch({type: 'DONE_LOADING'})
                     dispatch({type: 'REQUEST_ERROR', error: err})
-
                 })
         }
     }

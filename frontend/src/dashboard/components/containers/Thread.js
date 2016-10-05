@@ -1,5 +1,6 @@
 import React from 'react'
 import PostForm from '../PostForm'
+import Avatar from '../../../profile/components/containers/Avatar'
 import moment from 'moment/moment'
 import Remarkable from 'remarkable'
 import {escapeHtml, replaceEntities} from 'remarkable/lib/common/utils'
@@ -24,7 +25,7 @@ class Thread extends React.Component {
             <div className={`row ${child ? 'comment' : 'thread'}`}>
                 {user.username === thread.author.username ? <span className="delete" onClick={() => {deletePost(thread)}}>x</span>:''}
                 <div className="row">
-                    { thread.author.avatar ? <div className="author-avatar columns two"><img src={thread.author.avatar}/></div> : ''}
+                    { thread.author.avatar ? <div className="author-avatar columns two"><Avatar img={thread.author.avatar}/></div> : ''}
                     <div className="text columns ten" dangerouslySetInnerHTML={this.rawMarkup()}></div>
                 </div>
                 <span className="author">{thread.author.username}</span> <span className="date">{moment.unix(thread.last_edit).fromNow()}</span>

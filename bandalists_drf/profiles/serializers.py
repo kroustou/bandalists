@@ -1,9 +1,11 @@
 from rest_framework import serializers
 
 # from django.core.exceptions import ValidationError
+
+from django.contrib.auth import get_user_model
+
 from django.conf import settings
 User = settings.AUTH_USER_MODEL
-
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -38,6 +40,7 @@ class ProfileSerializer(serializers.BaseSerializer):
         they remain unchainged by beeing set to the existing value
         (second param of the data.get)
         '''
+        User = get_user_model()
         self.user = User.objects.get(pk=data.get('user'))
         dict_to_return = {
             'username': data.get('username', self.user.username),

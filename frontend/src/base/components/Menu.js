@@ -5,6 +5,7 @@ import {logout} from '../../auth/actions'
 const mapStateToProps = (state) => {
     return {
         authenticated: state.session.authenticated,
+        user: state.session.info,
         selectedBand: state.bands.selectedBand,
         notifications: state.notifications.notifications.results,
     }
