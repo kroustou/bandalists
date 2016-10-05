@@ -43,7 +43,7 @@ INSTALLED_APPS = (
     'notifications',
     'rest_auth',
     'profiles',
-
+    'easy_thumbnails',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -148,5 +148,12 @@ CHANNEL_LAYERS = {
             "hosts": [("localhost", 6379)],
         },
         "ROUTING": "notifications.routing.channel_routing",
+    },
+}
+
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'avatar': {'size': (200, 200), 'crop': True},
     },
 }

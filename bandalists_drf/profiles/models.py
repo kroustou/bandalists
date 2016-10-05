@@ -7,8 +7,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 from bands.models import Band
+from easy_thumbnails.files import get_thumbnailer
 from .emails import send_invitation_email
-
 
 class Profile(models.Model):
     user = models.OneToOneField(User)
@@ -21,7 +21,7 @@ class Profile(models.Model):
             'name': self.user.first_name,
             'email': self.user.email,
             'surname': self.user.last_name,
-            'avatar': self.avatar.url if self.avatar else None,
+            'avatar': get_thumbnailer(self.avatar)['avatar'].url if self.avatar else None,
             'instruments': [
                 instrument.name
                 for instrument in self.user.instrument_set.all()

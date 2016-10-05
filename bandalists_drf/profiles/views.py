@@ -6,7 +6,6 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework import permissions
 from rest_framework.response import Response
-from rest_framework.parsers import MultiPartParser
 from rest_framework import status
 import logging
 from .serializers import UserSerializer, ProfileSerializer
