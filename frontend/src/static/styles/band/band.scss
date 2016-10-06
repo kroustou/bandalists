@@ -42,6 +42,7 @@
 .band-members {
     border-top: 2px solid $light1;
     margin-top: 20px;
+    margin-bottom: 100px;
 
     h6 {
         color: $light0;
@@ -53,7 +54,7 @@
         padding: 0;
         color: $light2;
 
-        &.members li {
+        li.member {
             list-style: none;
             margin: 1%;
             padding: 1%;
@@ -68,6 +69,15 @@
 
     .action {
         margin-top: 20px;
+    }
+
+    .invite {
+        li.member {
+            background: $light2;
+            color: $light3;
+
+            cursor: pointer;
+        }
     }
 }
 

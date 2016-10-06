@@ -25,6 +25,9 @@ export default (state = defaultState, action) => {
             return state
         }
     }
+    case 'RESET_INVITED_USER': {
+        return Object.assign({}, state, {inviteUser: null})
+    }
     case 'REFRESH_SELECTED_BAND': {
         let selected = browserStore.get('lastSelectedBand')
         if (selected && state.selectedBand) {

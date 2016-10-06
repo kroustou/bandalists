@@ -6,3 +6,13 @@ $light2: #7ca2aa;
 $light1: #56504d;
 $light0: #212323;
 $red: #982f18;
+
+
+.red {
+    background: $red !important;
+    color: $light3 !important;
+
+    &:hover {
+	    background: lighten($red, 10%) !important;
+    }
+}

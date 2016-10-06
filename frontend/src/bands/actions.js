@@ -78,5 +78,6 @@ export const invite = (dispatch, userEmail, bandSlug) => {
     let url = '/user/' + userEmail + '/invite/' + bandSlug + '/'
     api(url, 'post').then(() => {
         createMessage(dispatch, userEmail + ' has been invited!')
+        dispatch({type: 'RESET_INVITED_USER'})
     })
 }
