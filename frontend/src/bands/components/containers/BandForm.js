@@ -1,6 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import BandMembers from '../BandMembers'
+import RenderField from '../../../base/components/containers/RenderField'
 
 const EditBandForm = (props) => {
     const {handleSubmit, initialValues, band} = props
@@ -8,7 +9,7 @@ const EditBandForm = (props) => {
         <div>
             {initialValues ? '' : <h5>Add a new band</h5>}
             <form className="new-band-form row " onSubmit={handleSubmit} autoComplete="off">
-                <Field className="u-full-width" name="name" {...props.fields.name} component='input' placeholder='Name'/>
+                <Field type="text" name="name" {...props.fields.name} component={RenderField} label="Band name" placeholder='Name'/>
             </form>
             <div className="row">
                 {band ? <BandMembers band={band}/>: ''}

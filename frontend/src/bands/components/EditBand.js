@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
         onSubmit: (data) => {
             dispatch(reset('editBand_' + data.slug))
             editBand(dispatch, data)
-            dispatch(push('/bands/'))
+            dispatch(push('/profile/'))
         }
     }
 }
