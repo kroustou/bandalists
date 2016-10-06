@@ -16,7 +16,7 @@ export default ({band, searchUser, leaveBand, memberSearch, addMember, inviteUse
                     {memberSearch.map(user => (
                         <li className="three columns member" onClick={() => {
                             addMember(band.slug, user.id)
-                        }} key={user.id}><i className="fa fa-user-plus" aria-hidden="true"></i> {user.username}</li>
+                        }} key={user.id}> <div className="one column"><i className="fa fa-plus" aria-hidden="true"></i></div><div className="two columns"><Avatar img={user.avatar}/></div> <div className="nine columns">{user.username}</div></li>
                     ))}
                 </ul>
                 {inviteUser ? <input type="button" name="invite" onClick={() => {invite(inviteUser, band.slug)}} value={`Invite ${inviteUser}`}/> : ''}

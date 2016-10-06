@@ -11,6 +11,7 @@ import logging
 from .serializers import UserSerializer, ProfileSerializer
 from bands.models import Band
 from .models import Invitation
+from easy_thumbnails.files import get_thumbnailer
 
 logging.basicConfig()
 User = get_user_model()
@@ -101,7 +102,8 @@ class UserProfile(APIView):
                     [{
                         'username': o.username,
                         'id': o.id,
-                        'email': o.email
+                        'email': o.email,
+                        'avatar': get_thumbnailer(o.profile.avatar)['avatar'].url if o.profile.avatar else None
                     } for o in obj],
                     status=status.HTTP_202_ACCEPTED
                 )
@@ -109,6 +111,8 @@ class UserProfile(APIView):
             [],
             status=status.HTTP_204_NO_CONTENT
         )
+
+
 
 
 
