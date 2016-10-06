@@ -5,12 +5,16 @@ User = get_user_model()
 
 class BandImageSerializer(serializers.ModelSerializer):
 
+    def to_representation(self, obj):
+        return obj.to_dict()
+
     class Meta:
         model = BandImage
         fields = (
             'id',
             'image',
-            'primary'
+            'primary',
+            'band'
         )
 
 

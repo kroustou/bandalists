@@ -3,16 +3,17 @@ import ImageUpload from './containers/ImageUpload'
 import {api} from '../../api'
 import {getUserInfo} from '../../auth/actions'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
     return {
         avatarPreview: state.myProfile.avatarPreview,
         user: state.session.info,
+        band: props.band
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleChange: e => {
+        handleChange: (e, url) => {
             e.preventDefault()
             let reader = new FileReader()
             let file = e.target.files[0]
@@ -28,8 +29,9 @@ const mapDispatchToProps = (dispatch) => {
                 }
             }
             dispatch({type: 'LOADING'})
-            api('/me/', 'put', data, config)
+            api(url, 'put', data, config)
                 .then(function (res) {
+                    dispatch({type: 'CLEAR_AVATAR_PREVIEW', data: reader.result})
                     dispatch({type: 'DONE_LOADING'})
                     getUserInfo(dispatch)
 

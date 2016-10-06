@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, status
 from rest_framework.decorators import detail_route
 from rest_framework.response import Response
-from .serializers import BandSerializer, InstrumentSerializer
+from .serializers import BandSerializer, InstrumentSerializer, BandImageSerializer
 from .models import Band
 User = get_user_model()
 
@@ -20,6 +20,25 @@ class BandViewSet(viewsets.ModelViewSet):
             return Response(status=status.HTTP_404_NOT_FOUND)
         else:
             band.members.remove(request.user)
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+    @detail_route(methods=['put'])
+    def add_image(self, request, slug=None):
+        try:
+            band = request.user.band_set.get(slug=slug)
+        except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        else:
+            data = {
+                'image': request.data.get('avatar'),
+                'band': band.pk,
+                'primary': True,
+            }
+            band_image = BandImageSerializer(data=data)
+            band.bandimage_set.update(primary=False)
+            if band_image.is_valid():
+                band_image.save()
             return Response(status=status.HTTP_204_NO_CONTENT)
 
     @detail_route(methods=['post'])

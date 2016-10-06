@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save, m2m_changed
 from django.dispatch import receiver
+from easy_thumbnails.files import get_thumbnailer
 from bands.utils import unique_slugify
 from channels import Group
 import json
@@ -38,6 +39,13 @@ class BandImage(models.Model):
     band = models.ForeignKey(Band)
     primary = models.BooleanField(default=False)
 
+    def to_dict(self):
+        return ({
+            'image': self.image.url if self.image else None,
+            'avatar': get_thumbnailer(self.image)['avatar'].url if self.image else None,
+            'primary': self.primary
+        })
+
     def __unicode__(self):
         return self.band.name
 
@@ -51,5 +59,10 @@ m2m_changed.connect(print_band, sender=Band.members.through)
 @receiver(post_save, sender=Band)
 @receiver(post_save, sender=BandImage)
 def notify(sender, instance, signal, created, **kwargs):
-    Group(instance.slug).send({"text": json.dumps({'notification_type': 'update_bands'})})
+
+    if (isinstance(Band, sender)):
+        group = instance.slug
+    else:
+        group = instance.band.slug
+    Group(group).send({"text": json.dumps({'notification_type': 'update_bands'})})
 

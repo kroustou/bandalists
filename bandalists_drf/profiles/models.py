@@ -16,7 +16,6 @@ class Profile(models.Model):
 
     def to_dict(self):
         from bands.serializers import BandSerializer
-        print self.avatar
         return ({
             'username': self.user.username,
             'name': self.user.first_name,

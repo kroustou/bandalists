@@ -1,14 +1,28 @@
 import React from 'react'
 
-export default (props) => (
-    <div className="row">
-        <div className="avatar six columns">
-            <input id="upload" name="avatar" type="file" onChange={(e)=>props.handleChange(e)} />
-            <div className="preview">
-                <img src={props.avatarPreview ? props.avatarPreview : props.user.avatar }/>
-                <label htmlFor="upload">Upload New</label>
+export default (props) => {
+
+    const url = props.band ? '/bands/' + props.band.slug + '/add_image/': '/me/'
+    let preview
+    if (props.avatarPreview) {
+        preview = props.avatarPreview
+    } else {
+        if (props.band) {
+            preview = props.band.bandimage_set.find(i=>i.primary).image
+        } else {
+            preview = props.user.avatar
+        }
+    }
+
+    return (
+        <div className="row">
+            <div className="avatar six columns">
+                <input id="upload" name="avatar" type="file" onChange={(e)=>props.handleChange(e, url)} />
+                <div className="preview">
+                    <img src={preview}/>
+                    <label htmlFor="upload">Upload New</label>
+                </div>
             </div>
         </div>
-    </div>
-)
-
+    )
+}

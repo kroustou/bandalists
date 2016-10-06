@@ -5,6 +5,9 @@ export default (state = defaultState, action) => {
         case 'AVATAR_PREVIEW': {
             return Object.assign({}, state, {avatarPreview: action.data})
         }
+        case 'CLEAR_AVATAR_PREVIEW': {
+            return Object.assign({}, state, {avatarPreview: null})
+        }
         default: {
             return state
         }
