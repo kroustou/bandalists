@@ -37,25 +37,37 @@
             margin: 0;
         }
     }
+}
 
-    .band-members {
-        border-top: 2px solid $light1;
-        margin-top: 20px;
+.band-members {
+    border-top: 2px solid $light1;
+    margin-top: 20px;
 
-        h6 {
-            color: $light0;
-            margin: 0;
-        }
+    h6 {
+        color: $light0;
+        margin: 0;
+    }
 
-        ul {
-            margin: 0;
-            padding: 0;
-            color: $light2;
-        }
+    ul {
+        margin: 0;
+        padding: 0;
+        color: $light2;
 
-        .action {
-            margin-top: 20px;
+        &.members li {
+            list-style: none;
+            margin: 1%;
+            padding: 1%;
+            background: $light4;
+            color: $light1;
+
+            &:hover {
+                background: lighten($light4, 5%);
+            }
         }
     }
 
+    .action {
+        margin-top: 20px;
+    }
 }
+

@@ -1,11 +1,12 @@
 import React from 'react'
+import Avatar from '../../../profile/components/containers/Avatar'
 
 export default ({band, searchUser, leaveBand, memberSearch, addMember, inviteUser, invite}) => {
     return (
         <div className="band-members columns">
-            <h6 className="row">Members</h6>
-            <ul className="row">
-                {band.members.map(member => <li key={member.id}>{member.username}</li>)}
+            <h5 className="row">Members</h5>
+            <ul className="row members">
+                {band.members.map(member => <li className="three columns member" key={member.id}> {member.avatar ? <div className="two columns"><Avatar img={member.avatar}/></div> : ''} <div className="ten columns">{member.username}</div></li>)}
             </ul>
             <div className="row">
                 <form id='member_search' className="row" autoComplete="off">

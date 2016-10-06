@@ -3,7 +3,6 @@ from .models import Band, Instrument, BandImage
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-
 class BandImageSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -16,12 +15,14 @@ class BandImageSerializer(serializers.ModelSerializer):
 
 
 class MemberSerializer(serializers.ModelSerializer):
+    avatar = serializers.ImageField(max_length=None, allow_empty_file=False, use_url=True, source='profile.avatar')
 
     class Meta:
         model = User
         fields = (
             'id',
             'username',
+            'avatar'
         )
 
 
