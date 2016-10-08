@@ -13,12 +13,12 @@ export default (props) => {
             preview = props.user.avatar
         }
     }
-
     return (
         <div className="row">
-            <div className="avatar six columns">
+            <div className="avatar three columns">
                 <input id="upload" name="avatar" type="file" onChange={(e)=>props.handleChange(e, url)} />
                 <div className="preview">
+                    <div className="progress" style={{width: props.progress + '%'}}></div>
                     <img src={preview}/>
                     <label htmlFor="upload">Upload New</label>
                 </div>

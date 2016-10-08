@@ -7,17 +7,17 @@ const backend = axios.create({
 
 })
 
-export const api = (url, method='get', data={}, config) => {
+export const api = (url, method='get', data={}, config={}) => {
     let token = browserStore.get('token')
     let headers =  {Accept: 'application/json'}
     if (token) {
         headers.Authorization = 'token ' + token
     }
-    return backend({
+
+    return backend(Object.assign({
         method,
         url,
         data,
         headers,
-        config
-    })
+    }, config))
 }

@@ -6,6 +6,11 @@
 	.preview {
 		position: relative;
 
+		.progress {
+			background: $light2;
+			height: 4px;
+		}
+
 		label {
 			background: $light3;
 			position: absolute;
@@ -20,9 +25,8 @@
 		}
 
 		img {
-			max-width: 100%;
-			display: block;
-			max-height: 100px;
+			width: 100%;
+			display: inline-block;
 		}
 	}
 }

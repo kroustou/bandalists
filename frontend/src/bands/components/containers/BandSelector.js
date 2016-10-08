@@ -3,8 +3,10 @@ import React from 'react'
 export default ({bands, selectBand, selectedBand}) => {
     let bandImage = 'http://placehold.it/100x100/ff0000/?text=?'
     if (selectedBand) {
-        bandImage = selectedBand.bandimage_set.find(i => i.primary).avatar
-        if (!bandImage) {
+        const bandImageDict = selectedBand.bandimage_set.find(i => i.primary)
+        if (bandImageDict) {
+            bandImage = bandImageDict.avatar
+        } else {
             bandImage = 'http://placehold.it/100x100/?text=' + selectedBand.name[0]
         }
     }

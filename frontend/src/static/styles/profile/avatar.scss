@@ -30,6 +30,11 @@
 	    }
 	}
 
+	.progress {
+		background: $light2;
+		height: 2px;
+	}
+
 	.avatar-circle .avatar-container {
 		width: 50px;
 		border-radius: 50%;
