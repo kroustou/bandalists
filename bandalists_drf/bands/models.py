@@ -4,6 +4,7 @@ from django.db.models.signals import post_save, m2m_changed
 from django.dispatch import receiver
 from easy_thumbnails.files import get_thumbnailer
 from bands.utils import unique_slugify
+
 from channels import Group
 import json
 
@@ -48,12 +49,6 @@ class BandImage(models.Model):
 
     def __unicode__(self):
         return self.band.name
-
-
-def print_band(sender, instance, action, reverse, model, pk_set, **kwargs):
-    if action == 'post_add':
-        Group(instance.slug).send({"text": json.dumps({'notification_type': 'update_bands'})})
-m2m_changed.connect(print_band, sender=Band.members.through)
 
 
 @receiver(post_save, sender=Band)

@@ -20,7 +20,13 @@ const RenderNotification = ({notification}) => {
             </div>
         )
     } else if (notification.notification_type === 'update_bands') {
-        return <div>One of your bands settings have been changed!</div>
+        let message
+        if (notification.message) {
+            message = JSON.parse(notification.message).message
+        } else {
+            message = 'Band has been updated'
+        }
+        return <div>{message}</div>
     } else {
         return <div>{notification}</div>
     }

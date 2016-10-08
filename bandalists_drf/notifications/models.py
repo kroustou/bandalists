@@ -5,7 +5,10 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .utils import push_notification
 from bands.models import Band
-import receivers
+
+# import in order to register extra recievers
+import receivers # noqa
+
 
 User = settings.AUTH_USER_MODEL
 

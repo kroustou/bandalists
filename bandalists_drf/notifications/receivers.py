@@ -1,12 +1,12 @@
 from channels import Group
 import json
 
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_save, post_delete, m2m_changed
 from django.dispatch import receiver
 
 from discussion.models import Thread
 from discussion.serializers import ThreadSerializer
-from bands.models import Band
+from bands.models import Band, BandImage
 
 
 @receiver(post_save, sender=Thread)
@@ -45,3 +45,22 @@ def mark_notification_read(sender, instance, signal, created, **kwargs):
 @receiver(post_delete, sender=Thread)
 def notify(sender, instance, signal, **kwargs):
     Group(instance.dashboard.slug).send({"text": json.dumps({'notification_type': 'thread', 'dashboard': instance.dashboard.id})})
+
+def print_band(sender, instance, action, reverse, model, pk_set, **kwargs):
+    from .models import Notification
+    users = [u.username for u in model.objects.filter(pk__in=pk_set)]
+    message = False
+    if action == 'post_add':
+        message = '%s has been added to %s.' % (', '.join(users), instance.name)
+    elif action == 'post_remove':
+        message = '%s has left %s.' % (', '.join(users), instance.name)
+    if message:
+        for user in instance.members.all():
+            Notification(
+                for_user=user,
+                url='/deleteme/',
+                notification_type='update_bands',
+                message=json.dumps({'message': message}),
+                dashboard=instance,
+            ).save()
+m2m_changed.connect(print_band, sender=Band.members.through)

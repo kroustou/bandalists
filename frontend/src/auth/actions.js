@@ -6,7 +6,6 @@ import {init} from '../base/actions'
 export const getUserInfo = (dispatch, next) => {
     return api('/me/').then(resp => {
         dispatch({type: 'CLEAR_AVATAR_PREVIEW'})
-        console.log('asd')
         dispatch({type: 'UPDATE_USER_INFO', info: resp.data})
         dispatch({type: 'REFRESH_SELECTED_BAND'})
         if (next) {
