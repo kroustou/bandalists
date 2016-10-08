@@ -59,8 +59,7 @@ m2m_changed.connect(print_band, sender=Band.members.through)
 @receiver(post_save, sender=Band)
 @receiver(post_save, sender=BandImage)
 def notify(sender, instance, signal, created, **kwargs):
-
-    if (isinstance(Band, sender)):
+    if (isinstance(instance, Band)):
         group = instance.slug
     else:
         group = instance.band.slug
