@@ -8,7 +8,12 @@ export default (props) => {
         preview = props.avatarPreview
     } else {
         if (props.band) {
-            preview = props.band.bandimage_set.find(i=>i.primary).image
+            const primary = props.band.bandimage_set.find(i=>i.primary)
+            if (primary) {
+                preview = primary.image
+            } else {
+                preview = 'http://placehold.it/200x200'
+            }
         } else {
             preview = props.user.avatar
         }
