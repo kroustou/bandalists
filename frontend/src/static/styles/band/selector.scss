@@ -1,63 +1,78 @@
 header .band-selector {
-    position: absolute;
-
-    &:hover ul {
-        display: block;
-    }
+    position: relative;
 
     div.band-image {
-        font-weight: 800;
         display: inline-block;
         overflow: hidden;
         width: 50px;
         height: 50px;
-        position: relative;
-        border: 3px solid $light4;
         border-radius: 50%;
-        opacity: 0.8;
+        border: 2px solid $light4;
+        transition: all .1s;
+        margin-top: 5px;
 
         img {
             display: block;
-            position: absolute;
             width: 100%;
         }
+
     }
 
-    ul {
-        display: none;
-    }
-}
+    &:hover {
+        .selected {
+            background: $light4;
+        }
 
-.band-selector {
-
-    a:hover {
-        color: $light0;
     }
 
-    ul {
-        background: $light4;
-        list-style: none;
-        padding: 10px;
-        text-align: center;
-
-        li {
-
-            &.active {
-                font-weight: 800;
-                background: $light0;
-                color: $light4;
-
-            }
-
-            &:hover {
-                background: darken($light4, 5%);
-                cursor: pointer;
-            }
+    ul li {
+        &.active {
+            display: none;
         }
     }
 
-    .band-image{
-        display: none;
+    .selected {
+        position: absolute;
+        background: $light3;
+        top: 23px;
+        padding: 2px;
+        font-size: 9px;
+        opacity: 0.8;
+        left: 0;
+        right: 0;
     }
-
 }
+
+// .band-selector {
+
+//     a:hover {
+//         color: $light0;
+//     }
+
+//     ul {
+//         background: $light4;
+//         list-style: none;
+//         padding: 10px;
+//         text-align: center;
+
+//         li {
+
+//             &.active {
+//                 font-weight: 800;
+//                 background: $light0;
+//                 color: $light4;
+
+//             }
+
+//             &:hover {
+//                 background: darken($light4, 5%);
+//                 cursor: pointer;
+//             }
+//         }
+//     }
+
+//     .band-image{
+//         display: none;
+//     }
+
+// }

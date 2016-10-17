@@ -1,24 +1,32 @@
 import React from 'react'
 
-export default ({bands, selectBand, selectedBand}) => {
-    let bandImage = 'http://placehold.it/100x100/ff0000/?text=?'
-    if (selectedBand) {
-        const bandImageDict = selectedBand.bandimage_set.find(i => i.primary)
+const BandLabel = ({band}) => {
+    let bandImage = 'http://placehold.it/100x100/?text=' + band.name[0]
+    if (band.bandimage_set) {
+        const bandImageDict = band.bandimage_set.find(i => i.primary)
         if (bandImageDict) {
             bandImage = bandImageDict.avatar
         } else {
-            bandImage = 'http://placehold.it/100x100/?text=' + selectedBand.name[0]
         }
     }
     return (
-        <div className="band-selector">
-            {selectedBand ? '' : <div className="message">Please select a band</div>}
+        <div className="band-label">
+            <span className="selected">{band.name}</span>
             <div className='band-image'>
                 <img src={bandImage}/>
             </div>
+        </div>
+    )
+}
+
+export default ({bands, selectBand, selectedBand}) => {
+
+    return (
+        <div className="band-selector">
+            {selectedBand ? <BandLabel band={selectedBand}/> : <div className="message">Please select a band</div>}
             <ul>
                 { bands && bands.results ? bands.results.map(band => (
-                    <li className={ selectedBand && band.slug === selectedBand.slug ? 'active' : ''} key={band.slug} onClick={() => selectBand(band) }>{band.name}</li>
+                    <li className={ selectedBand && band.slug === selectedBand.slug ? 'active' : ''} key={band.slug} onClick={() => selectBand(band) }><BandLabel band={band}/></li>
                     ))
                 : 'No band selected!!!'}
             </ul>

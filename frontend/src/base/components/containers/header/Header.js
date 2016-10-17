@@ -1,6 +1,5 @@
 import React from 'react'
 import Menu from '../../../components/Menu'
-import {BandSelector} from '../../../../bands/'
 
 const Header = ({authenticated}) => (
     <header className='row'>
@@ -9,7 +8,6 @@ const Header = ({authenticated}) => (
                 <img src={logo}/>
             </div>
             <Menu/>
-            {authenticated ? <div className="three columns"><BandSelector/></div> : ''}
         </div>
 	</header>
 )

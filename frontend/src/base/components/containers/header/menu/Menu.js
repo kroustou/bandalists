@@ -2,11 +2,14 @@ import React from 'react'
 import {Link} from 'react-router'
 import {Notifications} from '../../../../../notifications'
 import Avatar from '../../../../../profile/components/containers/Avatar'
+import {BandSelector} from '../../../../../bands/'
+
 
 class Menu extends React.Component {
     render() {
         return (
             <ul className='six columns menu' >
+                { this.props.authenticated ? <li className="two columns"><BandSelector/></li> : '' }
                 { this.props.authenticated ? <li className='two columns profile'><Link activeClassName='active' to='/profile/'>
                     <div className="avatar-circle">
                         {this.props.user ? <Avatar img={this.props.user.avatar}/> :'' }
