@@ -1,0 +1,20 @@
+session_name: bandalists
+windows:
+  - window_name: dev window
+    layout: tiled
+    panes:
+        - shell_command:
+            - redis-server
+        - shell_command:
+            - cd bandalists_drf
+            - workon bandalists
+            - ./manage.py runserver
+        - shell_command:
+            - cd frontend
+            - npm start
+        - shell_command:
+            - cd bandalists_drf/public
+            - python -m SimpleHTTPServer 8001
+  - window_name: git
+    panes:
+        - subl .
