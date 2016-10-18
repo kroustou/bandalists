@@ -39,7 +39,6 @@ header .menu .band-selector {
 
 
     .band-label:hover {
-        transform: rotate(10deg);
 
         span {
             background: $light4;
@@ -79,9 +78,6 @@ header .menu .band-selector {
 
         ul {
             max-height: 10000px;
-            -ms-transform: skew(2deg, -5deg); /* IE 9 */
-            -webkit-transform: skew(2deg, -5deg);
-            transform: skew(2deg, -5deg);
 
             li {
                 max-height: 100px;

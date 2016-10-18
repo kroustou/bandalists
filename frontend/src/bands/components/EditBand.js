@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         leaveBand: (bandId) => {
             leaveBand(dispatch, bandId)
-            dispatch(push('/'))
+            dispatch(push('/profile/'))
         },
     }
 }
