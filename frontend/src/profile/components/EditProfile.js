@@ -8,9 +8,12 @@ import {logout} from '../../auth/actions'
 import {replace} from 'react-router-redux'
 
 const mapStateToProps = (state) => {
+    // we have to create a new object without the avatar
+    // because we have to avoid sending stupid data to the server
+    const {avatar, ...infoWithoutAvatar} = state.session.info;
     return {
         user: state.session.info,
-        initialValues: state.session.info,
+        initialValues: infoWithoutAvatar
     }
 }
 

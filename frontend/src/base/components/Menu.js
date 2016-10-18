@@ -3,7 +3,6 @@ import MenuContainer from './containers/header/menu/Menu'
 import {logout} from '../../auth/actions'
 
 const mapStateToProps = (state) => {
-    console.log(state.session)
     return {
         authenticated: state.session.authenticated,
         user: state.session.info,
