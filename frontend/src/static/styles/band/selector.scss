@@ -1,4 +1,4 @@
-header .band-selector {
+header .menu .band-selector {
     position: relative;
 
     div.band-image {
@@ -18,61 +18,76 @@ header .band-selector {
 
     }
 
+
+    ul {
+        background: none;
+        width: auto;
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        transition: all .3s;
+
+
+        li {
+            list-style: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 1s;
+            cursor: pointer;
+            background: none;
+
+
+
+            &.active {
+                display: none;
+            }
+        }
+    }
+
     &:hover {
-        .selected {
-            background: $light4;
+
+        ul {
+            max-height: 10000px;
+            // -ms-transform: skew(2deg, -5deg); /* IE 9 */
+            // -webkit-transform: skew(2deg, -5deg); Chrome, Safari, Opera
+            // transform: skew(2deg, -5deg);
+
+            li {
+                max-height: 100px;
+                transition: all .3s;
+
+            }
         }
 
     }
 
-    ul li {
-        &.active {
-            display: none;
-        }
-    }
+    .band-label {
+        position: relative;
+        transition: all .5s;
 
-    .selected {
-        position: absolute;
-        background: $light3;
-        top: 23px;
-        padding: 2px;
-        font-size: 9px;
-        opacity: 0.8;
-        left: 0;
-        right: 0;
+        span {
+            position: absolute;
+            background: $light3;
+            top: 23px;
+            padding: 2px;
+            font-size: 9px;
+            opacity: 0.8;
+            left: 0;
+            right: 0;
+        }
+
+        &:hover {
+            // transform: rotate(10deg);
+
+            span {
+                background: $light4;
+            }
+
+            .band-image {
+                box-shadow: 0px 0px 3px $light4;
+            }
+
+
+        }
     }
 }
-
-// .band-selector {
-
-//     a:hover {
-//         color: $light0;
-//     }
-
-//     ul {
-//         background: $light4;
-//         list-style: none;
-//         padding: 10px;
-//         text-align: center;
-
-//         li {
-
-//             &.active {
-//                 font-weight: 800;
-//                 background: $light0;
-//                 color: $light4;
-
-//             }
-
-//             &:hover {
-//                 background: darken($light4, 5%);
-//                 cursor: pointer;
-//             }
-//         }
-//     }
-
-//     .band-image{
-//         display: none;
-//     }
-
-// }
