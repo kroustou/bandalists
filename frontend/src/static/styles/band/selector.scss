@@ -1,5 +1,20 @@
-header .menu .band-selector {
+.band-label {
     position: relative;
+    transition: all .5s;
+    width: 60px;
+    display: inline-block;
+
+    span {
+        position: absolute;
+        background: $light3;
+        top: 23px;
+        padding: 2px;
+        font-size: 9px;
+        opacity: 0.8;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
 
     div.band-image {
         display: inline-block;
@@ -15,9 +30,25 @@ header .menu .band-selector {
             display: block;
             width: 100%;
         }
-
     }
 
+}
+
+header .menu .band-selector {
+    position: relative;
+
+
+    .band-label:hover {
+        transform: rotate(10deg);
+
+        span {
+            background: $light4;
+        }
+
+        .band-image {
+            box-shadow: 0px 0px 3px $light4;
+        }
+    }
 
     ul {
         background: none;
@@ -48,9 +79,9 @@ header .menu .band-selector {
 
         ul {
             max-height: 10000px;
-            // -ms-transform: skew(2deg, -5deg); /* IE 9 */
-            // -webkit-transform: skew(2deg, -5deg); Chrome, Safari, Opera
-            // transform: skew(2deg, -5deg);
+            -ms-transform: skew(2deg, -5deg); /* IE 9 */
+            -webkit-transform: skew(2deg, -5deg);
+            transform: skew(2deg, -5deg);
 
             li {
                 max-height: 100px;
@@ -61,33 +92,4 @@ header .menu .band-selector {
 
     }
 
-    .band-label {
-        position: relative;
-        transition: all .5s;
-
-        span {
-            position: absolute;
-            background: $light3;
-            top: 23px;
-            padding: 2px;
-            font-size: 9px;
-            opacity: 0.8;
-            left: 0;
-            right: 0;
-        }
-
-        &:hover {
-            // transform: rotate(10deg);
-
-            span {
-                background: $light4;
-            }
-
-            .band-image {
-                box-shadow: 0px 0px 3px $light4;
-            }
-
-
-        }
-    }
 }

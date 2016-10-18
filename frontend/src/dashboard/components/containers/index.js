@@ -9,7 +9,6 @@ export const Dashboard = ({band, children}) => {
                 {children}
             </div>
             <div className="four columns">
-                <BandSelector/>
                 <BandBlock band={band}/>
             </div>
         </div>
