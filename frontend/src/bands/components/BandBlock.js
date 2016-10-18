@@ -13,7 +13,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         leaveBand: (bandId) => {
             leaveBand(dispatch, bandId)
-            dispatch(push('/'))
         },
     }
 }

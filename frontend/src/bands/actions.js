@@ -17,7 +17,7 @@ export const getBands = (dispatch) => {
 export const addBand = (dispatch, data) => {
     api('/bands/', 'post', data).then((response) => {
         getBands(dispatch)
-        dispatch(selectBand(response.data))
+        selectBand(dispatch, response.data)
     })
 }
 
