@@ -15,7 +15,7 @@ export default (state = defaultState, action) => {
     case 'LOGOUT': {
         browserStore.remove('token')
         browserStore.remove('info')
-        return Object.assign({}, defaultState)
+        return Object.assign({}, state, defaultState)
     }
     default: {
         return state
