@@ -7,6 +7,8 @@ const mapStateToProps = (state) => {
         authenticated: state.session.authenticated,
         messages: state.base.messages,
         loading: state.base.loading,
+        notifications: state.notifications.notifications,
+        selectedBand: state.bands.selectedBand,
     }
 }
 
