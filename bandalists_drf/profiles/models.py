@@ -16,12 +16,11 @@ class Profile(models.Model):
 
     def to_dict(self):
         from bands.serializers import BandSerializer
-        return ({
+        profile = {
             'username': self.user.username,
             'name': self.user.first_name,
             'email': self.user.email,
             'surname': self.user.last_name,
-            'avatar': get_thumbnailer(self.avatar)['avatar'].url if self.avatar else None,
             'instruments': [
                 instrument.name
                 for instrument in self.user.instrument_set.all()
@@ -29,7 +28,16 @@ class Profile(models.Model):
             'bands': [
                 BandSerializer(band).data for band in self.user.band_set.all()
             ]
-        })
+        }
+        try:
+            profile.update({
+                'avatar': get_thumbnailer(self.avatar)['avatar'].url if self.avatar else None,
+            })
+        except:
+            # ToDo log this error
+            pass
+
+        return profile
 
     def __unicode__(self):
         return self.user.username
