@@ -1,9 +1,8 @@
 import React from 'react'
 import BandBlock from '../BandBlock'
 import NewBand from '../NewBand'
-import BandSelector from '../BandSelector'
 
-export default ({bands, selectedBand}) => {
+export default ({bands}) => {
     return (
         <div className="bands">
 

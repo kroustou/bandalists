@@ -1,7 +1,6 @@
 import BandBlockContainer from './containers/BandBlock'
 import {leaveBand} from '../actions'
 import {connect} from 'react-redux'
-import {push} from 'react-router-redux'
 
 const mapStateToProps = (state, props) => {
     return {

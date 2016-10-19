@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
             }
             dispatch({type: 'LOADING'})
             api(url, 'put', data, config)
-                .then(function (res) {
+                .then(function () {
                     dispatch({type: 'DONE_LOADING'})
                     getUserInfo(dispatch)
                 })

@@ -1,7 +1,7 @@
 import React from 'react'
 import Avatar from '../../../profile/components/containers/Avatar'
 
-export default ({band, searchUser, leaveBand, memberSearch, addMember, inviteUser, invite}) => {
+export default ({band, searchUser, memberSearch, addMember, inviteUser, invite}) => {
     return (
         <div className="band-members columns">
             <h5 className="row">Members</h5>

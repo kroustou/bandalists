@@ -5,12 +5,12 @@ import {getUserInfo} from '../../auth/actions'
 import {SubmissionError} from 'redux-form'
 import {createMessage} from '../../base/actions'
 import {logout} from '../../auth/actions'
-import {replace} from 'react-router-redux'
 
 const mapStateToProps = (state) => {
     // we have to create a new object without the avatar
     // because we have to avoid sending stupid data to the server
-    const {avatar, ...infoWithoutAvatar} = state.session.info;
+    const {avatar, ...infoWithoutAvatar} = state.session.info // eslint-disable-line no-unused-vars
+
     return {
         user: state.session.info,
         initialValues: infoWithoutAvatar

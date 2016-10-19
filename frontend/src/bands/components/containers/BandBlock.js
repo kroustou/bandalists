@@ -1,5 +1,4 @@
 import React from 'react'
-import BandMembers from '../BandMembers'
 import BandLabel from './BandLabel'
 import {Link} from 'react-router'
 

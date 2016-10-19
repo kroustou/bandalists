@@ -7,7 +7,7 @@ import EditProfile from '../EditProfile'
 const Profile = ({user, logout}) => (
     <div>
         <a href="" className="u-pull-right" onClick={e=>{
-            e.preventDefault();
+            e.preventDefault()
             logout()
         }}>Logout <i className="fa fa-2x fa-sign-out" aria-hidden="true"></i></a>
         <div>

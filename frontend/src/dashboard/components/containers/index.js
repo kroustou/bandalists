@@ -1,6 +1,5 @@
 import React from 'react'
 import BandBlock from '../../../bands/components/BandBlock'
-import BandSelector from '../../../bands/components/BandSelector'
 
 export const Dashboard = ({band, children}) => {
     return (

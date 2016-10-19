@@ -18,9 +18,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSubmit: (data) => {
-            console.log(data)
             dispatch({type: 'LOADING'})
-            let nextRoute = data.next
             return api('/me/', 'post', data)
                 .then(resp => {
                     // in case the login was valid

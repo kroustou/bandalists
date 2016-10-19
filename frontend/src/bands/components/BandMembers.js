@@ -1,7 +1,6 @@
 import {connect} from 'react-redux'
 import BandMembersContainer from './containers/BandMembers'
 import {invite, searchForUser, addMember} from '../actions'
-import {push} from 'react-router-redux'
 
 const mapStateToProps = (state) => {
     return {

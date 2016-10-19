@@ -41,7 +41,7 @@ export const closeSocket = () => {
     try {
         socket.close()
     } catch (e) {
-        console.log(e)
+        // ToDo raven
     }
 }
 

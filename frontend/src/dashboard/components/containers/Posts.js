@@ -5,14 +5,14 @@ import _ from 'underscore'
 
 
 class Posts extends React.Component {
-    isAtBottom = (e) => {
+    isAtBottom = () => {
         let b = document.body
         let h = document.documentElement
         let height
         if (typeof document.height !== 'undefined') {
             height = document.height // For webkit browsers
         } else {
-            height = Math.max( b.scrollHeight, b.offsetHeight,h.clientHeight, h.scrollHeight, h.offsetHeight );
+            height = Math.max( b.scrollHeight, b.offsetHeight,h.clientHeight, h.scrollHeight, h.offsetHeight )
         }
 
         if (height <= screen.height + window.scrollY) {

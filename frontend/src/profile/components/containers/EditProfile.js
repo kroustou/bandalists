@@ -13,7 +13,7 @@ const validate = values => {
 }
 
 const UserProfileForm = (props) => {
-    const {submitSucceeded, user, handleSubmit, error, pristine, reset, submitting} = props
+    const {submitSucceeded, user, handleSubmit, error, submitting} = props
     let buttonValue = 'Update'
     if (submitSucceeded) {
         buttonValue = 'Done! Update Again.'

@@ -1,7 +1,6 @@
 import React from 'react'
-import moment from 'moment/moment'
-import Avatar from  '../../../profile/components/containers/Avatar'
 import Thread from './types/Thread'
+
 const RenderNotification = ({notification}) => {
     if (notification.notification_type === 'thread') {
         let message = JSON.parse(notification.message)
