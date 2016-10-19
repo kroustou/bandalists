@@ -58,7 +58,8 @@ class Profile(APIView):
                         invitation.band.members.add(user)
                     response = user.profile.to_dict()
                     response.update({'key': user.auth_token.key})
-                    invitation.delete()
+                    if invitation:
+                        invitation.delete()
                     return Response(
                         response,
                         status=status.HTTP_201_CREATED
