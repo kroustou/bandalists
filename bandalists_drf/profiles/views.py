@@ -102,9 +102,20 @@ class UserProfile(APIView):
         slug = request.GET.get('slug')
         if slug:
             obj = User.objects.filter(
-                (Q(username__contains=username) | Q(email__contains=username)) & ~Q(band__slug=slug)
+                (
+                    Q(
+                        username__contains=username
+                    ) | Q(
+                        email__contains=username
+                    )
+                ) & ~Q(band__slug=slug)
             )
-            if len(obj) < 5:
+            absolute_username = obj.filter(
+                (
+                    Q(username=username) | Q(email=username)
+                ) & ~Q(band__slug=slug)
+            )
+            if len(obj) < 5 or absolute_username:
                 if len(obj) == 0:
                     return Response(
                         {
@@ -112,22 +123,25 @@ class UserProfile(APIView):
                         },
                         status=status.HTTP_204_NO_CONTENT
                     )
+                if absolute_username:
+                    # we have typed a full username
+                    obj = absolute_username
                 return Response(
                     [{
                         'username': o.username,
                         'id': o.id,
                         'email': o.email,
-                        'avatar': get_thumbnailer(o.profile.avatar)['avatar'].url if o.profile.avatar else None
+                        'avatar': get_thumbnailer(
+                            o.profile.avatar
+                        )['avatar'].url if o.profile.avatar else None
                     } for o in obj],
                     status=status.HTTP_202_ACCEPTED
                 )
+
         return Response(
             [],
             status=status.HTTP_204_NO_CONTENT
         )
-
-
-
 
 
 class InviteUser(APIView):

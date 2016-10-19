@@ -42,7 +42,7 @@ export const selectBand = (dispatch, band) => {
 export const searchForUser = (dispatch, username, bandSlug) => {
     dispatch({type: 'BAND_MEMBER_SEARCH', users: []})
     let url = '/user/' + username + '/?slug=' + bandSlug
-    if (username.length > 3) {
+    if (username.length) {
         api(url, 'get')
         .then(resp => {
             if (resp.status === 204) {
