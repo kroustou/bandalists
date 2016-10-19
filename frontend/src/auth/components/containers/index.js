@@ -9,14 +9,15 @@ const LoginForm = (props) => {
         <form onSubmit={handleSubmit}>
            <div className="error">{error}</div>
             <Field name="next" component='input' type='hidden'/>
+            <Field name="token" component='input' type='hidden'/>
             <Field  name="username" component={RenderField} type='text'  placeholder='Username'/>
             <Field className="u-full-width" name="password" component={RenderField} type="password" placeholder='Password'/>
-            <input className='button-primary' value='Login' type='submit'/>
+            <input className='button-primary' value={props.signup ? 'Sign Up' : 'Login'} type='submit'/>
         </form>
     )
 }
 
 export default reduxForm({
     form: 'loginForm',
-    fields: ['username', 'password', 'next']
+    fields: ['username', 'password', 'next', 'token']
 })(LoginForm)

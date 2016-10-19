@@ -38,15 +38,29 @@ class Profile(APIView):
             raise PermissionDenied
         else:
             if request.data:
-                serialized = UserSerializer(data=request.data)
+                invitation = None
+                # handle token in registration
                 # the user has not set an email
                 # which is fine, but we have to inform django about it.
                 if not request.data.get('email'):
                     request.data.update({'email': ''})
+                if request.data.get('token'):
+                    try:
+                        invitation = Invitation.objects.get(token=request.data.get('token'))
+                    except Invitation.DoesNotExist:
+                        pass
+                    else:
+                        request.data.update({'email': invitation.email})
+                serialized = UserSerializer(data=request.data)
                 if serialized.is_valid():
                     user = serialized.save()
+                    if invitation:
+                        invitation.band.members.add(user)
+                    response = user.profile.to_dict()
+                    response.update({'key': user.auth_token.key})
+                    invitation.delete()
                     return Response(
-                        user.profile.to_dict(),
+                        response,
                         status=status.HTTP_201_CREATED
                     )
                 message = serialized.errors

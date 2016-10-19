@@ -15,8 +15,8 @@ class Menu extends React.Component {
                         {this.props.user ? <Avatar img={this.props.user.avatar}/> :'' }
                     </div>
                 </Link></li> : ''}
-                { this.props.authenticated ? '' : <li className='two columns'><Link activeClassName='active' to='/login/'><i className="fa fa-sign-in" aria-hidden="true"></i>
-</Link></li>}
+                { this.props.authenticated ? '' : <li className='two columns'><Link activeClassName='active' to='/login/'><i className="fa fa-sign-in" aria-hidden="true"></i></Link></li>}
+                { this.props.authenticated ? '' : <li className='two columns'><Link activeClassName='active' to='/sign-up/'><i className="fa fa-user-plus" aria-hidden="true"></i></Link></li>}
                 { this.props.authenticated && this.props.selectedBand ? <li className='two columns'><Link activeClassName='active' to='/dashboard/'><i className="fa fa-comments" aria-hidden="true"></i></Link></li>: ''}
                 { this.props.authenticated ? <Notifications/> : '' }
             </ul>

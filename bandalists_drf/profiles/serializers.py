@@ -1,14 +1,14 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-
+from django.contrib.auth.models import User as DefaultUserModel
 from django.conf import settings
-
 User = settings.AUTH_USER_MODEL
+
 
 class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
-        user = User(
+        user = get_user_model()(
             email=validated_data['email'],
             username=validated_data['username']
         )
@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
     class Meta:
-        model = User
+        model = DefaultUserModel
         fields = ('username', 'email', 'password')
         write_only_fields = ('password',)
 
