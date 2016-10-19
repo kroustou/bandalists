@@ -21,16 +21,21 @@ def send_invitation_email(instance):
 
 def send_notification_email(instance):
     message_dict = json.loads(instance.message)
-    message = render_to_string(
-        'emails/%s.txt' % instance.notification_type,
-        {'instance': instance, 'message_dict': message_dict}
-    )
-    send_mail(
-        'There is some activity in %s!' % (
-            instance.dashboard.name
-        ),
-        message,
-        settings.FROM_EMAIL,
-        [instance.for_user.email],
-        fail_silently=False,
-    )
+    try:
+        message = render_to_string(
+            'emails/%s.txt' % instance.notification_type,
+            {'instance': instance, 'message_dict': message_dict}
+        )
+    except:
+        # ToDo
+        pass
+    else:
+        send_mail(
+            'There is some activity in %s!' % (
+                instance.dashboard.name
+            ),
+            message,
+            settings.FROM_EMAIL,
+            [instance.for_user.email],
+            fail_silently=False,
+        )
