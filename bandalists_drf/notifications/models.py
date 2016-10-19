@@ -4,10 +4,11 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .utils import push_notification
+from profiles.emails import send_notification_email
 from bands.models import Band
 
 # import in order to register extra recievers
-import receivers # noqa
+import receivers  # noqa
 
 
 User = settings.AUTH_USER_MODEL
@@ -28,6 +29,12 @@ class Notification(models.Model):
             serializer.data
         )
 
+    def notify_email(self):
+        # if user has email (and later if user has
+        # enabled notifications via email)
+        if self.for_user.email:
+            send_notification_email(self)
+
     @property
     def channel(self):
         try:
@@ -46,4 +53,5 @@ class Notification(models.Model):
 @receiver(post_save, sender=Notification)
 def send_notification(sender, instance, signal, created, **kwargs):
     if created:
+        instance.notify_email()
         push_notification(instance.channel, instance.to_json())

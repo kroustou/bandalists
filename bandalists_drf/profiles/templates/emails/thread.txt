@@ -1,0 +1,3 @@
+Hello {{ instance.for_user.username }}
+{{ message_dict.author.username }} has {% if message_dict.parent %} replied {% else %} posted a new thread {% endif %} at the dashboard of {{ instance.dashboard.name }}:
+"{{ message_dict.text }}"
