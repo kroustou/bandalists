@@ -18,8 +18,12 @@ class App extends React.Component{
     render() {
         const {children, authenticated, messages, loading, notifications, selectedBand} = this.props
         let newNotifications = notifications.results.filter(notification => !notification.read).length.toString()
+        let title = 'Bandalists'
+        if (authenticated) {
+            title += ` | ${ selectedBand ? selectedBand.name : '' } (${newNotifications})`
+        }
         return (
-            <DocumentTitle title={`Bandalists | ${ selectedBand ? selectedBand.name : '' } (${newNotifications})`}>
+            <DocumentTitle title={title}>
                 <div id='main' className={loading ? 'loading' : ''}>
                     {loading ? <Loading/> : ''}
                     <Header authenticated={authenticated}/>
