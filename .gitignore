@@ -5,3 +5,4 @@ public
 bower_components
 node_modules
 *.rdb
+*debug.log
