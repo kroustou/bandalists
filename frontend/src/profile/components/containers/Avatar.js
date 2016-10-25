@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default ({img}) => (
+export default ({user}) => (
     <div className="avatar-container">
-        { img ? <img src={img}/> : <i className="fa fa-user fa-2x" aria-hidden="true"></i>}
+        { user.avatar ? <img src={user.avatar}/> : <img src={`https://placehold.it/200x200?text=${user.username[0]}`}/>}
     </div>
 )

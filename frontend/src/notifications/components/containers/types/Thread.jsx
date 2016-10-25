@@ -17,7 +17,7 @@ class Thread extends React.Component {
             <div className="row">
                 <div className="row">
                     <div className="two columns">
-                        <Avatar img={message.author.avatar} />
+                        <Avatar user={message.author} />
                     </div>
                     <div className="ten columns">
                         New {message.parent ? 'reply' : 'post'} from {message.author.username}

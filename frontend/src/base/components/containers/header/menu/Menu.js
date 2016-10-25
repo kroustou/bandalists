@@ -12,7 +12,7 @@ class Menu extends React.Component {
                 { this.props.authenticated ? <li className="two columns"><BandSelector/></li> : '' }
                 { this.props.authenticated ? <li className='two columns profile'><Link activeClassName='active' to='/profile/'>
                     <div className="avatar-circle">
-                        {this.props.user ? <Avatar img={this.props.user.avatar}/> :'' }
+                        {this.props.user ? <Avatar user={this.props.user}/> :'' }
                     </div>
                 </Link></li> : ''}
                 { this.props.authenticated ? '' : <li className='two columns'><Link activeClassName='active' to='/login/'><i className="fa fa-sign-in" aria-hidden="true"></i></Link></li>}

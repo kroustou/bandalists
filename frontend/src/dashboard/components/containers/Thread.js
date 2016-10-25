@@ -25,7 +25,7 @@ class Thread extends React.Component {
             <div className={`row ${child ? 'comment' : 'thread'}`}>
                 {user.username === thread.author.username ? <span className="delete" onClick={() => {deletePost(thread)}}>x</span>:''}
                 <div className="row">
-                    { thread.author.avatar ? <div className="author-avatar columns two"><Avatar img={thread.author.avatar}/></div> : ''}
+                    <div className="author-avatar columns two"><Avatar user={thread.author}/></div>
                     <div className="text columns ten" dangerouslySetInnerHTML={this.rawMarkup()}></div>
                 </div>
                 <span className="author">{thread.author.username}</span> <span className="date">{moment.unix(thread.last_edit).fromNow()}</span>
