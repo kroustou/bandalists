@@ -37,4 +37,5 @@ global.navigator = {
     userAgent: 'node.js'
 }
 
+/*eslint no-undef: "off"*/
 documentRef = document
