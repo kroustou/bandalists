@@ -20,3 +20,4 @@ django-rest-auth==0.6.0
 channels==0.17.2
 asgi-redis==0.14.1
 redis==2.10.5
+easy-thumbnails==2.3
