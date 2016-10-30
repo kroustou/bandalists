@@ -2,6 +2,7 @@ import {api} from '../api'
 import {replace} from 'react-router-redux'
 import {closeSocket} from '../base/actions'
 import {init} from '../base/actions'
+import * as types from './types'
 
 export const getUserInfo = (dispatch, next) => {
     return api('/me/').then(resp => {
@@ -15,7 +16,7 @@ export const getUserInfo = (dispatch, next) => {
 }
 
 export const login = (dispatch, token, next) => {
-    dispatch({type: 'LOGIN', token: token})
+    dispatch({type: types.LOGIN, token: token})
     init(dispatch, next)
 }
 

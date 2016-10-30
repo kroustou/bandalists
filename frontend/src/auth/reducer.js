@@ -1,9 +1,10 @@
 import {defaultState} from './defaultState'
 import browserStore from 'store'
+import * as types from './types'
 
 export default (state = defaultState, action) => {
     switch (action.type) {
-    case 'LOGIN': {
+    case types.LOGIN: {
         let token = action.token
         browserStore.set('token', token)
         return Object.assign({}, state, {'authenticated': token})

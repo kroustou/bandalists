@@ -50,5 +50,4 @@ describe('<Login/>', function () {
         form.simulate('submit')
         expect(validation).to.equal(true)
     })
-
 })
