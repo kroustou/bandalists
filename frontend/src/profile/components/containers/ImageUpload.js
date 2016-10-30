@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default (props) => {
-
     const url = props.band ? '/bands/' + props.band.slug + '/add_image/': '/me/'
     let preview
     if (props.avatarPreview) {
@@ -11,16 +10,18 @@ export default (props) => {
             const primary = props.band.bandimage_set.find(i=>i.primary)
             if (primary) {
                 preview = primary.image
-            } else {
-                preview = 'http://placehold.it/200x200'
             }
         } else {
             preview = props.user.avatar
+        }
+        if (!preview) {
+            preview = 'http://placehold.it/200x200?text=?'
         }
     }
     return (
         <div className="row">
             <div className="avatar three columns">
+                <h5>Avatar</h5>
                 <input id="upload" name="avatar" type="file" onChange={(e)=>props.handleChange(e, url)} />
                 <div className="preview">
                     <div className="progress" style={{width: props.progress + '%'}}></div>

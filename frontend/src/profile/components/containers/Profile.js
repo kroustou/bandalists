@@ -11,13 +11,13 @@ const Profile = ({user, logout}) => (
             logout()
         }}>Logout <i className="fa fa-2x fa-sign-out" aria-hidden="true"></i></a>
         <div>
-            <h2>Who are you {user.username}?</h2>
-            <ImageUpload/>
-            <EditProfile/>
-        </div>
-        <div>
             <h2>Manage Your Bands</h2>
             <Band/>
+        </div>
+        <div>
+            <h3>Who are you, {user.username}?</h3>
+            <ImageUpload/>
+            <EditProfile/>
         </div>
     </div>
 )

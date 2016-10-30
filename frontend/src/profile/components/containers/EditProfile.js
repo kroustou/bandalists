@@ -25,6 +25,7 @@ const UserProfileForm = (props) => {
         <div className="">
             <form onSubmit={handleSubmit}>
                 <div className="error">{error}</div>
+                <h5>Personal Info</h5>
                 <div className="row">
                     <div className="columns six">
                         <Field  name="username" component={RenderField} type='text'  placeholder='Username'/>
@@ -41,6 +42,7 @@ const UserProfileForm = (props) => {
                         <Field  name="surname" component={RenderField} type='text'  placeholder='Surname'/>
                     </div>
                 </div>
+                <h5>Change password</h5>
                 <div className="row">
                     <div className="columns six">
                         <Field  name="password" component={RenderField} type='password'  placeholder='New password'/>
