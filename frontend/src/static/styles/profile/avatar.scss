@@ -56,3 +56,9 @@
 		}
 	}
 }
+
+@media (max-width: 400px) {
+    header .menu li.profile .avatar-circle .avatar-container  {
+		width: 30px;
+	}
+}

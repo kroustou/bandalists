@@ -4,11 +4,14 @@ header {
     margin-bottom: 80px;
     z-index: 100;
 
-    .logo img {
-        height: 100px;
-        display: block;
-        position: absolute;
-        top: 10px;
+    .logo {
+
+        img {
+            height: 100px;
+            display: block;
+            position: absolute;
+            top: 10px;
+        }
     }
 
     .menu {
@@ -70,6 +73,7 @@ header {
                 text-transform: uppercase;
                 margin-top: 5px;
                 color: $light3;
+                padding: 0 10px;
                 vertical-align: middle;
                 line-height: 55px;
                 display: block;
@@ -91,3 +95,28 @@ header {
         }
     }
 }
+
+@media (max-width: 400px) {
+    header {
+        margin-bottom: 40px;
+
+        .logo {
+            img {
+                height: 50px;
+                display: block;
+                position: absolute;
+                top: 5px;
+            }
+        }
+
+        .menu li {
+             & > a, & > span {
+                line-height: 35px;
+                height: 35px;
+             }
+
+        }
+    }
+}
+
+

@@ -4,7 +4,7 @@ import Menu from '../../../components/Menu'
 const Header = () => (
     <header className='row'>
         <div className='container'>
-            <div className='logo two columns'>
+            <div className='logo'>
                 <img src={logo}/>
             </div>
             <Menu/>

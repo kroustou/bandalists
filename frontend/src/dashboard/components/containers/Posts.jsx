@@ -24,8 +24,10 @@ class Posts extends React.Component {
 
     componentWillMount = () => {
         const {getPosts, selectedBand} = this.props
-        getPosts(selectedBand.id)
-        window.addEventListener('mousewheel', _.throttle(this.isAtBottom, 2000))
+        if (selectedBand) {
+            getPosts(selectedBand.id)
+            window.addEventListener('mousewheel', _.throttle(this.isAtBottom, 2000))
+        }
     }
 
     componentWillUnmount = () => {

@@ -89,3 +89,18 @@ header .menu .band-selector {
     }
 
 }
+
+@media (max-width: 400px) {
+    header .menu li {
+        .band-label {
+            span {
+                top: 12px;
+            }
+
+            div.band-image {
+                height: 30px;
+                width: 30px;
+            }
+        }
+    }
+}
