@@ -18,7 +18,7 @@ const EditBandForm = (props) => {
                 {initialValues ? '' : <h5>Add a new band</h5>}
                 <form className="new-band-form row " onSubmit={handleSubmit} autoComplete="off">
                     <Field type="text" name="name" {...props.fields.name} component={RenderField} label="Band name" placeholder='Name'/>
-                    <input type="submit" value={initialValues ? 'Update': 'Create'}/>
+                    <input type="submit" value={initialValues ? 'Update': 'Add'}/>
                 </form>
             </div>
             <div className="row">

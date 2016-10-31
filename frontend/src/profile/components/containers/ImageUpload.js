@@ -15,7 +15,7 @@ export default (props) => {
             preview = props.user.avatar
         }
         if (!preview) {
-            preview = 'http://placehold.it/200x200?text=?'
+            preview = 'http://placehold.it/200x200?text=' + props.user.username[0]
         }
     }
     return (

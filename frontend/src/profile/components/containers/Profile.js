@@ -11,7 +11,7 @@ const Profile = ({user, logout}) => (
             logout()
         }}>Logout <i className="fa fa-2x fa-sign-out" aria-hidden="true"></i></a>
         <div>
-            <h2>Manage Your Bands</h2>
+            <h3>Your Bands</h3>
             <Band/>
         </div>
         <div>
