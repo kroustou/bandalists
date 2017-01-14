@@ -1,5 +1,5 @@
 # Bandalists
-This is a web app for band management.
+This is a web app for band management and communication.
 
 
 # Run for development
@@ -16,9 +16,6 @@ installation:
     source !$
     pip install -r requirements.txt
     ./manage.py migrate
-    ./manage.py createsuperuser
-
-superuser credentials -> admin:pass (hardcoded in the client)
 
 running:
 
@@ -31,6 +28,9 @@ admin interface:
 
 it would be a good idea to create a band for your user from the admin interface in order to see what is happening. (Dashboard and Bands are the only menu items which are currently under development)
 
+## Serving media
+python -m SimpleHTTPServer 8001
+
 ## Frontend
 To run the frontend just:
 
@@ -39,13 +39,11 @@ To run the frontend just:
     npm start
 
 ## Usage
-go to `http://localhost:3000`
+go to `http://localhost:3000` and voila.
 
-- Select Login (admin:pass user must have been created on django (./manage.py createsuperuser))
-- The menu items should have been changed
-- select Bands and create a band
-- select The created band from down below
-- go to dashboard and talk with yourself
+- Create a profile
+- create a band
+- go to dashboard and talk with yourself or invite friends
 
 # How it works
 
