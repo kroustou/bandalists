@@ -78,18 +78,12 @@ ROOT_URLCONF = 'bandalists_drf.urls'
 WSGI_APPLICATION = 'bandalists_drf.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -138,7 +132,7 @@ FROM_EMAIL = 'info@bandalists.com'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = '/tmp/app-messages' # change this to a proper location
+EMAIL_FILE_PATH = '/tmp/app-messages'  # change this to a proper location
 
 
 CHANNEL_LAYERS = {
