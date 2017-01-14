@@ -1,3 +1,6 @@
+![alt text](https://codeship.com/projects/31df1030-bcba-0134-405a-76ab691be209/status?branch=master "Codeship")
+[![Coverage Status](https://coveralls.io/repos/github/kroustou/bandalists/badge.svg?branch=master)](https://coveralls.io/github/kroustou/bandalists?branch=master)
+
 # Bandalists
 This is a web app for band management and communication.
 
