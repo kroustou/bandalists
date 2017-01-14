@@ -46,7 +46,9 @@ class Profile(APIView):
                     request.data.update({'email': ''})
                 if request.data.get('token'):
                     try:
-                        invitation = Invitation.objects.get(token=request.data.get('token'))
+                        invitation = Invitation.objects.get(
+                            token=request.data.get('token')
+                        )
                     except Invitation.DoesNotExist:
                         pass
                     else:

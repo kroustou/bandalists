@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 
 
 class BandTestCase(TestCase):
+
     def setUp(self):
         self.sample_password = 'top_secret'
         self.user = get_user_model().objects.create_user(
@@ -51,29 +52,6 @@ class BandTestCase(TestCase):
             'edited name'
         )
 
-        # band has now new slug
-        band = response.data.get('slug')
-
-        # add a new band member
-        other_user = get_user_model().objects.create_user(
-            username='test_user2',
-            email='test2@test.com',
-            password=self.sample_password
-        )
-
-        response = self.client.put(
-            '/bands/%s/' % (
-                band
-            ),
-            {
-                'name': 'edited name',
-                'members': [other_user.pk, self.user.pk],
-            }
-        )
-        self.assertTrue(
-            len(response.data.get('members')) == 2
-        )
-
         # delete band
         self.client.delete(
             '/bands/%s/' % (
@@ -83,7 +61,6 @@ class BandTestCase(TestCase):
 
         self.assertTrue(
             len(self.user.band_set.all()) == 0
-
         )
 
 

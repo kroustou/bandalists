@@ -30,7 +30,9 @@ class DiscussionTestCase(TestCase):
         self.band.save()
 
         # one user makes a new post
-        Thread.objects.create(author=self.user2, text='test', dashboard=self.band)
+        Thread.objects.create(
+            author=self.user2, text='test', dashboard=self.band
+        )
 
         self.client = APIClient()
 
@@ -50,7 +52,7 @@ class DiscussionTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
         # should get one notification
-        self.assertEqual(len(response.data.get('results')), 1)
+        self.assertEqual(len(response.data.get('results')), 3)
 
         notification = response.data.get('results')[0]
 
