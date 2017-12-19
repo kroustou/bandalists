@@ -32,7 +32,12 @@ admin interface:
 it would be a good idea to create a band for your user from the admin interface in order to see what is happening. (Dashboard and Bands are the only menu items which are currently under development)
 
 ## Serving media
-python -m SimpleHTTPServer 8001
+`cd bandalists_drf/public && python -m SimpleHTTPServer 8001`
+
+
+## Redis server
+Bandalists uses websockets, notifications are being pushed through redis.
+You need to setup and start redis!
 
 ## Frontend
 To run the frontend just:
