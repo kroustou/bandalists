@@ -38,3 +38,4 @@ class Thread(models.Model):
     def get_notification_message(self):
         from discussion.serializers import ThreadSerializer
         return ThreadSerializer(self).data
+

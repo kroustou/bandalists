@@ -68,7 +68,7 @@
          dest: '{{ deploy_path }}'
 
      - name: Change ownership
-       file: path={{ deploy_path }} state=directory owner=bandalists
+       file: path={{ deploy_path }} state=directory owner=bandalists recurse=yes
 
      - name: Create venv
        pip: requirements={{ deploy_path }}/bandalists_drf/requirements.txt virtualenv={{ venv }}

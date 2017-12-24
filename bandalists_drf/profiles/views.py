@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.contrib.auth import get_user_model
@@ -7,7 +9,9 @@ from rest_framework.views import APIView
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework import status
+
 import logging
+
 from .serializers import UserSerializer, ProfileSerializer
 from bands.models import Band
 from .models import Invitation
@@ -76,8 +80,9 @@ class Profile(APIView):
 
     def put(self, request, format=None):
         if request.user.is_authenticated():
-            request.data['user'] = request.user.pk
-            serializer = ProfileSerializer(data=request.data)
+            data = request.data.copy()
+            data['user'] = request.user.pk
+            serializer = ProfileSerializer(data=data)
             if serializer.is_valid():
                 obj = serializer.save()
             return Response(

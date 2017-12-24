@@ -100,7 +100,7 @@ class InstrumentTestCase(TestCase):
         instrument = response.data.get('id')
         self.assertEqual(response.status_code, 201)
 
-        # the user must now have one instument
+        # the user must now have one instrument
         response = self.client.get('/instruments/')
         self.assertEqual(len(response.data.get('results')), 1)
 
@@ -116,7 +116,7 @@ class InstrumentTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
         # remove instrument
-        self.client.delete('/instuments/%s' % instrument)
+        self.client.delete('/instruments/%s' % instrument)
 
         # the user must now have no instruments
         response = self.client.get('/instruments/')

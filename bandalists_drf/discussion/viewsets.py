@@ -1,3 +1,4 @@
+from copy import deepcopy
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
@@ -43,12 +44,6 @@ class ThreadViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         user = request.user
-        # try to see if user allowed to post to dashboard
-        request.data.update(
-            {
-                'seen_by': user.pk,
-            }
-        )
         if request.data.get('parent'):
             # its a reply, that means any notifications about its parent
             # have been seen

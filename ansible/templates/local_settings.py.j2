@@ -5,4 +5,17 @@ FROM_EMAIL = 'info@bandalists.com'
 MEDIA_ROOT = '/home/bandalists/media'
 MEDIA_URL = '/media/'
 DEBUG = False
-SECRET_KEY = {{ secret_key }}
+SECRET_KEY = '{{ secret_key }}'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bandalists',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    },
+
+}
+
