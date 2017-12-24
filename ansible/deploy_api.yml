@@ -2,9 +2,8 @@
  - hosts: digital-ocean
    vars:
      date: "{{ ansible_date_time.date }}"
-     tar_name: bandalists-{{ date }}.tgz
      tar: /tmp/{{ tar_name }}
-     deploy_path: "/srv/bandalists-{{ date }}"
+     deploy_path: "/srv/bandalists"
      venv: /opt/venvs/bandalists
 
    tasks:
@@ -31,25 +30,11 @@
        pip: name={{ item }}
        with_items:
          - virtualenv
-# TODO
-# git clone
-
-     - name: Archive
-       local_action: command tar -czf {{ tar }} -C {{ inventory_dir | dirname }} .
-       tags: archive
-
-     - name: Create dir
-       file: path={{ deploy_path }} state=directory owner=bandalists
-
-     - name: Unarchive
-       unarchive: src={{ tar }} dest={{ deploy_path }}
-       tags: archive
-
-     - name: Create venv
-       pip: requirements={{ deploy_path }}/bandalists_drf/requirements.txt virtualenv="{{ venv }}"
 
      - name: Ensure the PostgreSQL service is running
        service: name=postgresql state=started enabled=yes
+       tags:
+         - db
 
      - postgresql_db: name=bandalists
        become_user: postgres
@@ -75,7 +60,22 @@
        tags:
          - db
 
-     - django_manage: command=migrate app_path="{{ deploy_path }}/bandalists_drf" virtualenv="{{ venv }}"
+     - git:
+         repo: 'https://github.com/kroustou/bandalists.git'
+         dest: '{{ deploy_path }}'
+         clone: yes
+         update: yes
+
+     - name: Change ownership
+       file: path={{ deploy_path }} state=directory owner=bandalists
+
+     - name: Create venv
+       pip: requirements={{ deploy_path }}/bandalists_drf/requirements.txt virtualenv={{ venv }}
+
+     - name: Copy local settings
+       template: src=templates/local_settings.py.j2 dest={{ deploy_path }}/bandalists_drf/bandalists_drf/local_settings.py
+
+     - django_manage: command=migrate app_path="{{ deploy_path }}/bandalists_drf" virtualenv={{ venv }}
        become_user: bandalists
        become: yes
        tags:
@@ -90,15 +90,18 @@
        tags:
          - manage
 
-     - name: Copy local settings
-       template: src=templates/local_settings.py.j2 dest={{ deploy_path }}/bandalists_drf/bandalists_drf/local_settings.py
+     - name: Copy daphne init script
+       template: src=templates/daphne.service.j2 dest=/etc/systemd/system/bandalists.service
 
-#TODO
-# daphne service
-# workers service
+     - name: Copy worker init script
+       template: src=templates/worker.service.j2 dest=/etc/systemd/system/bandalists-worker.service
 
      - name: restart nginx
        service: name=nginx state=restarted enabled=yes
        tags:
          - manage
+
+     - name: Make sure the service is running
+       systemd: state=started name=bandalists
+
 

@@ -1,0 +1,14 @@
+[Unit]
+Description=Daphne Web Server for Bandalists backend
+After=network.target
+
+[Service]
+WorkingDirectory={{ deploy_path }}/bandalists_drf/
+NonBlocking=true
+ExecStart={{ venv }}/bin/daphne bandalists_drf.asgi:channel_layer
+Restart=always
+Requires=bandalists-worker@1.service
+
+
+[Install]
+WantedBy=multi-user.target
