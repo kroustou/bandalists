@@ -1,0 +1,104 @@
+---
+ - hosts: digital-ocean
+   vars:
+     date: "{{ ansible_date_time.date }}"
+     tar_name: bandalists-{{ date }}.tgz
+     tar: /tmp/{{ tar_name }}
+     deploy_path: "/srv/bandalists-{{ date }}"
+     venv: /opt/venvs/bandalists
+
+   tasks:
+     - name: Create User
+       user: name=bandalists group=www-data
+
+     - name: Install required packages
+       apt: name={{ item }}
+       with_items:
+        - python-pip
+        - python-dev
+        - libjpeg-dev
+        - python-psycopg2
+        - lib32ncurses5-dev
+        - postgresql
+        - postgresql-server-dev-all
+        - postgresql-client
+        - nginx
+        - uwsgi
+        - uwsgi-plugin-python
+        - redis-server
+
+     - name: Install virtualenv
+       pip: name={{ item }}
+       with_items:
+         - virtualenv
+# TODO
+# git clone
+
+     - name: Archive
+       local_action: command tar -czf {{ tar }} -C {{ inventory_dir | dirname }} .
+       tags: archive
+
+     - name: Create dir
+       file: path={{ deploy_path }} state=directory owner=bandalists
+
+     - name: Unarchive
+       unarchive: src={{ tar }} dest={{ deploy_path }}
+       tags: archive
+
+     - name: Create venv
+       pip: requirements={{ deploy_path }}/bandalists_drf/requirements.txt virtualenv="{{ venv }}"
+
+     - name: Ensure the PostgreSQL service is running
+       service: name=postgresql state=started enabled=yes
+
+     - postgresql_db: name=bandalists
+       become_user: postgres
+       become: yes
+       tags:
+         - db
+
+     - postgresql_user: name=root
+       become_user: postgres
+       become: yes
+       tags:
+         - db
+
+     - postgresql_user: db=bandalists name=bandalists
+       become_user: postgres
+       become: yes
+       tags:
+         - db
+
+     - postgresql_user: db=bandalists name=bandalists
+       become_user: postgres
+       become: yes
+       tags:
+         - db
+
+     - django_manage: command=migrate app_path="{{ deploy_path }}/bandalists_drf" virtualenv="{{ venv }}"
+       become_user: bandalists
+       become: yes
+       tags:
+         - manage
+
+     - name: Set up nginx
+       template: src=templates/nginx.conf.j2 dest=/etc/nginx/sites-available/bandalists
+       tags:
+         - manage
+
+     - file: src='/etc/nginx/sites-available/bandalists' dest='/etc/nginx/sites-enabled/bandalists' state=link
+       tags:
+         - manage
+
+     - name: Copy local settings
+       template: src=templates/local_settings.py.j2 dest={{ deploy_path }}/bandalists_drf/bandalists_drf/local_settings.py
+
+#TODO
+# daphne service
+# workers service
+
+     - name: restart nginx
+       service: name=nginx state=restarted enabled=yes
+       tags:
+         - manage
+
