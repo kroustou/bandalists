@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
+SECRET_KEY = 's'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
