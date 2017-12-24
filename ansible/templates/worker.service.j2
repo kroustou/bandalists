@@ -1,0 +1,19 @@
+[Unit]
+Description=Start/stop Django channels worker daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart={{ venv }}/bin/python {{ deploy_path }}/bandalists_drf/manage.py runworker
+PIDFile=/var/run/bandalists-worker.pid
+WorkingDirectory={{ deploy_path }}
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=process
+KillSignal=SIGQUIT
+Restart=on-failure
+RestartSec=10s
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target
+

@@ -10,6 +10,9 @@
      - name: Create User
        user: name=bandalists group=www-data
 
+     - name: 'include vault'
+       include_vars: vault.yml
+
      - name: Install required packages
        apt: name={{ item }}
        with_items:
@@ -63,8 +66,6 @@
      - git:
          repo: 'https://github.com/kroustou/bandalists.git'
          dest: '{{ deploy_path }}'
-         clone: yes
-         update: yes
 
      - name: Change ownership
        file: path={{ deploy_path }} state=directory owner=bandalists
@@ -102,6 +103,6 @@
          - manage
 
      - name: Make sure the service is running
-       systemd: state=started name=bandalists
+       systemd: state=started name=bandalists daemon-reload=yes
 
 
