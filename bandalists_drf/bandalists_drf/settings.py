@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-SECRET_KEY = 'a#2c=6*g1ir6c1wjn+bt%lgjl#9%gl6da_(!-glx$pzzo)_jh5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
