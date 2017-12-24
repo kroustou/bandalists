@@ -2,9 +2,8 @@ import axios from 'axios'
 import browserStore from 'store'
 
 const backend = axios.create({
-    baseURL: 'http://localhost:8000/',
+    baseURL: 'http://api.bandalists.allochiria.com/',
     timeout: 4000
-
 })
 
 export const api = (url, method='get', data={}, config={}) => {
