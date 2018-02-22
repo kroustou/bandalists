@@ -16,13 +16,13 @@ installation:
     mkdir ~/.virtualenvs
     cd bandalists_drf
     virtualenv ~/.virtualenvs/bandalists
-    source !$
+    source !$/bin/activate
     pip install -r requirements.txt
     ./manage.py migrate
 
 running:
 
-    source ~/.virtualenvs/bandalists
+    source ~/.virtualenvs/bandalists/bin/activate
     ./manage.py runserver
 
 admin interface:
