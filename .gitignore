@@ -7,3 +7,4 @@ node_modules
 *.rdb
 *debug.log
 *.swp
+*.retry

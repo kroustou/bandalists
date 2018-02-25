@@ -1,8 +1,6 @@
 ---
  - hosts: digital-ocean
    vars:
-     date: "{{ ansible_date_time.date }}"
-     tar: /tmp/{{ tar_name }}
      deploy_path: "/srv/bandalists"
      venv: /opt/venvs/bandalists
 
@@ -97,12 +95,16 @@
      - name: Copy worker init script
        template: src=templates/worker.service.j2 dest=/etc/systemd/system/bandalists-worker.service
 
+#     - name: Npm install
+
+#     - name: Npm build
+
      - name: restart nginx
        service: name=nginx state=restarted enabled=yes
        tags:
          - manage
 
-     - name: Make sure the service is running
-       systemd: state=started name=bandalists daemon-reload=yes
+     - name: Restart daphne
+       systemd: state=restarted name=bandalists daemon-reload=yes
 
 
